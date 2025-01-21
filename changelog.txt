@@ -1,0 +1,5 @@
+Plugin Name: Simple Consent Mode
+Author: Marcin Pietrzak ( iworks.pl )
+
+== Changelog ==
+
