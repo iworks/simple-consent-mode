@@ -2,7 +2,7 @@
     "name": "simple-consent-mode",
     "title": "Simple Consent Mode",
     "tagline": "Simple Consent Mode",
-    "description": "Simple Consent Mode",
+    "description": "Simple Consent Mode for Europe",
     "version": "0.0.1",
     "homepage": "http://simple-consent-mode.iworks.pl/",
     "author": [{
@@ -15,7 +15,7 @@
         "PHP": "8.0"
     },
     "tested": {
-        "WordPress": "6.4"
+        "WordPress": "6.7"
     },
     "devDependencies": {
         "grunt": "^1",
