@@ -2,7 +2,7 @@
 
 /*
 
-Copyright 2016-PLUGIN_TILL_YEAR Marcin Pietrzak (marcin@iworks.pl)
+Copyright 2025-PLUGIN_TILL_YEAR Marcin Pietrzak (marcin@iworks.pl)
 
 this program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License, version 2, as
@@ -34,14 +34,49 @@ class iworks_simple_consent_mode_base {
 	protected $version;
 	protected $url;
 
+	/**
+	 * options
+	 */
+	protected $options;
+
+	/**
+	 * DEBUG
+	 *
+	 * @since 1.0.0
+	 */
+	protected $debug = false;
+
+	/**
+	 * EOL?
+	 *
+	 * @since 1.0.0
+	 */
+	protected string $eol = '';
+
 	public function __construct() {
 		/**
 		 * static settings
 		 */
-		$this->dev  = ( defined( 'IWORKS_DEV_MODE' ) && IWORKS_DEV_MODE ) ? '' : '.min';
-		$this->base = dirname( __FILE__ );
-		$this->dir  = basename( dirname( dirname( $this->base ) ) );
-		$this->url  = plugins_url( $this->dir );
+		$this->debug = ( defined( 'WP_DEBUG' ) && WP_DEBUG ) || ( defined( 'IWORKS_DEV_MODE' ) && IWORKS_DEV_MODE );
+		$this->dev   = $this->debug ? '' : '.min';
+		$this->eol   = $this->debug ? PHP_EOL : '';
+		$this->base  = dirname( dirname( __FILE__ ) );
+		$this->dir   = basename( dirname( $this->base ) );
+		$this->url   = plugins_url( $this->dir );
+		/**
+		 * WordPress Hooks
+		 */
+		add_action( 'init', array( $this, 'action_init' ) );
+		add_action( 'admin_init', array( $this, 'action_admin_init' ) );
+	}
+
+	public function action_init() {
+		$this->check_option_object();
+		$this->options->options_init();
+	}
+
+	public function action_admin_init() {
+		$this->check_option_object();
 	}
 
 	public function get_version( $file = null ) {
@@ -141,7 +176,61 @@ class iworks_simple_consent_mode_base {
 		);
 	}
 
+	protected function get_template_file_name( $slug, $name = null, $side = 'frontend' ) {
+		$slug = sanitize_file_name( $slug );
+		$name = sanitize_file_name( $name );
+		$side = sanitize_file_name( $side );
+		/**
+		 * base
+		 */
+		$base = sprintf(
+			'%s/%s/assets/templates/%s',
+			WP_PLUGIN_DIR,
+			$this->dir,
+			$side
+		);
+		/**
+		 * find file
+		 */
+		$patterns = array(
+			'%1$s/%2$s/%3$s.php',
+			'%1$s/%2$s-%3$s.php',
+			'%1$s/%2$s/%3$s/index.php',
+			'%1$s/%2$s-%3$s/index.php',
+		);
+		foreach ( $patterns as $pattern ) {
+			$filename = sprintf( $pattern, $base, $slug, $name );
+			if ( is_file( $filename ) ) {
+				return realpath( $filename );
+			}
+		}
+		/**
+		 * no file
+		 */
+		return new WP_Error(
+			'error',
+			sprintf(
+				esc_html__( 'Missing template file: %1$s/%2$s/%3$s.', 'simple-consent-mode' ),
+				$side,
+				$slug,
+				$name
+			)
+		);
+	}
+
 	protected function html_title( $text ) {
 		printf( '<h1 class="wp-heading-inline">%s</h1>', esc_html( $text ) );
+	}
+
+	/**
+	 * check option object
+	 *
+	 * @since 1.0.0
+	 */
+	private function check_option_object() {
+		if ( is_a( $this->options, 'iworks_options' ) ) {
+			return;
+		}
+		$this->options = get_iworks_simple_consent_mode_options();
 	}
 }

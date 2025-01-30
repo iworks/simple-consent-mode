@@ -22,11 +22,18 @@ module.exports = function(grunt) {
 
 	var conf = {
 		// Concatenate those JS files into a single file (target: [source, source, ...]).
-		js_files_concat: { },
+		js_files_concat: {
+			'assets/scripts/<%= pkg.name %>-frontend.js': [
+				'assets/scripts/src/frontend/*.js',
+			]
+		},
 
 		// SASS files to process. Resulting CSS files will be minified as well.
-		css_files_compile: {},
-		css_files_concat: { },
+		css_files_compile: {
+			'assets/styles/<%= pkg.name %>-frontend.css': [
+				'assets/sass/frontend/*.scss'
+			]
+		},
 
 		plugin_dir: '',
 		plugin_file: 'simple-consent-mode',
@@ -97,7 +104,7 @@ module.exports = function(grunt) {
 			all: {
 				files: [{
 					expand: true,
-					src: ['admin/*.js', '!**/*.min.js', '!shared*'],
+					src: ['*.js', '!**/*.min.js', '!shared*'],
 					cwd: 'assets/scripts/',
 					dest: 'assets/scripts/',
 					ext: '.min.js',
@@ -176,6 +183,7 @@ module.exports = function(grunt) {
 		watch: {
 			sass: {
 				files: [
+					'assets/sass/*.scss',
 					'assets/sass/**/*.scss',
 					'inc/modules/**/*.scss'
 				],

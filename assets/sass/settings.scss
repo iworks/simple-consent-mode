@@ -1,0 +1,11 @@
+@import '_mixin';
+
+:root {
+	--scm-color-background: #fff;
+	--scm-color-accent: #97f;
+
+	--scm-spacer-base: 16px;
+	--scm-spacer-16: var(--scm-spacer-base );
+	--scm-spacer-32: calc( 2 * var(--scm-spacer-base ) );
+}
+

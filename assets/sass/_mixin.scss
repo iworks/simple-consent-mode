@@ -1,0 +1,125 @@
+/**
+ * Images version, increase it when you change any background image.
+ */
+$version: "PLUGIN_VERSION.BUILDTIMESTAMP";
+$au: 1.618;
+
+$width: 100%;
+
+$width_xs: 320px;
+$width_s: 600px;
+$width_m: 768px;
+$width_l: 1024px;
+$width_x: 1180px;
+$width_xl: 1920px;
+
+$default_width: $width_x;
+
+@mixin boxsizing {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+@mixin transition($trans) {
+	-webkit-transition: $trans;
+	-moz-transition: $trans;
+	-ms-transition: $trans;
+	-o-transition: $trans;
+	transition: $trans;
+}
+
+@mixin radius($radius: var(--radius-default)) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	border-radius: $radius;
+}
+
+@mixin boxshadow($shadow) {
+	-webkit-box-shadow: $shadow;
+	-moz-box-shadow: $shadow;
+	box-shadow: $shadow;
+}
+
+@mixin textshadow($shadow) {
+	text-shadow: $shadow;
+	-webkit-text-shadow: $shadow;
+	-moz-text-shadow: $shadow;
+}
+
+@mixin clearfix {
+	&:before,
+	&:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+}
+
+@mixin hide {
+	opacity: 0;
+	@include transition(opacity 0.4s);
+}
+
+@mixin show {
+	opacity: 1;
+	@include transition(opactiy 0.4s);
+}
+
+@mixin columns($columns) {
+	-webkit-columns: $columns;
+	-moz-columns: $columns;
+	columns: $columns;
+}
+
+@mixin reset_min() {
+	margin: 0;
+	outline: 0;
+	padding: 0;
+}
+
+@mixin reset_ul() {
+	@include reset_min;
+	list-style: none;
+}
+
+@mixin reset() {
+	@include reset_min;
+	background: transparent none;
+	border: 0;
+	bottom: auto;
+	color: inherit;
+	display: inline;
+
+	font: {
+		size: 100%;
+		family: 'Open Sans', sans-serif;
+		style: normal;
+		weight: 200;
+	}
+
+	left: auto;
+	line-height: $au;
+	list-style: none;
+	position: static;
+	right: auto;
+	top: auto;
+	@include boxshadow(none);
+	@include radius(0);
+	width: unset;
+	height: unset;
+	text-indent: unset;
+}
+
+@mixin transform($transforms) {
+	-moz-transform: $transforms;
+	-o-transform: $transforms;
+	-ms-transform: $transforms;
+	-webkit-transform: $transforms;
+	transform: $transforms;
+}
+
+@mixin rbc() {
+	border: 1px solid rgb(random(255), random(255), random(255));
+}
+

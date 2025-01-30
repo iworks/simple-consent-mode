@@ -1,0 +1,34 @@
+@import '../settings';
+#iw_scm_main {
+	@include rbc;
+	bottom: var(--scm-spacer-16);
+	padding: var(--scm-spacer-32);
+	float: right;
+	position: sticky;
+	right: var(--scm-spacer-16);
+	width: 24em;
+	max-width: calc( 100% - var(--scm-spacer-32));
+	z-index: 2147483646;
+}
+.scm {
+	&-modal {
+		background: {
+			color: var(--scm-color-accent);
+		}
+		&-button {
+			@include reset_min;
+			padding: var(--scm-spacer-16);
+			&s {
+				@include reset_ul;
+				display: flex;
+				gap: var(--scm-spacer-16);
+				align: {
+					items: center;
+				}
+				justify: {
+					content: center;
+				}
+			}
+		}
+	}
+}
