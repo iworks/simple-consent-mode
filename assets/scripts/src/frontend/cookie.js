@@ -24,8 +24,7 @@ window.simple_consent_mode.functions.get_cookie_value = function( ) {
 /**
  * set Cookie Notice
  */
-window.simple_consent_mode.functions.set_cookie_notice = function () {
-	var notice = document.getElementById( window.simple_consent_mode.name );
+window.simple_consent_mode.functions.set_cookie = function ( cookie_value ) {
 	var expires = new Date();
 	var value = parseInt( expires.getTime() );
 	var cookie = '';
@@ -36,11 +35,11 @@ window.simple_consent_mode.functions.set_cookie_notice = function () {
 	/**
 	 * add time
 	 */
-	value += parseInt( window.simple_consent_mode.cookie.value ) * 1000;
+	value += parseInt( window.simple_consent_mode_data.cookie.expires ) * 1000;
 	/**
 	 * add time zone
 	 */
-	value += parseInt( window.simple_consent_mode.cookie.timezone ) * 1000;
+	value += parseInt( window.simple_consent_mode_data.cookie.timezone ) * 1000;
 	/**
 	 * set time
 	 */
@@ -48,32 +47,19 @@ window.simple_consent_mode.functions.set_cookie_notice = function () {
 	/**
 	 * add cookie timestamp
 	 */
-	cookie = window.simple_consent_mode.cookie.name + '=' + value/1000 + ';';
+	cookie = window.simple_consent_mode_data.cookie.name + '=' + cookie_value + ';';
 	cookie += ' expires=' + expires.toUTCString() + ';';
-	if ( window.simple_consent_mode.cookie.domain ) {
-		cookie += ' domain=' + window.simple_consent_mode.cookie.domain + ';';
+	if ( window.simple_consent_mode_data.cookie.domain ) {
+		cookie += ' domain=' + window.simple_consent_mode_data.cookie.domain + ';';
 	}
 	/**
 	 * Add cookie now (fix cache issue)
 	 */
-	cookie += ' path=' + window.simple_consent_mode.cookie.path + ';';
-	if ( 'on' === window.simple_consent_mode.cookie.secure ) {
+	cookie += ' path=' + window.simple_consent_mode_data.cookie.path + ';';
+	if ( 'on' === window.simple_consent_mode_data.cookie.secure ) {
 		cookie += ' secure;';
 	}
+	window.console.log(cookie);
 	document.cookie = cookie;
-	cookie = window.simple_consent_mode.cookie.name + '_close=hide;';
-	cookie += ' expires=;';
-	if ( window.simple_consent_mode.cookie.domain ) {
-		cookie += ' domain=' + window.simple_consent_mode.cookie.domain + ';';
-	}
-	cookie += ' path=' + window.simple_consent_mode.cookie.path + ';';
-	if ( 'on' === window.simple_consent_mode.cookie.secure ) {
-		cookie += ' secure;';
-	}
-	document.cookie = cookie;
-	/**
-	 * remove
-	 */
-	notice.remove();
 };
 

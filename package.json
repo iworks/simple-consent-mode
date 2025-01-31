@@ -32,6 +32,7 @@
         "grunt-contrib-sass": "^1",
         "grunt-contrib-uglify": "^1",
         "grunt-contrib-watch": "^1",
+        "grunt-concat-css": "^0.3",
         "grunt-potomo": "^3",
         "grunt-replace": "^1",
         "grunt-wp-i18n": "^1",

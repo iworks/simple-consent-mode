@@ -132,8 +132,11 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 	public function action_wp_footer() {
 		$args  = $this->get_configuration();
 		$files = array(
+			'choose',
+			'icon',
 			'main',
 		);
+		echo '<div class="scm-modals-container">';
 		foreach ( $files as $file ) {
 			$filename = $this->get_template_file_name( 'cookie', $file );
 			if ( is_wp_error( $filename ) ) {
@@ -142,6 +145,7 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 			$args['id'] = $this->options->get_option_name( $file );
 			load_template( $filename, true, $args );
 		}
+		echo '</div>';
 	}
 
 	/**
@@ -174,44 +178,109 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 	}
 
 	/**
+	 * get cookie name
+	 *
+	 * @since 1.0.0
+	 */
+	private function get_cookie_name() {
+		return sprintf(
+			'scm%s',
+			crc32(
+				sprintf(
+					'%s_%d',
+					$this->options->get_option_name( 'cookie' ),
+					$this->options->get_option( 'cookie_version' )
+				)
+			)
+		);
+	}
+
+	/**
 	 * configuration for JS, templates
 	 *
 	 * @since 1.0.0
 	 */
 	private function get_configuration() {
-		if ( empty( $this->configuration ) ) {
-			$this->configuration = array(
-				'cookie'  => array(
-					'name' => $this->options->get_option_name( 'cookie' ),
-				),
-				'modals'  => array(
-					'main' => array(
-						'id'          => $this->options->get_option_name( 'main' ),
-						'description' => $this->options->get_option( 'm_main_desc' ),
+		if ( ! empty( $this->configuration ) ) {
+			return apply_filters(
+				'iworks/simple_consent_mode/configuration',
+				$this->configuration
+			);
+		}
+		$cookie_name         = $this->get_cookie_name();
+		$cookie_value        = isset( $_COOKIE[ $cookie_name ] ) ? $_COOKIE[ $cookie_name ] : null;
+		$this->configuration = array(
+			'cookie'  => array(
+				'expires'  => YEAR_IN_SECONDS,
+				'name'     => $cookie_name,
+				'path'     => '/',
+				'secure'   => is_ssl() ? 'on' : 'off',
+				'timezone' => 0,
+				'value'    => $cookie_value,
+			),
+			'modals'  => array(
+				'choose' => array(
+					'buttons' => array(
+						array(
+							'data'            => array(
+								'action' => 'save',
+							),
+							'container_class' => 'scm-modal-button-container',
+							'classes'         => array(
+								'scm-modal-button',
+								'scm-modal-button-save',
+							),
+							'value'           => $this->options->get_option( 'btn_save' ),
+						),
 					),
 				),
-				'nonce'   => wp_create_nonce( 'simple_consent_mode' ),
-				'ajaxurl' => admin_url( 'admin-ajax.php' ),
-				'buttons' => array(),
+				'icon'   => array(),
+				'main'   => array(
+					'description' => $this->options->get_option( 'm_main_desc' ),
+					'buttons'     => array(),
+				),
+			),
+			'nonce'   => wp_create_nonce( 'simple_consent_mode' ),
+			'ajaxurl' => admin_url( 'admin-ajax.php' ),
+			'buttons' => array(),
+		);
+		foreach ( $this->configuration['modals'] as $key => $data ) {
+			$this->configuration['modals'][ $key ]['id']      = $this->options->get_option_name( $key );
+			$this->configuration['modals'][ $key ]['classes'] = array(
+				'scm-modal',
+				sprintf( 'scm-modal-%s', $key ),
+				$this->options->get_option_name( 'modal' ),
 			);
-			/**
-			 * buttons
-			 */
-			$buttons = array(
-				'deny',
-				'choose',
-				'allow',
+		}
+		/**
+		 * hide
+		 */
+		$this->configuration['modals']['choose']['classes'][] = 'hidden';
+		if ( empty( $cookie_value ) ) {
+			$this->configuration['modals']['icon']['classes'][] = 'hidden';
+		} else {
+			$this->configuration['modals']['main']['classes'][] = 'hidden';
+		}
+		/**
+		 * buttons
+		 */
+		$buttons = array(
+			'allow',
+			'choose',
+			'deny',
+		);
+		foreach ( $buttons as $button ) {
+			$this->configuration['modals']['main']['buttons'][] = array(
+				'data'            => array(
+					'action' => $button,
+				),
+				'container_class' => 'scm-modal-button-container',
+				'classes'         => array(
+					'scm-modal-button',
+					sprintf( 'scm-modal-button-%s', $button ),
+				),
+				'value'           => $this->options->get_option( sprintf( 'btn_%s', $button ) ),
 			);
-			foreach ( $buttons as $button ) {
-				$this->configuration['buttons'][] = array(
-					'data'            => array(
-						'cookie' => $button,
-					),
-					'container_class' => 'scm-modal-button-container',
-					'class'           => sprintf( 'scm-modal-button-%s', $button ),
-					'value'           => $this->options->get_option( sprintf( 'btn_%s', $button ) ),
-				);
-			}
 		}
 		return apply_filters(
 			'iworks/simple_consent_mode/configuration',

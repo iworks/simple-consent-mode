@@ -1,0 +1,23 @@
+@import '../_mixin';
+
+.scm-modals-container {
+	.scm {
+		&-modal {
+			&-icon {
+				padding: 0;
+				width: 42px;
+				height: 42px;
+				button {
+					@include reset;
+					width: 42px;
+					height: 42px;
+					background: {
+						@include image('logo.svg' );
+						size: contain;
+					}
+				}
+			}
+		}
+	}
+}
+

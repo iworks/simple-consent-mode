@@ -30,9 +30,11 @@ module.exports = function(grunt) {
 
 		// SASS files to process. Resulting CSS files will be minified as well.
 		css_files_compile: {
-			'assets/styles/<%= pkg.name %>-frontend.css': [
-				'assets/sass/frontend/*.scss'
-			]
+			'assets/styles/frontend/settings.css': 'assets/sass/settings.scss',
+			'assets/styles/frontend/commons.css': 'assets/sass/frontend/commons.scss',
+			'assets/styles/frontend/modals.css': 'assets/sass/frontend/modals.scss',
+			'assets/styles/frontend/modal.main.css': 'assets/sass/frontend/modal.main.scss',
+			'assets/styles/frontend/modal.icon.css': 'assets/sass/frontend/modal.icon.scss',
 		},
 
 		plugin_dir: '',
@@ -158,6 +160,13 @@ module.exports = function(grunt) {
 				files: conf.css_files_compile
 			}
 		},
+		concat_css: {
+			options: {},
+			all: {
+				src: ['assets/styles/frontend/settings.css', 'assets/styles/frontend/*.css'],
+				dest: 'assets/styles/<%= pkg.name %>-frontend.css'
+			}
+		},
 
 		// CSS - Minify all .css files.
 		cssmin: {
@@ -187,7 +196,7 @@ module.exports = function(grunt) {
 					'assets/sass/**/*.scss',
 					'inc/modules/**/*.scss'
 				],
-				tasks: ['sass', 'cssmin'],
+				tasks: ['sass', 'concat_css', 'cssmin'],
 				options: {
 					debounceDelay: 500
 				}
@@ -414,9 +423,9 @@ module.exports = function(grunt) {
 
 	// Default task.
 
-	grunt.registerTask('default', ['clean:temp', 'concat', 'uglify', 'sass', 'cssmin']);
+	grunt.registerTask('default', ['clean:temp', 'concat', 'uglify', 'sass', 'concat_css', 'cssmin']);
 	grunt.registerTask('js', ['concat', 'uglify']);
-	grunt.registerTask('css', ['sass', 'cssmin']);
+	grunt.registerTask('css', ['sass', 'concat_css', 'cssmin']);
 	grunt.registerTask('i18n', ['checktextdomain', 'makepot', 'potomo']);
 
 	grunt.registerTask('build', ['default', 'i18n', 'clean', 'copy', 'replace', 'compress', 'notes']);

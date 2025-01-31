@@ -1,6 +1,3 @@
-/**
- * Images version, increase it when you change any background image.
- */
 $version: "PLUGIN_VERSION.BUILDTIMESTAMP";
 $au: 1.618;
 
@@ -14,6 +11,12 @@ $width_x: 1180px;
 $width_xl: 1920px;
 
 $default_width: $width_x;
+
+$image_root: '../images/';
+
+@mixin image($image) {
+	image: url(#{$image_root}#{$image}?v=#{$version});
+}
 
 @mixin boxsizing {
 	-webkit-box-sizing: border-box;
@@ -48,6 +51,7 @@ $default_width: $width_x;
 }
 
 @mixin clearfix {
+
 	&:before,
 	&:after {
 		content: '';
@@ -122,4 +126,3 @@ $default_width: $width_x;
 @mixin rbc() {
 	border: 1px solid rgb(random(255), random(255), random(255));
 }
-

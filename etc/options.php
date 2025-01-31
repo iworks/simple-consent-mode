@@ -230,6 +230,22 @@ function iworks_simple_consent_mode_options() {
 				'default'           => __( 'Regulates whether data used to provide personalized user experiences (like content recommendations) can be stored.', 'simple-consent-mode' ),
 			),
 			/**
+			 * cookie
+			 */
+			array(
+				'type'  => 'heading',
+				'label' => esc_html__( 'Cookie', 'simple-consent-mode' ),
+			),
+			array(
+				'name'              => 'cookie_version',
+				'type'              => 'number',
+				'class'             => 'small-text',
+				'th'                => __( 'Version', 'simple-consent-mode' ),
+				'default'           => 1,
+				'sanitize_callback' => 'absint',
+			),
+
+			/**
 			 * About Consent Mode
 			 */
 			array(
