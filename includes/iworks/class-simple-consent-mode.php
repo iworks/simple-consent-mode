@@ -71,30 +71,30 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 			'personalization_storage' => 'denied',
 			'security_storage'        => 'denied',
 		);
-		echo $this->eol;
+		echo esc_html( $this->eol );
 		printf(
 			'<script data-name="%s" data-version="%s">',
 			esc_attr( __CLASS__ ),
 			esc_attr( 'PLUGIN_VERSION' )
 		);
-		echo $this->eol;
+		echo esc_html( $this->eol );
 		// Define dataLayer and the gtag function.
 		echo 'window.dataLayer = window.dataLayer || [];';
-		echo $this->eol;
+		echo esc_html( $this->eol );
 		echo 'function gtag(){dataLayer.push(arguments);}';
-		echo $this->eol;
+		echo esc_html( $this->eol );
 		echo 'gtag(\'consent\', \'default\',';
-		echo $this->eol;
+		echo esc_html( $this->eol );
 		$flags = 0;
 		if ( $this->debug ) {
 			$flags = JSON_PRETTY_PRINT;
 		}
 		echo json_encode( $settings, $flags );
 		echo ');';
-		echo $this->eol;
+		echo esc_html( $this->eol );
 		echo '</script>';
-		echo $this->eol;
-		echo $this->eol;
+		echo esc_html( $this->eol );
+		echo esc_html( $this->eol );
 	}
 
 	/**

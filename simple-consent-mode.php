@@ -3,7 +3,7 @@
 Plugin Name: Simple Consent Mode
 Text Domain: simple-consent-mode
 Plugin URI: http://iworks.pl/simple-consent-mode/
-Description:
+Description: PLUGIN_TAGLINE
 Version: PLUGIN_VERSION
 Author: Marcin Pietrzak
 Author URI: http://iworks.pl/

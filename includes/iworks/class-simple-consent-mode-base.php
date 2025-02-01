@@ -210,6 +210,7 @@ class iworks_simple_consent_mode_base {
 		return new WP_Error(
 			'error',
 			sprintf(
+				/* translators: %1$s template site name, %2$s template slug, %3$s template name */
 				esc_html__( 'Missing template file: %1$s/%2$s/%3$s.', 'simple-consent-mode' ),
 				$side,
 				$slug,

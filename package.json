@@ -2,8 +2,8 @@
     "name": "simple-consent-mode",
     "title": "Simple Consent Mode",
     "tagline": "Simple Consent Mode",
-    "description": "Simple Consent Mode for Europe",
-    "version": "0.0.1",
+    "description": "Simple Consent Mode for Europe and GTM.",
+    "version": "1.0.0",
     "homepage": "http://simple-consent-mode.iworks.pl/",
     "author": [{
         "name": "Marcin Pietrzak",

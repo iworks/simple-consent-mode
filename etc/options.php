@@ -16,9 +16,8 @@ function iworks_simple_consent_mode_options() {
 		'use_tabs'   => true,
 		'options'    => array(
 			array(
-				'type'        => 'heading',
-				'label'       => esc_html__( 'Main', 'simple-consent-mode' ),
-				'description' => esc_html__( '', 'simple-consent-mode' ),
+				'type'  => 'heading',
+				'label' => esc_html__( 'Main', 'simple-consent-mode' ),
 			),
 			array(
 				'name'              => 'm_main_show',
@@ -72,9 +71,8 @@ function iworks_simple_consent_mode_options() {
 			 * Required Consents
 			 */
 			array(
-				'type'        => 'heading',
-				'label'       => esc_html__( 'Required Consents', 'simple-consent-mode' ),
-				'description' => esc_html__( '', 'simple-consent-mode' ),
+				'type'  => 'heading',
+				'label' => esc_html__( 'Required Consents', 'simple-consent-mode' ),
 			),
 			/**
 			 * analytics_storage
@@ -180,9 +178,8 @@ function iworks_simple_consent_mode_options() {
 			 * Custom Consents
 			 */
 			array(
-				'type'        => 'heading',
-				'label'       => esc_html__( 'Custom Consents', 'simple-consent-mode' ),
-				'description' => esc_html__( '', 'simple-consent-mode' ),
+				'type'  => 'heading',
+				'label' => esc_html__( 'Custom Consents', 'simple-consent-mode' ),
 			),
 			/**
 			 * functional_storage
@@ -337,10 +334,10 @@ function iworks_simple_consent_mode_options_loved_this_plugin( $iworks_simple_co
 		return;
 	}
 	?>
-<p><?php _e( 'Below are some links to help spread this plugin to other users', 'simple-consent-mode' ); ?></p>
+<p><?php esc_html_e( 'Below are some links to help spread this plugin to other users', 'simple-consent-mode' ); ?></p>
 <ul>
-	<li><a href="https://wordpress.org/support/plugin/simple-consent-mode/reviews/#new-post"><?php _e( 'Give it a five stars on WordPress.org', 'simple-consent-mode' ); ?></a></li>
-	<li><a href="<?php _ex( 'https://wordpress.org/plugins/simple-consent-mode/', 'plugin home page on WordPress.org', 'simple-consent-mode' ); ?>"><?php _e( 'Link to it so others can easily find it', 'simple-consent-mode' ); ?></a></li>
+	<li><a href="https://wordpress.org/support/plugin/simple-consent-mode/reviews/#new-post"><?php esc_html_e( 'Give it a five stars on WordPress.org', 'simple-consent-mode' ); ?></a></li>
+	<li><a href="<?php echo esc_attr_x( 'https://wordpress.org/plugins/simple-consent-mode/', 'plugin home page on WordPress.org', 'simple-consent-mode' ); ?>"><?php esc_html_e( 'Link to it so others can easily find it', 'simple-consent-mode' ); ?></a></li>
 </ul>
 	<?php
 }
@@ -353,9 +350,9 @@ function iworks_simple_consent_modes_options_need_assistance( $iworks_simple_con
 	}
 
 	?>
-<p><?php _e( 'We are waiting for your message', 'simple-consent-mode' ); ?></p>
+<p><?php esc_html_e( 'We are waiting for your message', 'simple-consent-mode' ); ?></p>
 <ul>
-	<li><a href="<?php _ex( 'https://wordpress.org/support/plugin/simple-consent-mode/', 'link to support forum on WordPress.org', 'simple-consent-mode' ); ?>"><?php _e( 'WordPress Help Forum', 'simple-consent-mode' ); ?></a></li>
+	<li><a href="<?php echo esc_attr_x( 'https://wordpress.org/support/plugin/simple-consent-mode/', 'link to support forum on WordPress.org', 'simple-consent-mode' ); ?>"><?php esc_html_e( 'WordPress Help Forum', 'simple-consent-mode' ); ?></a></li>
 </ul>
 	<?php
 }
