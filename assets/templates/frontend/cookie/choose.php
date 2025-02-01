@@ -1,20 +1,24 @@
 <?php
-
 $options       = get_iworks_simple_consent_mode_options();
 $configuration = iworks_simple_consent_mode_options();
 $configuration = $configuration['index']['options'];
+$cookie_value  = isset( $args['cookie'] ) && isset( $args['cookie']['value'] ) ? $args['cookie']['value'] : '';
 ?><div
 	id="<?php echo esc_attr( $args['modals']['choose']['id'] ); ?>"
 	class="<?php echo esc_attr( implode( ' ', $args['modals']['choose']['classes'] ) ); ?>"
 >
 <dl>
 <?php
-$consents = array(
+$consents              = array(
 	'anst',
 	'adst',
 	'adpe',
 	'auda',
 );
+$cookie_value_consents = array();
+if ( preg_match( '/^choose:(.+)$/', $cookie_value, $matches ) ) {
+	$cookie_value_consents = preg_split( '/,/', $matches[1] );
+}
 foreach ( $configuration as $one ) {
 	if ( ! isset( $one['name'] ) ) {
 		continue;
@@ -24,26 +28,30 @@ foreach ( $configuration as $one ) {
 	}
 	switch ( $matches[2] ) {
 		case 'title':
+			echo '<dt>';
+			echo '<label class="scm-modal-switch">';
 			printf(
-				'<dt>%s</dt>',
-				esc_attr( $options->get_option( $one['name'] ) )
+				'<input type="checkbox" id="%s" name="%s" value="%s" class="scm-modal-switch-checkbox" %s>',
+				esc_attr( $one['name'] ),
+				esc_attr( $matches[1] ),
+				esc_attr( $one['codename'] ),
+				checked( in_array( $one['codename'], $cookie_value_consents ), true, false )
 			);
+			echo wpautop( esc_html( $options->get_option( $one['name'] ) ) );
+			echo '</dt>';
 			break;
 		case 'desc':
-			printf(
-				'<dd>%s</dd>',
-				esc_attr( $options->get_option( $one['name'] ) )
-			);
+			echo '<dd>';
+			echo wpautop( esc_html( $options->get_option( $one['name'] ) ) );
+			echo '</dd>';
 			break;
-
 	}
 }
-
 ?>
 </dl>
 		<ul class="scm-modal-buttons">
 <?php
-foreach ( $args['buttons'] as $button ) {
+foreach ( $args['modals']['choose']['buttons'] as $button ) {
 	$data = '';
 	if ( isset( $button['data'] ) ) {
 		foreach ( $button['data'] as $data_key => $data_value ) {

@@ -61,6 +61,13 @@ function iworks_simple_consent_mode_options() {
 				'sanitize_callback' => 'esc_html',
 				'default'           => __( 'Deny', 'simple-consent-mode' ),
 			),
+			array(
+				'name'              => 'btn_close',
+				'type'              => 'text',
+				'th'                => esc_html__( 'Close', 'simple-consent-mode' ),
+				'sanitize_callback' => 'esc_html',
+				'default'           => __( 'Close', 'simple-consent-mode' ),
+			),
 			/**
 			 * Required Consents
 			 */
@@ -84,6 +91,7 @@ function iworks_simple_consent_mode_options() {
 				'sanitize_callback' => 'esc_html',
 				'classes'           => array( 'large-text' ),
 				'default'           => __( 'Analytic Storage', 'simple-consent-mode' ),
+				'codename'          => 'analytics_storage',
 			),
 			array(
 				'name'              => 'anst_desc',
@@ -108,6 +116,7 @@ function iworks_simple_consent_mode_options() {
 				'sanitize_callback' => 'esc_html',
 				'classes'           => array( 'large-text' ),
 				'default'           => __( 'Ad Storage', 'simple-consent-mode' ),
+				'codename'          => 'ad_storage',
 			),
 			array(
 				'name'              => 'adst_desc',
@@ -132,6 +141,7 @@ function iworks_simple_consent_mode_options() {
 				'sanitize_callback' => 'esc_html',
 				'classes'           => array( 'large-text' ),
 				'default'           => __( 'Ad Personalization', 'simple-consent-mode' ),
+				'codename'          => 'ad_personalization',
 			),
 			array(
 				'name'              => 'adpe_desc',
@@ -156,6 +166,7 @@ function iworks_simple_consent_mode_options() {
 				'sanitize_callback' => 'esc_html',
 				'classes'           => array( 'large-text' ),
 				'default'           => __( 'Ad User Data', 'simple-consent-mode' ),
+				'codename'          => 'ad_user_data',
 			),
 			array(
 				'name'              => 'auda_desc',

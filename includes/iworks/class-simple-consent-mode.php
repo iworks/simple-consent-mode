@@ -211,7 +211,8 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 		$cookie_name         = $this->get_cookie_name();
 		$cookie_value        = isset( $_COOKIE[ $cookie_name ] ) ? $_COOKIE[ $cookie_name ] : null;
 		$this->configuration = array(
-			'cookie'  => array(
+			'consents' => $this->set_consents( $cookie_value ),
+			'cookie'   => array(
 				'expires'  => YEAR_IN_SECONDS,
 				'name'     => $cookie_name,
 				'path'     => '/',
@@ -219,19 +220,19 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 				'timezone' => 0,
 				'value'    => $cookie_value,
 			),
-			'modals'  => array(
+			'modals'   => array(
 				'choose' => array(
 					'buttons' => array(
 						array(
 							'data'            => array(
-								'action' => 'save',
+								'action' => 'close',
 							),
 							'container_class' => 'scm-modal-button-container',
 							'classes'         => array(
 								'scm-modal-button',
-								'scm-modal-button-save',
+								'scm-modal-button-close',
 							),
-							'value'           => $this->options->get_option( 'btn_save' ),
+							'value'           => $this->options->get_option( 'btn_close' ),
 						),
 					),
 				),
@@ -241,9 +242,8 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 					'buttons'     => array(),
 				),
 			),
-			'nonce'   => wp_create_nonce( 'simple_consent_mode' ),
-			'ajaxurl' => admin_url( 'admin-ajax.php' ),
-			'buttons' => array(),
+			'nonce'    => wp_create_nonce( 'simple_consent_mode' ),
+			'ajaxurl'  => admin_url( 'admin-ajax.php' ),
 		);
 		foreach ( $this->configuration['modals'] as $key => $data ) {
 			$this->configuration['modals'][ $key ]['id']      = $this->options->get_option_name( $key );
@@ -287,6 +287,31 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 			'iworks/simple_consent_mode/configuration',
 			$this->configuration
 		);
+	}
+
+	private function set_consents( $value ) {
+		switch ( $value ) {
+			case 'deny':
+				return array();
+			case 'allow':
+				return array(
+					'ad_storage'         => 'granted',
+					'ad_personalization' => 'granted',
+					'ad_user_data'       => 'granted',
+					'analytics_storage'  => 'granted',
+				);
+				break;
+		}
+		/**
+		 * choosen
+		 */
+		$consents = array();
+		if ( preg_match( '/^choose:(.+)$/', $value, $matches ) ) {
+			foreach ( preg_split( '/,/', $matches[1] ) as $one ) {
+				$consents[ $one ] = 'granted';
+			}
+		}
+		return $consents;
 	}
 
 	/**

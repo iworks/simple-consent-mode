@@ -4,6 +4,70 @@
 	&-modal {
 		&-choose {
 			@include colors;
+
+			dl {
+				font: {
+					size: var(--scm-font-size-dl);
+				}
+			}
+
+			dt {
+				font: {
+					weight: var(--scm-font-weight-bolder);
+				}
+			}
+
+			dd {
+				margin: {
+					inline: {
+						start: 0;
+					}
+				}
+
+				font: {
+					size: .875em;
+					weight: var(--scm-font-weight-thin);
+				}
+
+				padding: {
+					bottom: var(--scm-spacer-16);
+				}
+			}
+		}
+
+		&-switch {
+			display: grid;
+
+			grid: {
+				template: {
+					columns: 40px auto;
+				}
+			}
+
+			gap: var(--scm-spacer-8);
+
+			align: {
+				items: center;
+			}
+
+			input,
+			p {
+				margin: 0;
+				padding: 0;
+			}
+
+			input {
+				&[type="checkbox"] {
+					width: 40px;
+					height: 40px;
+
+					&:checked {
+						accent: {
+							color: var(--scm-color-checkbox-on);
+						}
+					}
+				}
+			}
 		}
 
 		&-button {
