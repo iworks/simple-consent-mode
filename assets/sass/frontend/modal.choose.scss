@@ -2,28 +2,18 @@
 
 .scm {
 	&-modal {
-		&-main {
+		&-choose {
 			@include colors;
 		}
 
-		&-description {
-			p {
-				&:first-child {
-					margin: {
-						top: 0;
-					}
-				}
-			}
-		}
-
 		&-button {
-			&-allow {
+			&-save {
 				font: {
 					weight: 600;
 				}
 			}
 
-			&-deny {
+			&-cancel {
 				color: var(--scm-color-primary);
 
 				background: {

@@ -42,6 +42,7 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 		/**
 		 * WordPress Hooks
 		 */
+		add_action( 'init', array( $this, 'action_init_load_plugin_textdomain' ) );
 		add_action( 'admin_init', array( $this, 'action_admin_init' ) );
 		add_action( 'wp_head', array( $this, 'action_wp_head_add_defaults' ), 0 );
 		add_action( 'wp_footer', array( $this, 'action_wp_footer' ) );

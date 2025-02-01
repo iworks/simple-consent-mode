@@ -33,6 +33,7 @@ module.exports = function(grunt) {
 			'assets/styles/frontend/settings.css': 'assets/sass/settings.scss',
 			'assets/styles/frontend/commons.css': 'assets/sass/frontend/commons.scss',
 			'assets/styles/frontend/modals.css': 'assets/sass/frontend/modals.scss',
+			'assets/styles/frontend/modal.choose.css': 'assets/sass/frontend/modal.choose.scss',
 			'assets/styles/frontend/modal.main.css': 'assets/sass/frontend/modal.main.scss',
 			'assets/styles/frontend/modal.icon.css': 'assets/sass/frontend/modal.icon.scss',
 		},

@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/simple-consent-"
 "mode\n"
-"POT-Creation-Date: 2025-01-22 08:09:33+00:00\n"
-"PO-Revision-Date: 2025-01-22 09:11+0100\n"
+"POT-Creation-Date: 2025-02-01 06:38:02+00:00\n"
+"PO-Revision-Date: 2025-02-01 07:41+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl_PL\n"
@@ -25,16 +25,274 @@ msgstr ""
 "X-Generator: Poedit 3.5\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: etc/options.php:14
-msgid "Configuration"
-msgstr "Konfiguracja"
+#: assets/templates/frontend/cookie/icon.php:5
+msgid "Show Consents Configuration"
+msgstr "Pokaż konfigurację zgód"
 
-#: includes/iworks/class-simple-consent-mode.php:83
+#: etc/options.php:14
+msgid "Cookie Consent"
+msgstr ""
+
+#: etc/options.php:20
+msgid "Main"
+msgstr ""
+
+#: etc/options.php:26
+msgid "Show Description"
+msgstr ""
+
+#: etc/options.php:34
+msgid "Consents Modal Description"
+msgstr ""
+
+#: etc/options.php:37
+msgid ""
+"This website uses cookies to ensure you get the best experience on our "
+"website."
+msgstr ""
+
+#: etc/options.php:41
+msgid "Buttons"
+msgstr "Przyciski"
+
+#: etc/options.php:46
+msgid "Allow All"
+msgstr "Zezwól na wszystko"
+
+#: etc/options.php:48
+msgid "Allow All Consents"
+msgstr "Udziel wszystkich zgód"
+
+#: etc/options.php:53 etc/options.php:55
+msgid "Choose Consents"
+msgstr ""
+
+#: etc/options.php:60
+msgid "Deny All Consents"
+msgstr ""
+
+#: etc/options.php:62
+msgid "Deny"
+msgstr ""
+
+#: etc/options.php:69
+msgid "Required Consents"
+msgstr ""
+
+#: etc/options.php:77
+msgid "Analytics Storage"
+msgstr "Przechowywanie statystyk"
+
+#: etc/options.php:78 etc/options.php:94
+msgid ""
+"Controls whether data related to website usage and user behavior can be "
+"stored for analytics purposes (e.g., Google Analytics)."
+msgstr ""
+
+#: etc/options.php:83 etc/options.php:107 etc/options.php:131
+#: etc/options.php:155 etc/options.php:195 etc/options.php:227
+msgid "Title"
+msgstr ""
+
+#: etc/options.php:86
+msgid "Analytic Storage"
+msgstr "Przechowywanie statystyk"
+
+#: etc/options.php:91 etc/options.php:115 etc/options.php:139
+#: etc/options.php:163 etc/options.php:203 etc/options.php:235
+msgid "Description"
+msgstr ""
+
+#: etc/options.php:101 etc/options.php:110
+msgid "Ad Storage"
+msgstr "Przechowywanie reklam"
+
+#: etc/options.php:102 etc/options.php:118
+msgid ""
+"Manages whether advertising-related data (like targeting and tracking "
+"cookies) can be stored and processed for ad services."
+msgstr ""
+
+#: etc/options.php:125 etc/options.php:134
+msgid "Ad Personalization"
+msgstr "Personalizacja reklam"
+
+#: etc/options.php:126 etc/options.php:142
+msgid ""
+"Determines if personalized ads can be shown based on user behavior and "
+"preferences, using stored data for targeting."
+msgstr ""
+
+#: etc/options.php:149 etc/options.php:158
+msgid "Ad User Data"
+msgstr "Przechowywanie danych użytkownika"
+
+#: etc/options.php:150 etc/options.php:166
+msgid ""
+"Controls the storage of user-specific data for ad tracking, profiling, and "
+"measuring ad effectiveness."
+msgstr ""
+
+#: etc/options.php:173
+msgid "Custom Consents"
+msgstr ""
+
+#: etc/options.php:181
+msgid "Functional Storage"
+msgstr ""
+
+#: etc/options.php:182 etc/options.php:206
+msgid ""
+"Manages the storage of cookies for non-essential functions like site "
+"preferences, login status, and custom settings."
+msgstr ""
+
+#: etc/options.php:187 etc/options.php:219
+msgid "Show"
+msgstr ""
+
+#: etc/options.php:198
+msgid "Functionality"
+msgstr ""
+
+#: etc/options.php:213
+msgid "Personalization Storage"
+msgstr ""
+
+#: etc/options.php:214 etc/options.php:238
+msgid ""
+"Regulates whether data used to provide personalized user experiences (like "
+"content recommendations) can be stored."
+msgstr ""
+
+#: etc/options.php:230
+msgid "Personalizations"
+msgstr ""
+
+#: etc/options.php:245
+msgid "Cookie"
+msgstr ""
+
+#: etc/options.php:251
+msgid "Version"
+msgstr ""
+
+#: etc/options.php:261
+msgid "About Consent Mode"
+msgstr "O zgodach"
+
+#: etc/options.php:262
+msgid ""
+"Consent Mode is a tool provided by Google that allows websites to adjust the "
+"behavior of Google tags (such as Google Analytics, Google Ads, and others) "
+"depending on the user's consent for data processing. It enables more "
+"compliant data collection while respecting user privacy preferences."
+msgstr ""
+
+#: etc/options.php:266
+msgid "Consent Type"
+msgstr ""
+
+#: etc/options.php:267
+msgid ""
+"This option defines the type of consent requested from users, determining "
+"whether they consent to cookies for specific purposes (e.g., analytics, "
+"marketing, etc.). Typically, the options include:"
+msgstr ""
+
+#: etc/options.php:271
+msgid "Default Consent Behavior"
+msgstr ""
+
+#: etc/options.php:272
+msgid ""
+"If the user has not yet provided consent or declined, you can define the "
+"default behavior. By default, Google tags will work in a limited mode (for "
+"example, without tracking conversions or storing data for ad targeting).\n"
+msgstr ""
+
+#: etc/options.php:280
+msgid "Consent Update Mechanism"
+msgstr ""
+
+#: etc/options.php:281
+msgid ""
+"This feature allows websites to update the user's consent status if they "
+"change their preferences after the initial consent. It ensures that Google "
+"services (such as Analytics and Ads) react accordingly and adjust their "
+"behavior based on the new consent status."
+msgstr ""
+
+#: etc/options.php:285
+msgid "Consent Mode Events"
+msgstr ""
+
+#: etc/options.php:286
+msgid ""
+"Consent Mode events provide a way to trigger certain actions when consent "
+"preferences are updated. For instance, if a user consents to analytics "
+"storage, the website can trigger a specific event to begin tracking user "
+"interactions.\n"
+msgstr ""
+
+#: etc/options.php:294
+msgid "Data Retention Options"
+msgstr ""
+
+#: etc/options.php:295
+msgid ""
+"With Consent Mode, you can set up specific data retention policies to define "
+"how long user data should be stored based on their consent. For example, if "
+"users withdraw consent, the data collected can be deleted or anonymized."
+msgstr ""
+
+#: etc/options.php:299
+msgid "Tracking Blocking (No Consent)"
+msgstr ""
+
+#: etc/options.php:300
+msgid ""
+"In cases where the user has not given consent for cookies or data tracking, "
+"this option ensures that all data collection and tracking mechanisms are "
+"blocked, fully respecting the user's privacy preferences."
+msgstr ""
+
+#: etc/options.php:305 etc/options.php:345
+msgid "We are waiting for your message"
+msgstr ""
+
+#: etc/options.php:311
+msgid "I love what I do!"
+msgstr ""
+
+#: etc/options.php:329
+msgid "Below are some links to help spread this plugin to other users"
+msgstr ""
+"Poniżej znajdują się odnośniki, które pomogą w rozpowszechnianiu wtyczki "
+"wśród innych użytkowników"
+
+#: etc/options.php:331
+msgid "Give it a five stars on WordPress.org"
+msgstr ""
+
+#: etc/options.php:332
+msgid "Link to it so others can easily find it"
+msgstr ""
+
+#: etc/options.php:347
+msgid "WordPress Help Forum"
+msgstr ""
+
+#: includes/iworks/class-simple-consent-mode-base.php:213
+msgid "Missing template file: %1$s/%2$s/%3$s."
+msgstr ""
+
+#: includes/iworks/class-simple-consent-mode.php:105
 #: includes/iworks/rate/rate.php:133
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: includes/iworks/class-simple-consent-mode.php:86
+#: includes/iworks/class-simple-consent-mode.php:108
 msgid "Donate"
 msgstr "Przekaż datek"
 
@@ -205,6 +463,16 @@ msgstr ""
 "Jak podoba się nasza wtyczka? Masz możliwość ją ocenić? Daj nam znać, co o "
 "niej myślisz. To dla nas bardzo ważne, aby móc ją rozwijać. Dziękujemy za "
 "wszystkie oceny, recenzje oraz dodatkowe wsparcie."
+
+#: etc/options.php:332
+msgctxt "plugin home page on WordPress.org"
+msgid "https://wordpress.org/plugins/simple-consent-mode/"
+msgstr "https://pl.wordpress.org/plugins/simple-consent-mode/"
+
+#: etc/options.php:347
+msgctxt "link to support forum on WordPress.org"
+msgid "https://wordpress.org/support/plugin/simple-consent-mode/"
+msgstr "https://pl.wordpress.org/support/plugin/simple-consent-mode/"
 
 #. translators: %s: plugin slug
 #: includes/iworks/rate/rate.php:469

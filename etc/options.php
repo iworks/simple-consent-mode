@@ -21,6 +21,14 @@ function iworks_simple_consent_mode_options() {
 				'description' => esc_html__( '', 'simple-consent-mode' ),
 			),
 			array(
+				'name'              => 'm_main_show',
+				'type'              => 'checkbox',
+				'th'                => esc_html__( 'Show Description', 'simple-consent-mode' ),
+				'default'           => 1,
+				'sanitize_callback' => 'absint',
+				'classes'           => array( 'switch-button' ),
+			),
+			array(
 				'name'              => 'm_main_desc',
 				'type'              => 'textarea',
 				'th'                => esc_html__( 'Consents Modal Description', 'simple-consent-mode' ),
@@ -75,7 +83,7 @@ function iworks_simple_consent_mode_options() {
 				'th'                => esc_html__( 'Title', 'simple-consent-mode' ),
 				'sanitize_callback' => 'esc_html',
 				'classes'           => array( 'large-text' ),
-				'default'           => __( 'Analytics', 'simple-consent-mode' ),
+				'default'           => __( 'Analytic Storage', 'simple-consent-mode' ),
 			),
 			array(
 				'name'              => 'anst_desc',
@@ -99,7 +107,7 @@ function iworks_simple_consent_mode_options() {
 				'th'                => esc_html__( 'Title', 'simple-consent-mode' ),
 				'sanitize_callback' => 'esc_html',
 				'classes'           => array( 'large-text' ),
-				'default'           => __( 'Ads', 'simple-consent-mode' ),
+				'default'           => __( 'Ad Storage', 'simple-consent-mode' ),
 			),
 			array(
 				'name'              => 'adst_desc',
@@ -123,7 +131,7 @@ function iworks_simple_consent_mode_options() {
 				'th'                => esc_html__( 'Title', 'simple-consent-mode' ),
 				'sanitize_callback' => 'esc_html',
 				'classes'           => array( 'large-text' ),
-				'default'           => __( 'Ads', 'simple-consent-mode' ),
+				'default'           => __( 'Ad Personalization', 'simple-consent-mode' ),
 			),
 			array(
 				'name'              => 'adpe_desc',
@@ -147,7 +155,7 @@ function iworks_simple_consent_mode_options() {
 				'th'                => esc_html__( 'Title', 'simple-consent-mode' ),
 				'sanitize_callback' => 'esc_html',
 				'classes'           => array( 'large-text' ),
-				'default'           => __( 'Ads', 'simple-consent-mode' ),
+				'default'           => __( 'Ad User Data', 'simple-consent-mode' ),
 			),
 			array(
 				'name'              => 'auda_desc',

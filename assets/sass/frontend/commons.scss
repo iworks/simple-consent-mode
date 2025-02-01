@@ -11,14 +11,21 @@
 }
 .scm {
 	&-modal {
-		&.hidden {
-			height: 0 !important;
-			overflow: hidden !important;
-			padding: 0 !important;
-			width: 0 !important;
+		&s {
+			&-container {
+				.scm-modal {
+					&.hidden {
+						height: 0;
+						overflow: hidden;
+						padding: 0;
+						width: 0;
+					}
+				}
+			}
 		}
 		&-button {
 			@include reset;
+			color: var(--scm-color-accent);
 			font: {
 				size: var(--scm-font-size-button);
 			}
