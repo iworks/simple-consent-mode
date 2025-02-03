@@ -33,6 +33,7 @@ class iworks_simple_consent_mode_base {
 	protected $dir;
 	protected $version;
 	protected $url;
+	protected $plugin_file;
 
 	/**
 	 * options
@@ -63,6 +64,10 @@ class iworks_simple_consent_mode_base {
 		$this->base  = dirname( dirname( __FILE__ ) );
 		$this->dir   = basename( dirname( $this->base ) );
 		$this->url   = plugins_url( $this->dir );
+		/**
+		 * plugin ID
+		 */
+		$this->plugin_file = plugin_basename( dirname( $this->base ) . '/simple-consent-mode.php' );
 		/**
 		 * WordPress Hooks
 		 */

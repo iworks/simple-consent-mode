@@ -1,9 +1,6 @@
 @import '_mixin';
 
 :root {
-	--scm-color-primary: #fff;
-	--scm-color-accent: #97f;
-	--scm-color-checkbox-on: #ae9;
 
 	--scm-spacer-base: 16px;
 	--scm-spacer-8: calc(.5 * var(--scm-spacer-base));
@@ -17,7 +14,6 @@
 	--scm-font-weight-thin: thin;
 	--scm-font-weight-bolder: bolder;
 	--scm-font-weight-bold: bold;
-
 
 	--scm-padding-button-v: var(--scm-spacer-8);
 	--scm-padding-button-h: var(--scm-spacer-16);

@@ -43,15 +43,21 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 		 * WordPress Hooks
 		 */
 		add_action( 'init', array( $this, 'action_init_load_plugin_textdomain' ) );
+		add_action( 'init', array( $this, 'action_init_register_iworks_rate' ), PHP_INT_MAX );
 		add_action( 'admin_init', array( $this, 'action_admin_init' ) );
 		add_action( 'wp_head', array( $this, 'action_wp_head_add_defaults' ), 0 );
 		add_action( 'wp_footer', array( $this, 'action_wp_footer' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'action_wp_enqueue_scripts_register_assets' ), 0 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'action_wp_enqueue_scripts_enqueue_assets' ) );
+		add_action( 'wp_print_styles', array( $this, 'action_wp_print_styles_print_colors' ) );
 		/**
 		 * is active?
 		 */
 		add_filter( 'simple-consent-mode/is_active', '__return_true' );
+		/**
+		 * iWorks Rate Class
+		 */
+		add_filter( 'iworks_rate_notice_logo_style', array( $this, 'filter_plugin_logo' ), 10, 2 );
 	}
 
 	public function action_admin_init() {
@@ -326,4 +332,60 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 		wp_localize_script( $name, 'simple_consent_mode_data', $this->get_configuration() );
 	}
 
+	public function action_wp_print_styles_print_colors() {
+		printf(
+			'<style id="%s-css" data-plugin-name="%s" data-plugin-version="%s">',
+			esc_attr( sanitize_file_name( __CLASS__ ) ),
+			esc_attr( 'PLUGIN_NAME' ),
+			esc_attr( 'PLUGIN_VERSION' )
+		);
+		echo ':root {';
+		$colors = array(
+			'primary',
+			'accent',
+			'checkbox',
+		);
+		foreach ( $colors as $name ) {
+			printf( '--scm-color-%s:', esc_attr( $name ) );
+			echo esc_attr( $this->options->get_option( 'c_' . $name ) );
+			echo ';';
+		}
+		echo '}';
+		echo '</style>';
+	}
+
+	/**
+	 * register plugin to iWorks Rate Helper
+	 *
+	 * @since 1.0.0
+	 */
+	public function action_init_register_iworks_rate() {
+		if ( ! class_exists( 'iworks_rate' ) ) {
+			include_once dirname( __FILE__ ) . '/rate/rate.php';
+		}
+		do_action(
+			'iworks-register-plugin',
+			plugin_basename( $this->plugin_file ),
+			__( 'Simple Consent Mode', 'simple-consent-mode' ),
+			'simple-consent-mode'
+		);
+	}
+
+	/**
+	 * Plugin logo for rate messages
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $logo Logo, can be empty.
+	 * @param object $plugin Plugin basic data.
+	 */
+	public function filter_plugin_logo( $logo, $plugin ) {
+		if ( is_object( $plugin ) ) {
+			$plugin = (array) $plugin;
+		}
+		if ( 'simple-consent-mode' === $plugin['slug'] ) {
+			return plugin_dir_url( dirname( dirname( __FILE__ ) ) ) . '/assets/images/logo.svg';
+		}
+		return $logo;
+	}
 }

@@ -15,9 +15,17 @@
 				font: {
 					weight: var(--scm-font-weight-bolder);
 				}
+				@media screen and (max-width: 782px) {
+					margin: {
+						bottom: var(--scm-spacer-16);
+					}
+				}
 			}
 
 			dd {
+				@media screen and (max-width: 782px) {
+					display: none;
+				}
 				margin: {
 					inline: {
 						start: 0;
@@ -63,7 +71,7 @@
 
 					&:checked {
 						accent: {
-							color: var(--scm-color-checkbox-on);
+							color: var(--scm-color-checkbox);
 						}
 					}
 				}

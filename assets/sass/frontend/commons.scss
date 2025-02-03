@@ -33,6 +33,10 @@
 			background: {
 				color: var(--scm-color-primary)
 			}
+			@media screen and (max-width: 782px) {
+				display: block;
+				width: 100%;
+			}
 			&:hover {
 				cursor: pointer;
 			}
@@ -41,6 +45,15 @@
 				display: flex;
 				flex: {
 					direction: row-reverse;
+				}
+				@media screen and (max-width: 782px) {
+					display: block;
+					li {
+						display: block;
+						padding: {
+							top: var(--scm-spacer-16);
+						}
+					}
 				}
 				gap: var(--scm-spacer-16);
 				align: {

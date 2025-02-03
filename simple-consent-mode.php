@@ -47,6 +47,9 @@ if ( ! class_exists( 'iworks_simple_consent_mode' ) ) {
  * configuration
  */
 require_once $base . '/etc/options.php';
+if ( ! class_exists( 'iworks_rate' ) ) {
+	include_once $vendor . '/iworks/rate/rate.php';
+}
 /**
  * require: IworksOptions Class
  */

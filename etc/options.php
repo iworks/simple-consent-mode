@@ -68,6 +68,38 @@ function iworks_simple_consent_mode_options() {
 				'default'           => __( 'Close', 'simple-consent-mode' ),
 			),
 			/**
+			 * Design
+			 */
+			array(
+				'type'          => 'heading',
+				'label'         => __( 'Colors', 'simple-consent-mode' ),
+				'configuration' => 'both',
+			),
+			array(
+				'name'              => 'c_primary',
+				'type'              => 'wpColorPicker',
+				'class'             => 'short-text',
+				'th'                => __( 'Primary', 'simple-consent-mode' ),
+				'default'           => '#fff',
+				'sanitize_callback' => 'esc_html',
+			),
+			array(
+				'name'              => 'c_accent',
+				'type'              => 'wpColorPicker',
+				'class'             => 'short-text',
+				'th'                => __( 'Accent', 'simple-consent-mode' ),
+				'default'           => '#97f',
+				'sanitize_callback' => 'esc_html',
+			),
+			array(
+				'name'              => 'c_checkbox',
+				'type'              => 'wpColorPicker',
+				'class'             => 'short-text',
+				'th'                => __( 'Checkbox', 'simple-consent-mode' ),
+				'default'           => '#ae9',
+				'sanitize_callback' => 'esc_html',
+			),
+			/**
 			 * Required Consents
 			 */
 			array(
