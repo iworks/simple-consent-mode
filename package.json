@@ -10,6 +10,10 @@
         "email": "marcin@iworks.pl",
         "uri": "http://iworks.pl/"
     }],
+    "translator": {
+        "name": "Marcin Pietrzak",
+        "email": "marcin@iworks.pl"
+    },
     "requires": {
         "WordPress": "6.0",
         "PHP": "8.0"
@@ -34,7 +38,7 @@
         "grunt-contrib-watch": "^1",
         "grunt-concat-css": "^0.3",
         "grunt-potomo": "^3",
-        "grunt-replace": "^1",
+        "grunt-replace": "^2",
         "grunt-wp-i18n": "^1",
         "path": "^0.12.7",
         "moment": "^2"
