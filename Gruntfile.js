@@ -25,49 +25,49 @@ module.exports = function(grunt) {
 	 */
 	var excludeCopyFiles = [
 		'**',
-		'!.git/**',
-		'!.git*',
-		'!assets/sass/**',
-		'!assets/scss/**',
-		'!node_modules/**',
-		'!package-lock.json',
-		'!postcss.config.js',
-		'!README.md',
-		'!LICENSE',
-		'!**/LICENSE',
-		'!contributing.md',
-		'!**/README.md',
-		'!**/*.map',
-		'!release/**',
-		'!.sass-cache/**',
-		'!webpack.config.js',
 		'!**/bitbucket-pipelines.yml',
+		'!contributing.md',
 		'!**/css/less/**',
 		'!**/css/sass/**',
 		'!**/css/src/**',
+		'!.editorconfig',
+		'!.git*',
+		'!.git/**',
 		'!**/Gruntfile.js',
 		'!**/img/src/**',
 		'!**/js/src/**',
+		'!**/LICENSE',
+		'!LICENSE',
+		'!**/*.map',
+		'!node_modules/**',
 		'!**/package.json',
+		'!package-lock.json',
+		'!postcss.config.js',
+		'!**/README.md',
+		'!README.md',
+		'!release/**',
+		'!.sass-cache/**',
 		'!**/tests/**',
-		'!.editorconfig',
-		'!assets/scripts/src/**',
-		'!assets/styles/frontend/**',
+		'!webpack.config.js',
 	];
 
 	var excludeCopyFilesGIT = excludeCopyFiles.slice(0).concat(
 		[
 			'!includes/pro/**',
-			'!readme.txt'
+			'!readme.txt',
 		]
 	);
 
 	var excludeCopyFilesWPorg = excludeCopyFiles.slice(0).concat(
 		[
+			'!assets/sass/**',
+			'!assets/scripts/src/**',
+			'!assets/scss/**',
+			'!assets/styles/frontend/**',
 			'!includes/iworks/class-simple-consent-mode-github.php',
 			'!includes/pro/**',
-			'!languages/*.po',
 			'!languages/*.mo',
+			'!languages/*.po',
 		]
 	);
 
@@ -419,7 +419,7 @@ module.exports = function(grunt) {
 				expand: true,
 				cwd: 'release/wporg/<%= pkg.version %>/',
 				src: ['**/*'],
-				dest: 'wporg/wporg/'
+                dest: '.'
 			},
 			github: {
 				options: {
@@ -429,7 +429,7 @@ module.exports = function(grunt) {
 				expand: true,
 				cwd: 'release/github/<%= pkg.version %>/',
 				src: ['**/*'],
-				dest: 'wporg/github/'
+                dest: '.'
 			}
 		},
 
