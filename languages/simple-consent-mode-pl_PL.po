@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://iworks.pl\n"
-"POT-Creation-Date: 2025-02-11 15:38:30+00:00\n"
+"POT-Creation-Date: 2025-02-11 17:11:16+00:00\n"
 "PO-Revision-Date: 2025-02-11 16:15+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -24,7 +24,7 @@ msgstr ""
 "X-Generator: Poedit 3.5\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: assets/templates/frontend/cookie/icon.php:5
+#: assets/templates/frontend/cookie/icon.php:21
 msgid "Show Consents Configuration"
 msgstr "Pokaż konfigurację zgód"
 
@@ -339,7 +339,7 @@ msgstr ""
 "i śledzenia danych zostaną zablokowane, w pełni respektując preferencje "
 "użytkownika dotyczące prywatności."
 
-#: etc/options.php:368 etc/options.php:408
+#: etc/options.php:368 etc/options.php:407
 msgid "We are waiting for your message"
 msgstr "Czekamy na twoją wiadomość"
 
@@ -361,12 +361,12 @@ msgstr "Daj pięć gwiazdek na WordPress.org"
 msgid "Link to it so others can easily find it"
 msgstr "Odnośnik, aby inni mogli łatwo znaleźć"
 
-#: etc/options.php:410
+#: etc/options.php:409
 msgid "WordPress Help Forum"
 msgstr "Forum pomocy WordPressa"
 
 #. translators: %1$s template site name, %2$s template slug, %3$s template name
-#: includes/iworks/class-simple-consent-mode-base.php:218
+#: includes/iworks/class-simple-consent-mode-base.php:166
 msgid "Missing template file: %1$s/%2$s/%3$s."
 msgstr "Brak pliku szablonu: %1$s/%2$s/%3$s."
 
@@ -379,7 +379,7 @@ msgstr "Ustawienia"
 msgid "Donate"
 msgstr "Przekaż datek"
 
-#: includes/iworks/class-simple-consent-mode.php:360
+#: includes/iworks/class-simple-consent-mode.php:371
 msgid "Simple Consent Mode"
 msgstr "Proste zgody"
 
@@ -387,44 +387,44 @@ msgstr "Proste zgody"
 msgid "An error occurred while getting the configuration."
 msgstr "Wystąpił błąd w czasie pobierania konfiguracji."
 
-#: includes/iworks/options/options.php:815
-#: includes/iworks/options/options.php:1899
+#: includes/iworks/options/options.php:816
+#: includes/iworks/options/options.php:1910
 msgid "Select Image"
 msgstr "Wybierz obrazek"
 
-#: includes/iworks/options/options.php:820
+#: includes/iworks/options/options.php:821
 msgid "Delete image"
 msgstr "Usuń obrazek"
 
-#: includes/iworks/options/options.php:926
+#: includes/iworks/options/options.php:927
 msgid "Save Changes"
 msgstr "Zapisz zmiany"
 
-#: includes/iworks/options/options.php:1793
+#: includes/iworks/options/options.php:1804
 msgid "Country"
 msgstr "Kraj"
 
-#: includes/iworks/options/options.php:1794
+#: includes/iworks/options/options.php:1805
 msgid "City"
 msgstr "Miasto"
 
-#: includes/iworks/options/options.php:1795
+#: includes/iworks/options/options.php:1806
 msgid "Street"
 msgstr "Ulica"
 
-#: includes/iworks/options/options.php:1796
+#: includes/iworks/options/options.php:1807
 msgid "ZIP code"
 msgstr "Kod pocztowy"
 
-#: includes/iworks/options/options.php:1952
+#: includes/iworks/options/options.php:1963
 msgid "OFF"
 msgstr "Wyłącz"
 
-#: includes/iworks/options/options.php:1953
+#: includes/iworks/options/options.php:1964
 msgid "ON"
 msgstr "Włącz"
 
-#: includes/iworks/options/options.php:2018
+#: includes/iworks/options/options.php:2029
 msgid "Failed Security Check"
 msgstr "Błąd w trakcie sprawdzania bezpieczeństwa"
 
@@ -556,7 +556,7 @@ msgctxt "plugin home page on WordPress.org"
 msgid "https://wordpress.org/plugins/simple-consent-mode/"
 msgstr "https://pl.wordpress.org/plugins/simple-consent-mode/"
 
-#: etc/options.php:410
+#: etc/options.php:409
 msgctxt "link to support forum on WordPress.org"
 msgid "https://wordpress.org/support/plugin/simple-consent-mode/"
 msgstr "https://pl.wordpress.org/support/plugin/simple-consent-mode/"

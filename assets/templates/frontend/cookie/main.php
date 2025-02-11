@@ -1,6 +1,9 @@
+<?php
+defined( 'ABSPATH' ) || exit;
+?>
 <div id="<?php echo esc_attr( $args['modals']['main']['id'] ); ?>" class="<?php echo esc_attr( implode( ' ', $args['modals']['main']['classes'] ) ); ?>">
 <?php if ( isset( $args['modals']['main']['description'] ) && $args['modals']['main']['description'] ) { ?>
-	<div class="scm-modal-description"><?php echo wpautop( esc_html( $args['modals']['main']['description'] ) ); ?></div>
+	<div class="scm-modal-description"><?php echo wp_kses_post( wpautop( esc_html( $args['modals']['main']['description'] ) ) ); ?></div>
 <?php } ?>
 	<footer class="scm-modal-buttons-wrapper">
 		<ul class="scm-modal-buttons">
@@ -20,6 +23,7 @@ foreach ( $args['modals']['main']['buttons'] as $button ) {
 	printf(
 		'<button class="%s"%s>%s</button>',
 		esc_attr( implode( ' ', $button['classes'] ) ),
+		/* $data is already escaped above */
 		$data,
 		esc_html( $button['value'] )
 	);

@@ -26,11 +26,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
  */
-
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
-}
-
+defined( 'ABSPATH' ) || exit; // Exit if accessed directly
 /**
  * static options
  */
@@ -62,7 +58,7 @@ if ( ! class_exists( 'iworks_options' ) ) {
 global $iworks_simple_consent_mode_options;
 $iworks_simple_consent_mode_options = null;
 
-function get_iworks_simple_consent_mode_options() {
+function iworks_simple_consent_mode_get_options() {
 	global $iworks_simple_consent_mode_options;
 	if ( is_object( $iworks_simple_consent_mode_options ) ) {
 		return $iworks_simple_consent_mode_options;
@@ -74,12 +70,6 @@ function get_iworks_simple_consent_mode_options() {
 		$iworks_simple_consent_mode_options->set_plugin( basename( __FILE__ ) );
 	}
 	$iworks_simple_consent_mode_options->init();
-	return $iworks_simple_consent_mode_options;
-}
-
-
-function iworks_simple_consent_mode_get_options() {
-	global $iworks_simple_consent_mode_options;
 	return $iworks_simple_consent_mode_options;
 }
 

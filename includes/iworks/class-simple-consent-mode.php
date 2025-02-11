@@ -174,7 +174,11 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 			$name,
 			plugins_url( $file, $this->base ),
 			array(),
-			$this->get_version( $file )
+			$this->get_version( $file ),
+			array(
+				'in_footer' => true,
+				'strategy'  => 'defer',
+			)
 		);
 	}
 
@@ -210,7 +214,7 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 		}
 		$cookie_name         = $this->get_cookie_name();
 		$cookie_value        = sanitize_text_field(
-			isset( $_COOKIE[ $cookie_name ] ) ? $_COOKIE[ $cookie_name ] : null
+			isset( $_COOKIE[ $cookie_name ] ) ? wp_unslash( $_COOKIE[ $cookie_name ] ) : null
 		);
 		$this->configuration = array(
 			'consents' => $this->set_consents( $cookie_value ),
@@ -332,13 +336,20 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 	public function action_wp_enqueue_scripts_add_colors() {
 		$css    = ':root {';
 		$colors = array(
-			'primary',
-			'accent',
-			'checkbox',
+			'c_primary',
+			'c_accent',
+			'c_checkbox',
+			'i_primary',
+			'i_accent',
 		);
 		foreach ( $colors as $name ) {
-			$css .= sprintf( '--scm-color-%s:', esc_attr( $name ) );
-			$css .= esc_attr( $this->options->get_option( 'c_' . $name ) );
+			$code   = preg_replace( '/^._/', '', $name );
+			$prefix = '';
+			if ( preg_match( '/^i_/', $name ) ) {
+				$prefix = '-icon';
+			}
+			$css .= sprintf( '--scm-color%s-%s:', esc_attr( $prefix ), esc_attr( $code ) );
+			$css .= esc_attr( $this->options->get_option( $name ) );
 			$css .= ';';
 		}
 		$css .= '}';

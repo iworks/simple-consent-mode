@@ -91,7 +91,7 @@ class iworks_simple_consent_mode_base {
 					return md5_file( $file );
 				}
 			}
-			return rand( 0, PHP_INT_MAX );
+			return time();
 		}
 		return $this->version;
 	}
@@ -114,58 +114,6 @@ class iworks_simple_consent_mode_base {
 
 	public function get_post_meta( $post_id, $meta_key ) {
 		return get_post_meta( $post_id, $this->get_meta_name( $meta_key ), true );
-	}
-
-	protected function print_table_body( $post_id, $fields ) {
-		echo '<table class="widefat striped"><tbody>';
-		foreach ( $fields as $name => $data ) {
-			$key   = $this->get_meta_name( $name );
-			$value = $this->get_post_meta( $post_id, $name );
-			/**
-			 * extra
-			 */
-			$extra = isset( $data['placeholder'] ) ? sprintf( ' placeholder="%s" ', esc_attr( $data['placeholder'] ) ) : '';
-			foreach ( array( 'placeholder', 'style', 'class', 'id' ) as $extra_key ) {
-				if ( isset( $data[ $extra_key ] ) ) {
-					$extra .= sprintf( ' min="%d" ', esc_attr( $data[ $extra_key ] ) );
-				}
-			}
-			/**
-			 * start row
-			 */
-			echo '<tr>';
-			printf( '<th scope="row" style="width: 130px">%s</th>', $data['title'] );
-			echo '<td>';
-			switch ( $data['type'] ) {
-				case 'number':
-					foreach ( array( 'min', 'max', 'step' ) as $extra_key ) {
-						if ( isset( $data[ $extra_key ] ) ) {
-							$extra .= sprintf( ' min="%d" ', intval( $data[ $extra_key ] ) );
-						}
-					}
-					printf(
-						'<input type="number" name="%s" value="%d" %s />',
-						esc_attr( $key ),
-						intval( $value ),
-						$extra
-					);
-					break;
-				case 'date':
-					$date = intval( $this->get_post_meta( $post_id, $name ) );
-					if ( empty( $date ) ) {
-						$date = strtotime( 'now' );
-					}
-					printf(
-						'<input type="text" class="datepicker" name="%s" value="%s" />',
-						$this->get_meta_name( $name ),
-						$date
-					);
-					break;
-			}
-			echo '</td>';
-			echo '</tr>';
-		}
-		echo '</tbody></table>';
 	}
 
 	protected function get_module_file( $filename, $vendor = 'iworks' ) {
@@ -236,6 +184,6 @@ class iworks_simple_consent_mode_base {
 		if ( is_a( $this->options, 'iworks_options' ) ) {
 			return;
 		}
-		$this->options = get_iworks_simple_consent_mode_options();
+		$this->options = iworks_simple_consent_mode_get_options();
 	}
 }

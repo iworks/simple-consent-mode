@@ -385,7 +385,7 @@ function iworks_simple_consent_mode_options() {
 function iworks_simple_consent_mode_options_loved_this_plugin( $iworks_simple_consent_mode ) {
 	$content = apply_filters( 'iworks_rate_love', '', 'simple-consent-mode' );
 	if ( ! empty( $content ) ) {
-		echo $content;
+		echo wp_kses_post( $content );
 		return;
 	}
 	?>
@@ -400,10 +400,9 @@ function iworks_simple_consent_mode_options_loved_this_plugin( $iworks_simple_co
 function iworks_simple_consent_modes_options_need_assistance( $iworks_simple_consent_modes ) {
 	$content = apply_filters( 'iworks_rate_assistance', '', 'simple-consent-mode' );
 	if ( ! empty( $content ) ) {
-		echo $content;
+		echo wp_kses_post( $content );
 		return;
 	}
-
 	?>
 <p><?php esc_html_e( 'We are waiting for your message', 'simple-consent-mode' ); ?></p>
 <ul>

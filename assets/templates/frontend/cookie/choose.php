@@ -1,5 +1,6 @@
 <?php
-$options       = get_iworks_simple_consent_mode_options();
+defined( 'ABSPATH' ) || exit;
+$options       = iworks_simple_consent_mode_get_options();
 $configuration = iworks_simple_consent_mode_options();
 $configuration = $configuration['index']['options'];
 $cookie_value  = isset( $args['cookie'] ) && isset( $args['cookie']['value'] ) ? $args['cookie']['value'] : '';
@@ -37,7 +38,7 @@ foreach ( $configuration as $one ) {
 				esc_attr( $one['codename'] ),
 				checked( in_array( $one['codename'], $cookie_value_consents ), true, false )
 			);
-			echo wpautop( esc_html( $options->get_option( $one['name'] ) ) );
+			echo wp_kses_post( wpautop( esc_html( $options->get_option( $one['name'] ) ) ) );
 			echo '</dt>';
 			break;
 		case 'desc':
@@ -66,6 +67,7 @@ foreach ( $args['modals']['choose']['buttons'] as $button ) {
 	printf(
 		'<button class="%s"%s>%s</button>',
 		esc_attr( implode( ' ', $button['classes'] ) ),
+		/* $data is already escaped above */
 		$data,
 		esc_html( $button['value'] )
 	);
