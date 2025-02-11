@@ -71,9 +71,12 @@ function iworks_simple_consent_mode_options() {
 			 * Design
 			 */
 			array(
-				'type'          => 'heading',
-				'label'         => __( 'Colors', 'simple-consent-mode' ),
-				'configuration' => 'both',
+				'type'  => 'heading',
+				'label' => __( 'Colors', 'simple-consent-mode' ),
+			),
+			array(
+				'type'  => 'subheading',
+				'label' => __( 'Box', 'simple-consent-mode' ),
 			),
 			array(
 				'name'              => 'c_primary',
@@ -81,7 +84,7 @@ function iworks_simple_consent_mode_options() {
 				'class'             => 'short-text',
 				'th'                => __( 'Primary', 'simple-consent-mode' ),
 				'default'           => '#fff',
-				'sanitize_callback' => 'esc_html',
+				'sanitize_callback' => 'sanitize_hex_color',
 			),
 			array(
 				'name'              => 'c_accent',
@@ -89,7 +92,7 @@ function iworks_simple_consent_mode_options() {
 				'class'             => 'short-text',
 				'th'                => __( 'Accent', 'simple-consent-mode' ),
 				'default'           => '#97f',
-				'sanitize_callback' => 'esc_html',
+				'sanitize_callback' => 'sanitize_hex_color',
 			),
 			array(
 				'name'              => 'c_checkbox',
@@ -97,7 +100,27 @@ function iworks_simple_consent_mode_options() {
 				'class'             => 'short-text',
 				'th'                => __( 'Checkbox', 'simple-consent-mode' ),
 				'default'           => '#ae9',
-				'sanitize_callback' => 'esc_html',
+				'sanitize_callback' => 'sanitize_hex_color',
+			),
+			array(
+				'type'  => 'subheading',
+				'label' => __( 'Icon', 'simple-consent-mode' ),
+			),
+			array(
+				'name'              => 'i_primary',
+				'type'              => 'wpColorPicker',
+				'class'             => 'short-text',
+				'th'                => __( 'Icon Primary', 'simple-consent-mode' ),
+				'default'           => '#db8',
+				'sanitize_callback' => 'sanitize_hex_color',
+			),
+			array(
+				'name'              => 'i_accent',
+				'type'              => 'wpColorPicker',
+				'class'             => 'short-text',
+				'th'                => __( 'Icon Accent', 'simple-consent-mode' ),
+				'default'           => '#964',
+				'sanitize_callback' => 'sanitize_hex_color',
 			),
 			/**
 			 * Required Consents

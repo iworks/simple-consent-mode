@@ -1,4 +1,4 @@
-/*! Simple Consent Mode - v1.0.0
+/*! Simple Consent Mode - 0.0.2
  * http://simple-consent-mode.iworks.pl/
  * Copyright (c) 2025; * Licensed GPL-3.0 */
 window.simple_consent_mode = window.simple_consent_mode || [];

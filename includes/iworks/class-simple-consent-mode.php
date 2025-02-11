@@ -42,14 +42,13 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 		/**
 		 * WordPress Hooks
 		 */
-		add_action( 'init', array( $this, 'action_init_load_plugin_textdomain' ) );
 		add_action( 'init', array( $this, 'action_init_register_iworks_rate' ), PHP_INT_MAX );
 		add_action( 'admin_init', array( $this, 'action_admin_init' ) );
 		add_action( 'wp_head', array( $this, 'action_wp_head_add_defaults' ), 0 );
 		add_action( 'wp_footer', array( $this, 'action_wp_footer' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'action_wp_enqueue_scripts_register_assets' ), 0 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'action_wp_enqueue_scripts_enqueue_assets' ) );
-		add_action( 'wp_print_styles', array( $this, 'action_wp_print_styles_print_colors' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'action_wp_enqueue_scripts_add_colors' ) );
 		/**
 		 * is active?
 		 */
@@ -58,6 +57,14 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 		 * iWorks Rate Class
 		 */
 		add_filter( 'iworks_rate_notice_logo_style', array( $this, 'filter_plugin_logo' ), 10, 2 );
+		/**
+		 * load github class
+		 */
+		$filename = __DIR__ . '/class-simple-consent-mode-github.php';
+		if ( is_file( $filename ) ) {
+			include_once $filename;
+			new iworks_simple_consent_mode_github();
+		}
 	}
 
 	public function action_admin_init() {
@@ -95,7 +102,7 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 		if ( $this->debug ) {
 			$flags = JSON_PRETTY_PRINT;
 		}
-		echo json_encode( $settings, $flags );
+		echo wp_json_encode( $settings, $flags );
 		echo ');';
 		echo esc_html( $this->eol );
 		echo '</script>';
@@ -116,19 +123,6 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 			/* end:free */
 		}
 		return $links;
-	}
-
-	/**
-	 * i18n
-	 *
-	 * @since 1.0.0
-	 */
-	public function action_init_load_plugin_textdomain() {
-		load_plugin_textdomain(
-			'simple-consent-mode',
-			false,
-			plugin_basename( $this->dir ) . '/languages'
-		);
 	}
 
 	/**
@@ -215,7 +209,9 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 			);
 		}
 		$cookie_name         = $this->get_cookie_name();
-		$cookie_value        = isset( $_COOKIE[ $cookie_name ] ) ? $_COOKIE[ $cookie_name ] : null;
+		$cookie_value        = sanitize_text_field(
+			isset( $_COOKIE[ $cookie_name ] ) ? $_COOKIE[ $cookie_name ] : null
+		);
 		$this->configuration = array(
 			'consents' => $this->set_consents( $cookie_value ),
 			'cookie'   => array(
@@ -298,6 +294,7 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 	private function set_consents( $value ) {
 		switch ( $value ) {
 			case 'deny':
+			case null:
 				return array();
 			case 'allow':
 				return array(
@@ -332,26 +329,20 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 		wp_localize_script( $name, 'simple_consent_mode_data', $this->get_configuration() );
 	}
 
-	public function action_wp_print_styles_print_colors() {
-		printf(
-			'<style id="%s-css" data-plugin-name="%s" data-plugin-version="%s">',
-			esc_attr( sanitize_file_name( __CLASS__ ) ),
-			esc_attr( 'PLUGIN_NAME' ),
-			esc_attr( 'PLUGIN_VERSION' )
-		);
-		echo ':root {';
+	public function action_wp_enqueue_scripts_add_colors() {
+		$css    = ':root {';
 		$colors = array(
 			'primary',
 			'accent',
 			'checkbox',
 		);
 		foreach ( $colors as $name ) {
-			printf( '--scm-color-%s:', esc_attr( $name ) );
-			echo esc_attr( $this->options->get_option( 'c_' . $name ) );
-			echo ';';
+			$css .= sprintf( '--scm-color-%s:', esc_attr( $name ) );
+			$css .= esc_attr( $this->options->get_option( 'c_' . $name ) );
+			$css .= ';';
 		}
-		echo '}';
-		echo '</style>';
+		$css .= '}';
+		wp_add_inline_style( $this->options->get_option_name( 'frontend' ), $css );
 	}
 
 	/**

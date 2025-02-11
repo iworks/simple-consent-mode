@@ -1,7 +1,7 @@
 === Simple Consent Mode ===
 Contributors: iworks
-Donate link: https://ko-fi.com/iworks?utm_source=simple-consent-mode&utm_medium=readme-donate
-Tags: 
+Donate link:
+Tags: cookie banner, cookie consent, cookie notice, eu cookie law, consent mode
 Requires at least: PLUGIN_REQUIRES_WORDPRESS
 Tested up to: PLUGIN_TESTED_WORDPRESS
 Stable tag: PLUGIN_VERSION
@@ -9,6 +9,7 @@ Requires PHP: PLUGIN_REQUIRES_PHP
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
+Simple Consent Mode to make your website compliant.
 
 == Description ==
 

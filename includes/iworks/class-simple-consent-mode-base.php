@@ -1,5 +1,4 @@
 <?php
-
 /*
 
 Copyright 2025-PLUGIN_TILL_YEAR Marcin Pietrzak (marcin@iworks.pl)
