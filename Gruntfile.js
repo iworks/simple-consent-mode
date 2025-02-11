@@ -34,6 +34,7 @@ module.exports = function(grunt) {
 		'!postcss.config.js',
 		'!README.md',
 		'!LICENSE',
+		'!**/LICENSE',
 		'!contributing.md',
 		'!**/README.md',
 		'!**/*.map',
@@ -49,7 +50,9 @@ module.exports = function(grunt) {
 		'!**/js/src/**',
 		'!**/package.json',
 		'!**/tests/**',
-		'!.editorconfig'
+		'!.editorconfig',
+		'!assets/scripts/src/**',
+		'!assets/styles/frontend/**',
 	];
 
 	var excludeCopyFilesGIT = excludeCopyFiles.slice(0).concat(
@@ -86,25 +89,58 @@ module.exports = function(grunt) {
 			'assets/styles/frontend/modal.icon.css': 'assets/sass/frontend/modal.icon.scss',
 		},
 
-		replace_patterns: [
-			{ match: /AUTHOR_NAME/g, replace: '<%= pkg.author[0].name %>' },
-			{ match: /AUTHOR_URI/g, replace: '<%= pkg.author[0].uri %>' },
-			{ match: /BUILDTIME/g, replace: buildtime },
-			{ match: /IWORKS_RATE_TEXTDOMAIN/g, replace: '<%= pkg.name %>' },
-			{ match: /IWORKS_OPTIONS_TEXTDOMAIN/g, replace: '<%= pkg.name %>' },
-			{ match: /PLUGIN_DESCRIPTION/g, replace: '<%= pkg.description %>' },
-			{ match: /PLUGIN_GITHUB_WEBSITE/g, replace: '<%= pkg.repository.website %>' },
-			{ match: /PLUGIN_NAME/g, replace: '<%= pkg.name %>' },
-			{ match: /PLUGIN_REQUIRES_PHP/g, replace: '<%= pkg.requires.PHP %>' },
-			{ match: /PLUGIN_REQUIRES_WORDPRESS/g, replace: '<%= pkg.requires.WordPress %>' },
-			{ match: /PLUGIN_TESTED_WORDPRESS/g, replace: '<%= pkg.tested.WordPress %>' },
-			{ match: /PLUGIN_TAGLINE/g, replace: '<%= pkg.tagline %>' },
-			{ match: /PLUGIN_TILL_YEAR/g, replace: buildyear },
-			{ match: /PLUGIN_TITLE/g, replace: '<%= pkg.title %>' },
-			{ match: /PLUGIN_URI/g, replace: '<%= pkg.homepage %>' },
-			{ match: /PLUGIN_VERSION/g, replace: '<%= pkg.version %>' },
-			{ match: /^Version: .+$/g, replace: 'Version: <%= pkg.version %>' }
-		],
+		replace_patterns: [{
+			match: /AUTHOR_NAME/g,
+			replace: '<%= pkg.author[0].name %>'
+		}, {
+			match: /AUTHOR_URI/g,
+			replace: '<%= pkg.author[0].uri %>'
+		}, {
+			match: /BUILDTIME/g,
+			replace: buildtime
+		}, {
+			match: /IWORKS_RATE_TEXTDOMAIN/g,
+			replace: '<%= pkg.name %>'
+		}, {
+			match: /IWORKS_OPTIONS_TEXTDOMAIN/g,
+			replace: '<%= pkg.name %>'
+		}, {
+			match: /PLUGIN_DESCRIPTION/g,
+			replace: '<%= pkg.description %>'
+		}, {
+			match: /PLUGIN_GITHUB_WEBSITE/g,
+			replace: '<%= pkg.repository.website %>'
+		}, {
+			match: /PLUGIN_NAME/g,
+			replace: '<%= pkg.name %>'
+		}, {
+			match: /PLUGIN_REQUIRES_PHP/g,
+			replace: '<%= pkg.requires.PHP %>'
+		}, {
+			match: /PLUGIN_REQUIRES_WORDPRESS/g,
+			replace: '<%= pkg.requires.WordPress %>'
+		}, {
+			match: /PLUGIN_TESTED_WORDPRESS/g,
+			replace: '<%= pkg.tested.WordPress %>'
+		}, {
+			match: /PLUGIN_TAGLINE/g,
+			replace: '<%= pkg.tagline %>'
+		}, {
+			match: /PLUGIN_TILL_YEAR/g,
+			replace: buildyear
+		}, {
+			match: /PLUGIN_TITLE/g,
+			replace: '<%= pkg.title %>'
+		}, {
+			match: /PLUGIN_URI/g,
+			replace: '<%= pkg.homepage %>'
+		}, {
+			match: /PLUGIN_VERSION/g,
+			replace: '<%= pkg.version %>'
+		}, {
+			match: /^Version: .+$/g,
+			replace: 'Version: <%= pkg.version %>'
+		}],
 
 		plugin_dir: '',
 		plugin_file: 'simple-consent-mode',

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://iworks.pl\n"
-"POT-Creation-Date: 2025-02-11 17:11:16+00:00\n"
+"POT-Creation-Date: 2025-02-11 17:41:12+00:00\n"
 "PO-Revision-Date: 2025-02-11 16:15+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -24,7 +24,7 @@ msgstr ""
 "X-Generator: Poedit 3.5\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: assets/templates/frontend/cookie/icon.php:21
+#: assets/templates/frontend/cookie/icon.php:23
 msgid "Show Consents Configuration"
 msgstr "Pokaż konfigurację zgód"
 

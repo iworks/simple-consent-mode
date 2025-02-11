@@ -43,7 +43,7 @@ foreach ( $configuration as $one ) {
 			break;
 		case 'desc':
 			echo '<dd>';
-			echo wpautop( esc_html( $options->get_option( $one['name'] ) ) );
+			echo wp_kses_post( wpautop( esc_html( $options->get_option( $one['name'] ) ) ) );
 			echo '</dd>';
 			break;
 	}
@@ -67,7 +67,7 @@ foreach ( $args['modals']['choose']['buttons'] as $button ) {
 	printf(
 		'<button class="%s"%s>%s</button>',
 		esc_attr( implode( ' ', $button['classes'] ) ),
-		/* $data is already escaped above */
+		/* $data is already escaped above in a foreach() */
 		$data,
 		esc_html( $button['value'] )
 	);
