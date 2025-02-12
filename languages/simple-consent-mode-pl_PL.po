@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://iworks.pl\n"
-"POT-Creation-Date: 2025-02-11 17:41:12+00:00\n"
+"POT-Creation-Date: 2025-02-12 15:35:33+00:00\n"
 "PO-Revision-Date: 2025-02-11 16:15+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -379,7 +379,7 @@ msgstr "Ustawienia"
 msgid "Donate"
 msgstr "Przekaż datek"
 
-#: includes/iworks/class-simple-consent-mode.php:371
+#. Plugin Name of the plugin/theme
 msgid "Simple Consent Mode"
 msgstr "Proste zgody"
 
@@ -550,6 +550,24 @@ msgstr ""
 "Jak podoba się nasza wtyczka? Masz możliwość ją ocenić? Daj nam znać, co o "
 "niej myślisz. To dla nas bardzo ważne, aby móc ją rozwijać. Dziękujemy za "
 "wszystkie oceny, recenzje oraz dodatkowe wsparcie."
+
+#. Plugin URI of the plugin/theme
+#, fuzzy
+msgid "http://iworks.pl/simple-consent-mode/"
+msgstr "https://pl.wordpress.org/plugins/simple-consent-mode/"
+
+#. Description of the plugin/theme
+msgid "PLUGIN_TAGLINE"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Marcin Pietrzak"
+msgstr ""
+
+#. Author URI of the plugin/theme
+#, fuzzy
+msgid "http://iworks.pl/"
+msgstr "https://pl.wordpress.org/plugins/%s"
 
 #: etc/options.php:395
 msgctxt "plugin home page on WordPress.org"

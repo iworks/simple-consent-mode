@@ -11,8 +11,6 @@
  */
 
 module.exports = function(grunt) {
-	// Show elapsed time at the end.
-	// require('time-grunt')(grunt);
 
 	// Load all grunt tasks.
 	require('load-grunt-tasks')(grunt);
@@ -143,7 +141,7 @@ module.exports = function(grunt) {
 		}],
 
 		plugin_dir: '',
-		plugin_file: 'simple-consent-mode',
+		plugin_file: 'simple-consent-mode.php',
 
 		// Regex patterns to exclude from transation.
 		translation: {
@@ -419,7 +417,7 @@ module.exports = function(grunt) {
 				expand: true,
 				cwd: 'release/wporg/<%= pkg.version %>/',
 				src: ['**/*'],
-                dest: '.'
+				dest: '.'
 			},
 			github: {
 				options: {
@@ -429,7 +427,7 @@ module.exports = function(grunt) {
 				expand: true,
 				cwd: 'release/github/<%= pkg.version %>/',
 				src: ['**/*'],
-                dest: '.'
+				dest: '.'
 			}
 		},
 
@@ -479,7 +477,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('default', ['clean:temp', 'concat', 'uglify', 'sass', 'concat_css', 'cssmin']);
 	grunt.registerTask('js', ['concat', 'uglify']);
 	grunt.registerTask('css', ['sass', 'concat_css', 'cssmin']);
-	grunt.registerTask('i18n', ['checktextdomain', 'makepot', 'potomo']);
+	grunt.registerTask('i18n', ['checktextdomain', 'makepot']);
 
 	grunt.registerTask(
 		'build',
@@ -498,6 +496,7 @@ module.exports = function(grunt) {
 		[
 			'default',
 			'i18n',
+			'potomo',
 			'clean:github',
 			'copy:github',
 			'replace',
@@ -505,8 +504,7 @@ module.exports = function(grunt) {
 			'notes'
 		]
 	);
+	grunt.registerTask('release', ['build:wporg', 'build:github']);
 	grunt.registerTask('test', ['phpunit', 'jshint', 'notes']);
-
-
 	grunt.util.linefeed = '\n';
 };
