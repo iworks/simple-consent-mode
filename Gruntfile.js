@@ -398,13 +398,13 @@ module.exports = function(grunt) {
 			files: {
 				expand: true,
 				src: [
-					'release/wporg/<%= pkg.version %>/<%= pkg.name %>/**',
-					// '!release/wporg/**/*.gif',
-					// '!release/wporg/**/images/**',
-					// '!release/wporg/**/*.jpg',
-					// '!release/wporg/**/languages/*.mo',
-					// '!release/wporg/**/*.png',
-					// '!release/wporg/**/*.webp',
+					'release/*/<%= pkg.version %>/<%= pkg.name %>/**',
+					'!release/*/**/*.gif',
+					'!release/*/**/images/**',
+					'!release/*/**/*.jpg',
+					'!release/*/**/languages/*.mo',
+					'!release/*/**/*.png',
+					'!release/*/**/*.webp',
 				],
 				dest: '.'
 			}

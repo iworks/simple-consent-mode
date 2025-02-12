@@ -2,4 +2,4 @@
 
 ## How to use?
 
-Get. Upload. Turn on.
+[Get.](https://github.com/iworks/simple-consent-mode/releases) Upload. Turn on.
