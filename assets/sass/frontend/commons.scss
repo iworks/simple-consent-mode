@@ -11,6 +11,7 @@
 }
 .scm {
 	&-modal {
+		display: relative;
 		&s {
 			&-container {
 				.scm-modal {
@@ -61,6 +62,31 @@
 				}
 				justify: {
 					content: center;
+				}
+			}
+			&[data-action="close"] {
+				padding: 0;
+				background: none;
+				border: 0;
+				position: absolute;
+				right: 0;
+				top: 0;
+				height: 32px;
+				width: 32px;
+				&:hover {
+					cursor: pointer;
+				}
+				svg {
+					height: 28px;
+					width: 28px;
+					margin: 2px;
+				}
+			}
+		}
+		&.hidden {
+			button {
+				&[data-action="close"] {
+					display: none;
 				}
 			}
 		}
