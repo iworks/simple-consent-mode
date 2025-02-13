@@ -2,9 +2,9 @@
 # This file is distributed under the GPLv3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: 0.0.3\n"
+"Project-Id-Version: 1.0.0\n"
 "Report-Msgid-Bugs-To: http://iworks.pl\n"
-"POT-Creation-Date: 2025-02-12 15:35:42+00:00\n"
+"POT-Creation-Date: 2025-02-13 05:46:22+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,6 +24,12 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Generator: grunt-wp-i18n 1.0.3\n"
 
+#: assets/templates/frontend/cookie/choose.php:79
+#: assets/templates/frontend/cookie/main.php:35 etc/options.php:73
+#: etc/options.php:75
+msgid "Close"
+msgstr ""
+
 #: assets/templates/frontend/cookie/icon.php:23
 msgid "Show Consents Configuration"
 msgstr ""
@@ -36,187 +42,153 @@ msgstr ""
 msgid "Main"
 msgstr ""
 
-#: etc/options.php:25
+#: etc/options.php:26
 msgid "Show Description"
 msgstr ""
 
-#: etc/options.php:33
+#: etc/options.php:35
 msgid "Consents Modal Description"
 msgstr ""
 
-#: etc/options.php:36
+#: etc/options.php:38
 msgid ""
 "This website uses cookies to ensure you get the best experience on our "
 "website."
 msgstr ""
 
-#: etc/options.php:40
+#: etc/options.php:43
 msgid "Buttons"
 msgstr ""
 
-#: etc/options.php:45
+#: etc/options.php:49
 msgid "Allow All"
 msgstr ""
 
-#: etc/options.php:47
+#: etc/options.php:51
 msgid "Allow All Consents"
 msgstr ""
 
-#: etc/options.php:52 etc/options.php:54
+#: etc/options.php:57 etc/options.php:59
 msgid "Choose Consents"
 msgstr ""
 
-#: etc/options.php:59
+#: etc/options.php:65
 msgid "Deny All Consents"
 msgstr ""
 
-#: etc/options.php:61
+#: etc/options.php:67
 msgid "Deny"
 msgstr ""
 
-#: etc/options.php:66 etc/options.php:68
-msgid "Close"
-msgstr ""
-
-#: etc/options.php:75
+#: etc/options.php:83
 msgid "Colors"
 msgstr ""
 
-#: etc/options.php:79
+#: etc/options.php:88
 msgid "Box"
 msgstr ""
 
-#: etc/options.php:85
+#: etc/options.php:95
 msgid "Primary"
 msgstr ""
 
-#: etc/options.php:93
+#: etc/options.php:104
 msgid "Accent"
 msgstr ""
 
-#: etc/options.php:101
+#: etc/options.php:113
 msgid "Checkbox"
 msgstr ""
 
-#: etc/options.php:107
+#: etc/options.php:120
 msgid "Icon"
 msgstr ""
 
-#: etc/options.php:113
+#: etc/options.php:127
 msgid "Icon Primary"
 msgstr ""
 
-#: etc/options.php:121
+#: etc/options.php:136
 msgid "Icon Accent"
 msgstr ""
 
-#: etc/options.php:130
+#: etc/options.php:146
 msgid "Required Consents"
 msgstr ""
 
-#: etc/options.php:137
+#: etc/options.php:154
 msgid "Analytics Storage"
 msgstr ""
 
-#: etc/options.php:138 etc/options.php:155
+#: etc/options.php:155 etc/options.php:174
 msgid ""
 "Controls whether data related to website usage and user behavior can be "
 "stored for analytics purposes (e.g., Google Analytics)."
 msgstr ""
 
-#: etc/options.php:143 etc/options.php:168 etc/options.php:193
-#: etc/options.php:218 etc/options.php:258 etc/options.php:290
+#: etc/options.php:161 etc/options.php:189 etc/options.php:217
+#: etc/options.php:245
 msgid "Title"
 msgstr ""
 
-#: etc/options.php:146
+#: etc/options.php:164
 msgid "Analytic Storage"
 msgstr ""
 
-#: etc/options.php:152 etc/options.php:177 etc/options.php:202
-#: etc/options.php:227 etc/options.php:266 etc/options.php:298
+#: etc/options.php:171 etc/options.php:199 etc/options.php:227
+#: etc/options.php:255
 msgid "Description"
 msgstr ""
 
-#: etc/options.php:162 etc/options.php:171
+#: etc/options.php:182 etc/options.php:192
 msgid "Ad Storage"
 msgstr ""
 
-#: etc/options.php:163 etc/options.php:180
+#: etc/options.php:183 etc/options.php:202
 msgid ""
 "Manages whether advertising-related data (like targeting and tracking "
 "cookies) can be stored and processed for ad services."
 msgstr ""
 
-#: etc/options.php:187 etc/options.php:196
+#: etc/options.php:210 etc/options.php:220
 msgid "Ad Personalization"
 msgstr ""
 
-#: etc/options.php:188 etc/options.php:205
+#: etc/options.php:211 etc/options.php:230
 msgid ""
 "Determines if personalized ads can be shown based on user behavior and "
 "preferences, using stored data for targeting."
 msgstr ""
 
-#: etc/options.php:212 etc/options.php:221
+#: etc/options.php:238 etc/options.php:248
 msgid "Ad User Data"
 msgstr ""
 
-#: etc/options.php:213 etc/options.php:230
+#: etc/options.php:239 etc/options.php:258
 msgid ""
 "Controls the storage of user-specific data for ad tracking, profiling, and "
 "measuring ad effectiveness."
 msgstr ""
 
-#: etc/options.php:237
-msgid "Custom Consents"
-msgstr ""
-
-#: etc/options.php:244
-msgid "Functional Storage"
-msgstr ""
-
-#: etc/options.php:245 etc/options.php:269
-msgid ""
-"Manages the storage of cookies for non-essential functions like site "
-"preferences, login status, and custom settings."
-msgstr ""
-
-#: etc/options.php:250 etc/options.php:282
-msgid "Show"
-msgstr ""
-
-#: etc/options.php:261
-msgid "Functionality"
-msgstr ""
-
-#: etc/options.php:276
-msgid "Personalization Storage"
-msgstr ""
-
-#: etc/options.php:277 etc/options.php:301
-msgid ""
-"Regulates whether data used to provide personalized user experiences (like "
-"content recommendations) can be stored."
-msgstr ""
-
-#: etc/options.php:293
-msgid "Personalizations"
-msgstr ""
-
-#: etc/options.php:308
+#: etc/options.php:337 etc/options.php:342
 msgid "Cookie"
 msgstr ""
 
-#: etc/options.php:314
+#: etc/options.php:349
 msgid "Version"
 msgstr ""
 
-#: etc/options.php:324
+#: etc/options.php:352
+msgid ""
+"Changing the cookie version requires you to obtain new consent. This should "
+"be done in the event of changes to the scope of required consents."
+msgstr ""
+
+#: etc/options.php:361
 msgid "About Consent Mode"
 msgstr ""
 
-#: etc/options.php:325
+#: etc/options.php:362
 msgid ""
 "Consent Mode is a tool provided by Google that allows websites to adjust "
 "the behavior of Google tags (such as Google Analytics, Google Ads, and "
@@ -224,33 +196,33 @@ msgid ""
 "more compliant data collection while respecting user privacy preferences."
 msgstr ""
 
-#: etc/options.php:329
+#: etc/options.php:367
 msgid "Consent Type"
 msgstr ""
 
-#: etc/options.php:330
+#: etc/options.php:368
 msgid ""
 "This option defines the type of consent requested from users, determining "
 "whether they consent to cookies for specific purposes (e.g., analytics, "
 "marketing, etc.). Typically, the options include:"
 msgstr ""
 
-#: etc/options.php:334
+#: etc/options.php:373
 msgid "Default Consent Behavior"
 msgstr ""
 
-#: etc/options.php:335
+#: etc/options.php:374
 msgid ""
 "If the user has not yet provided consent or declined, you can define the "
 "default behavior. By default, Google tags will work in a limited mode (for "
-"example, without tracking conversions or storing data for ad targeting).\n"
+"example, without tracking conversions or storing data for ad targeting)."
 msgstr ""
 
-#: etc/options.php:343
+#: etc/options.php:379
 msgid "Consent Update Mechanism"
 msgstr ""
 
-#: etc/options.php:344
+#: etc/options.php:380
 msgid ""
 "This feature allows websites to update the user's consent status if they "
 "change their preferences after the initial consent. It ensures that Google "
@@ -258,23 +230,23 @@ msgid ""
 "behavior based on the new consent status."
 msgstr ""
 
-#: etc/options.php:348
+#: etc/options.php:385
 msgid "Consent Mode Events"
 msgstr ""
 
-#: etc/options.php:349
+#: etc/options.php:386
 msgid ""
 "Consent Mode events provide a way to trigger certain actions when consent "
 "preferences are updated. For instance, if a user consents to analytics "
 "storage, the website can trigger a specific event to begin tracking user "
-"interactions.\n"
+"interactions."
 msgstr ""
 
-#: etc/options.php:357
+#: etc/options.php:391
 msgid "Data Retention Options"
 msgstr ""
 
-#: etc/options.php:358
+#: etc/options.php:392
 msgid ""
 "With Consent Mode, you can set up specific data retention policies to "
 "define how long user data should be stored based on their consent. For "
@@ -282,38 +254,38 @@ msgid ""
 "anonymized."
 msgstr ""
 
-#: etc/options.php:362
+#: etc/options.php:397
 msgid "Tracking Blocking (No Consent)"
 msgstr ""
 
-#: etc/options.php:363
+#: etc/options.php:398
 msgid ""
 "In cases where the user has not given consent for cookies or data tracking, "
 "this option ensures that all data collection and tracking mechanisms are "
 "blocked, fully respecting the user's privacy preferences."
 msgstr ""
 
-#: etc/options.php:368 etc/options.php:407
+#: etc/options.php:404 etc/options.php:445
 msgid "We are waiting for your message"
 msgstr ""
 
-#: etc/options.php:374
+#: etc/options.php:411
 msgid "I love what I do!"
 msgstr ""
 
-#: etc/options.php:392
+#: etc/options.php:430
 msgid "Below are some links to help spread this plugin to other users"
 msgstr ""
 
-#: etc/options.php:394
+#: etc/options.php:432
 msgid "Give it a five stars on WordPress.org"
 msgstr ""
 
-#: etc/options.php:395
+#: etc/options.php:433
 msgid "Link to it so others can easily find it"
 msgstr ""
 
-#: etc/options.php:409
+#: etc/options.php:447
 msgid "WordPress Help Forum"
 msgstr ""
 
@@ -500,12 +472,12 @@ msgstr ""
 msgid "http://iworks.pl/"
 msgstr ""
 
-#: etc/options.php:395
+#: etc/options.php:433
 msgctxt "plugin home page on WordPress.org"
 msgid "https://wordpress.org/plugins/simple-consent-mode/"
 msgstr ""
 
-#: etc/options.php:409
+#: etc/options.php:447
 msgctxt "link to support forum on WordPress.org"
 msgid "https://wordpress.org/support/plugin/simple-consent-mode/"
 msgstr ""

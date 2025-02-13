@@ -487,8 +487,7 @@ module.exports = function(grunt) {
 			'clean:wporg',
 			'copy:wporg',
 			'replace',
-			'compress:wporg',
-			'notes'
+			'compress:wporg'
 		],
 	);
 	grunt.registerTask(
@@ -500,11 +499,10 @@ module.exports = function(grunt) {
 			'clean:github',
 			'copy:github',
 			'replace',
-			'compress:github',
-			'notes'
+			'compress:github'
 		]
 	);
-	grunt.registerTask('release', ['build:wporg', 'build:github']);
+	grunt.registerTask('release', ['build:wporg', 'build:github', 'notes' ]);
 	grunt.registerTask('test', ['phpunit', 'jshint', 'notes']);
 	grunt.util.linefeed = '\n';
 };
