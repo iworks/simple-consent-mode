@@ -12,16 +12,16 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Simple Consent Mode to make your website compliant.
 
 == Description ==
-The *Simple Consent Mode* plugin helps seamlessly integrate Google Tag Manager's (GTM) Consent Mode v2 on your website, ensuring compliance with privacy regulations like GDPR. This lightweight plugin automatically configures Consent Mode and manages user consent for analytics and marketing cookies.
+The **Simple Consent Mode** plugin helps seamlessly integrate Google Tag Manager's (GTM) Consent Mode v2 on your website, ensuring compliance with privacy regulations like GDPR. This lightweight plugin automatically configures Consent Mode and manages user consent for analytics and marketing cookies.
 
 With Simple Consent Mode, you can dynamically adjust the behavior of your tags based on whether the user has granted or denied consent, while still gathering anonymous data when consent is not provided. The plugin makes it easy to implement, providing a simple interface for enabling and configuring consents, without needing to manually adjust code.
 
 = Key Features =
-* *Automatic Consent Mode Configuration*: Integrates GTM Consent Mode v2 with no need for complex manual setup.
-* *Granular Consent Control*: Allows users to opt in or out of specific types of cookies (e.g., analytics, marketing).
-* *GTM Tag Support*: Works seamlessly with Google Analytics, Google Ads, and other GTM tags that rely on user consent.
-* *GDPR and Privacy Compliant*: Helps ensure compliance with global privacy regulations by allowing proper consent tracking.
-* *Lightweight & Easy Setup*: Minimal configuration required.
+* **Automatic Consent Mode Configuration**: Integrates GTM Consent Mode v2 with no need for complex manual setup.
+* **Granular Consent Control**: Allows users to opt in or out of specific types of cookies (e.g., analytics, marketing).
+* **GTM Tag Support**: Works seamlessly with Google Analytics, Google Ads, and other GTM tags that rely on user consent.
+* **GDPR and Privacy Compliant**: Helps ensure compliance with global privacy regulations by allowing proper consent tracking.
+* **Lightweight & Easy Setup**: Minimal configuration required.
 
 This plugin simplifies the process of integrating and managing GTM’s Consent Mode v2, giving site owners better control over cookie usage while respecting user privacy preferences.
 
