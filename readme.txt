@@ -9,9 +9,10 @@ Requires PHP: PLUGIN_REQUIRES_PHP
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Simple Consent Mode to make your website compliant.
+PLUGIN_TAGLINE
 
 == Description ==
+
 The **Simple Consent Mode** plugin helps seamlessly integrate Google Tag Manager's (GTM) Consent Mode v2 on your website, ensuring compliance with privacy regulations like GDPR. This lightweight plugin automatically configures Consent Mode and manages user consent for analytics and marketing cookies.
 
 With Simple Consent Mode, you can dynamically adjust the behavior of your tags based on whether the user has granted or denied consent, while still gathering anonymous data when consent is not provided. The plugin makes it easy to implement, providing a simple interface for enabling and configuring consents, without needing to manually adjust code.
@@ -33,7 +34,7 @@ The Simple Consent Mode plugin is available also on [GitHub - Simple Consent Mod
 
 There are 3 ways to install this plugin:
 
-= 1. The super easy way =
+= The super-easy way =
 
 1. Navigate to WPA > the Plugins and click the `Add New` button.
 1. Search for `Simple Consent Mode`.
@@ -41,7 +42,7 @@ There are 3 ways to install this plugin:
 1. Activate the plugin.
 1. A new menu `Simple Consent Mode` will appear in your Admin.
 
-= 2. The easy way =
+= The easy way =
 
 1. Download the plugin (.zip file) on the right column of this page
 1. Navigate to WPA > the Plugins and click the `Add New` button.
@@ -50,7 +51,7 @@ There are 3 ways to install this plugin:
 1. Activate the plugin.
 1. A new menu `Simple Consent Mode` will appear in your Admin.
 
-= 3. The old and reliable way (FTP) =
+= The old and reliable way (FTP) =
 
 1. Upload `simple-consent-mode` folder to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
@@ -66,6 +67,10 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-c
 
 == Changelog ==
 
+
+= 1.1.0 - 2025-02-19 =
+
+* The Consent Log has been added.  [#1](https://github.com/iworks/simple-consent-mode/issues/1)
 
 = 1.0.0 - 2025-02-13 =
 

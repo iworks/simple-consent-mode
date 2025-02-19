@@ -38,17 +38,27 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 
 	public function __construct() {
 		parent::__construct();
-		$this->version = 'PLUGIN_VERSION';
+		/**
+		 * add database table name
+		 */
 		/**
 		 * WordPress Hooks
 		 */
 		add_action( 'init', array( $this, 'action_init_register_iworks_rate' ), PHP_INT_MAX );
-		add_action( 'admin_init', array( $this, 'action_admin_init' ) );
 		add_action( 'wp_head', array( $this, 'action_wp_head_add_defaults' ), 0 );
 		add_action( 'wp_footer', array( $this, 'action_wp_footer' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'action_wp_enqueue_scripts_register_assets' ), 0 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'action_wp_enqueue_scripts_enqueue_assets' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'action_wp_enqueue_scripts_add_colors' ) );
+		add_action( 'wp_ajax_simple_consent_mode_save_log', array( $this, 'action_ajax_save_log' ) );
+		add_action( 'wp_ajax_nopriv_simple_consent_mode_save_log', array( $this, 'action_ajax_save_log' ) );
+		add_action( 'shutdown', array( $this, 'action_shutdown_maybe_delete_log' ) );
+		/**
+		 * db install
+		 *
+		 * @since 1.1.0
+		 */
+		add_action( 'admin_init', array( $this, 'db_install' ) );
 		/**
 		 * is active?
 		 */
@@ -60,16 +70,21 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 		/**
 		 * load github class
 		 */
-		$filename = __DIR__ . '/class-simple-consent-mode-github.php';
+		$filename = __DIR__ . '/simple-consent-mode/class-simple-consent-mode-github.php';
 		if ( is_file( $filename ) ) {
 			include_once $filename;
 			new iworks_simple_consent_mode_github();
 		}
-	}
-
-	public function action_admin_init() {
-		iworks_simple_consent_mode_options_init();
-		add_filter( 'plugin_row_meta', array( $this, 'plugin_row_meta' ), 10, 2 );
+		/**
+		 * admin
+		 */
+		if ( is_admin() ) {
+			$filename = __DIR__ . '/simple-consent-mode/class-simple-consent-mode-wp-admin.php';
+			if ( is_file( $filename ) ) {
+				include_once $filename;
+				new iworks_simple_consent_mode_wp_admin();
+			}
+		}
 	}
 
 	public function action_wp_head_add_defaults() {
@@ -110,20 +125,6 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 		echo esc_html( $this->eol );
 	}
 
-	/**
-	 * Plugin row data
-	 */
-	public function plugin_row_meta( $links, $file ) {
-		if ( $this->dir . '/simple-consent-mode.php' == $file ) {
-			if ( ! is_multisite() && current_user_can( $this->capability ) ) {
-				$links[] = '<a href="admin.php?page=' . $this->dir . '/admin/index.php">' . __( 'Settings', 'simple-consent-mode' ) . '</a>';
-			}
-			/* start:free */
-			$links[] = '<a href="http://iworks.pl/donate/simple-consent-mode.php">' . __( 'Donate', 'simple-consent-mode' ) . '</a>';
-			/* end:free */
-		}
-		return $links;
-	}
 
 	/**
 	 * Add templates to footer.
@@ -390,4 +391,155 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 		}
 		return $logo;
 	}
+
+	/**
+	 * register_activation_hook
+	 *
+	 * @since 1.1.0
+	 */
+	public function register_activation_hook() {
+		$this->db_install();
+		$this->check_option_object();
+		$this - options->set_option_function_name( 'iworks_simple_consent_mode_options' );
+		$this - options->set_option_prefix( IWORKS_SIMPLE_CONSENT_MODE_PREFIX );
+		$this - options->activate();
+		do_action( 'iworks/simple-consent-mode/register_activation_hook' );
+	}
+
+	/**
+	 * register_deactivation_hook
+	 *
+	 * @since 1.1.0
+	 */
+	public function register_deactivation_hook() {
+		$this->check_option_object();
+		$this - options->deactivate();
+		do_action( 'iworks/simple-consent-mode/register_deactivation_hook' );
+	}
+
+	/**
+	 * DB Install/update
+	 *
+	 * @since 1.1.0
+	 */
+	public function db_install() {
+		global $wpdb;
+		$option_name_db_version = 'iworks_scm_db_version';
+		/**
+		 * get Version
+		 */
+		$version = intval( get_option( $option_name_db_version ) );
+		if ( empty( $version ) ) {
+			add_option( $option_name_db_version, 0, '', 'no' );
+		}
+		/**
+		 * 20241011
+		 */
+		$install = 20250218;
+		if ( $install > $version ) {
+			$charset_collate = $wpdb->get_charset_collate();
+			require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+			$table_name = $wpdb->iworks_scm_log;
+			$sql        = "CREATE TABLE $table_name (
+				consent_id bigint unsigned not null auto_increment,
+				consent_date datetime default current_timestamp,
+				consent_value text,
+				user_id bigint unsigned null default 0,
+				ip varchar(39) default null,
+				ipx varchar(39) default null,
+				appCodeName text,
+				appName text,
+				appVersion text,
+				language text,
+				oscpu text,
+				platform text,
+				product text,
+				productSub text,
+				userAgent text,
+				vendor text,
+				vendorSub text,
+				url text,
+				scm_version varchar(20) not null,
+				cookie_version varchar(20) not null,
+				cookie_name text,
+				primary key ( consent_id ),
+				key ( consent_date ),
+				key ( user_id )
+			) $charset_collate;";
+			dbDelta( $sql );
+			update_option( $option_name_db_version, $install );
+		}
+	}
+
+	/**
+	 * Insert Simple Cookie Mode Log element.
+	 *
+	 * @since 1.1.0
+	 */
+	public function action_ajax_save_log() {
+		check_ajax_referer( 'simple_consent_mode' );
+		if ( 1 > intval( $this->options->get_option( 'log_status' ) ) ) {
+			exit;
+		}
+		$keys   = array(
+			'consent_value',
+			'url',
+			'appCodeName',
+			'appName',
+			'appVersion',
+			'language',
+			'oscpu',
+			'platform',
+			'product',
+			'productSub',
+			'userAgent',
+			'vendor',
+			'vendorSub',
+		);
+		$data   = array(
+			'user_id'        => get_current_user_id(),
+			'ip'             => $_SERVER['REMOTE_ADDR'],
+			'ipx'            => isset( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : '',
+			'cookie_version' => $this->options->get_option( 'cookie_version' ),
+			'cookie_name'    => $this->get_cookie_name(),
+		);
+		$format = array(
+			'%d',
+			'%s',
+			'%s',
+			'%s',
+			'%s',
+		);
+		foreach ( $keys as $key ) {
+			$data[ $key ] = strip_tags( filter_input( INPUT_POST, $key ) );
+			$format[]     = '%s';
+		}
+		global $wpdb;
+		$wpdb->insert(
+			$wpdb->iworks_scm_log,
+			$data,
+			$format
+		);
+		exit;
+	}
+
+	/**
+	 * delete old logs
+	 *
+	 * @since 1.1.0
+	 */
+	public function action_shutdown_maybe_delete_log() {
+		$months = intval( $this->options->get_option( 'log_duration' ) );
+		if ( 1 > $months ) {
+			return;
+		}
+		global $wpdb;
+		$wpdb->query(
+			$wpdb->prepare(
+				"delete from {$wpdb->iworks_scm_log} where consent_date < %s",
+				date( 'Y-m-d 00:00:00', strtotime( sprintf( '-%d months', $months ) ) ),
+			)
+		);
+	}
+
 }

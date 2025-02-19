@@ -42,6 +42,7 @@ window.addEventListener('load', function(event) {
 			}
 			if (cookie_value) {
 				window.simple_consent_mode.functions.set_cookie('choose:' + cookie_value);
+				window.simple_consent_mode.functions.save_log(cookie_value);
 			}
 		});
 	}
@@ -60,6 +61,7 @@ window.addEventListener('load', function(event) {
 			switch (this.dataset.action) {
 				case 'allow':
 					window.simple_consent_mode.functions.set_cookie(this.dataset.action);
+					window.simple_consent_mode.functions.save_log(this.dataset.action);
 					show.icon = true;
 					gtag('consent', 'update', {
 						ad_storage: 'granted',
@@ -70,6 +72,7 @@ window.addEventListener('load', function(event) {
 					break;
 				case 'deny':
 					window.simple_consent_mode.functions.set_cookie(this.dataset.action);
+					window.simple_consent_mode.functions.save_log(this.dataset.action);
 					show.icon = true;
 					gtag('consent', 'update', {
 						ad_storage: 'denied',
@@ -87,8 +90,6 @@ window.addEventListener('load', function(event) {
 				case 'show':
 					show.main = true;
 					break;
-				default:
-					window.console.log(this.dataset);
 			}
 			if (show.main) {
 				document.getElementById(window.simple_consent_mode_data.modals.main.id).classList.remove('hidden');
@@ -107,6 +108,4 @@ window.addEventListener('load', function(event) {
 			}
 		});
 	}
-
-
 });

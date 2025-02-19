@@ -74,6 +74,9 @@ module.exports = function(grunt) {
 		js_files_concat: {
 			'assets/scripts/<%= pkg.name %>-frontend.js': [
 				'assets/scripts/src/frontend/*.js',
+			],
+			'assets/scripts/<%= pkg.name %>-admin.js': [
+				'assets/scripts/src/admin/*.js',
 			]
 		},
 
@@ -141,7 +144,7 @@ module.exports = function(grunt) {
 		}],
 
 		plugin_dir: '',
-		plugin_file: 'simple-consent-mode.php',
+		plugin_file: '<%= pkg.name %>.php',
 
 		// Regex patterns to exclude from transation.
 		translation: {
@@ -156,7 +159,7 @@ module.exports = function(grunt) {
 				'.editorconfig', // editor configuration
 			],
 			pot_dir: 'languages/', // With trailing slash.
-			textdomain: 'simple-consent-mode',
+			textdomain: '<%= pkg.name %>',
 		},
 	};
 
@@ -455,7 +458,7 @@ module.exports = function(grunt) {
 				src: ['<%= pkg.name %>.php', 'includes/**/*.php'],
 				expand: true,
 			},
-		}
+		},
 	});
 
 	grunt.registerTask('notes', 'Show release notes', function() {
@@ -488,7 +491,7 @@ module.exports = function(grunt) {
 			'copy:wporg',
 			'replace',
 			'compress:wporg'
-		],
+		]
 	);
 	grunt.registerTask(
 		'build:github',

@@ -10,11 +10,14 @@ function iworks_simple_consent_mode_options() {
 	 * main settings
 	 */
 	$options['index'] = array(
-		'version'    => '0.0',
-		'page_title' => esc_html__( 'Cookie Consent', 'simple-consent-mode' ),
-		'menu'       => 'options',
-		'use_tabs'   => true,
-		'options'    => array(
+		'version'         => '0.0',
+		'use_tabs'        => true,
+		'page_title'      => esc_html__( 'Cookie Consent', 'simple-consent-mode' ),
+		'menu'            => 'options',
+		'enqueue_scripts' => array(
+			'iw_scm_admin',
+		),
+		'options'         => array(
 			array(
 				'type'  => 'heading',
 				'label' => esc_html__( 'Main', 'simple-consent-mode' ),
@@ -352,6 +355,42 @@ function iworks_simple_consent_mode_options() {
 				'description'       => esc_html__( 'Changing the cookie version requires you to obtain new consent. This should be done in the event of changes to the scope of required consents.', 'simple-consent-mode' ),
 				'since'             => '1.0.0',
 			),
+			/**
+			 * Consent Log
+			 */
+			array(
+				'type'  => 'heading',
+				'label' => esc_html__( 'Log', 'simple-consent-mode' ),
+				'since' => '1.1.0',
+			),
+			array(
+				'name'              => 'log_status',
+				'type'              => 'checkbox',
+				'th'                => esc_html__( 'Enable', 'simple-consent-mode' ),
+				'default'           => 1,
+				'description'       => esc_html__( ' Enable or disable consent logging as needed.', 'simple-consent-mode' ),
+				'sanitize_callback' => 'absint',
+				'classes'           => array( 'switch-button' ),
+				'since'             => '1.1.0',
+			),
+			array(
+				'name'              => 'log_duration',
+				'type'              => 'number',
+				'class'             => 'small-text',
+				'th'                => __( 'Duration', 'simple-consent-mode' ),
+				'default'           => 12,
+				'sanitize_callback' => 'absint',
+				'description'       => esc_html__( 'The "Log Duration" setting specifies the length of time, in months, that log entries will be retained. Once the selected duration has passed, the system will automatically delete any log entries older than the chosen period. This helps manage storage and ensures logs are only kept for a predefined, manageable timeframe.', 'simple-consent-mode' ),
+				'since'             => '1.0.0',
+			),
+			array(
+				'th'          => __( 'Export', 'simple-consent-mode' ),
+				'name'        => 'log_export',
+				'value'       => __( 'Export CSV File', 'simple-consent-mode' ),
+				'type'        => 'button',
+				'since'       => '1.1.0',
+				'description' => esc_html__( 'The "Export CSV File" feature allows you to download the consents log in a CSV format. This provides an easy way to view, analyze, and share consent data in a structured, spreadsheet-compatible file.', 'simple-consent-mode' ),
+			),
 
 			/**
 			 * About Consent Mode
@@ -399,7 +438,7 @@ function iworks_simple_consent_mode_options() {
 				'since'       => '1.0.0',
 			),
 		),
-		'metaboxes'  => array(
+		'metaboxes'       => array(
 			'assistance' => array(
 				'title'    => esc_html__( 'We are waiting for your message', 'simple-consent-mode' ),
 				'callback' => 'iworks_simple_consent_modes_options_need_assistance',
@@ -415,7 +454,7 @@ function iworks_simple_consent_mode_options() {
 				'since'    => '1.0.0',
 			),
 		),
-		'pages'      => array(),
+		'pages'           => array(),
 	);
 	return $options;
 }

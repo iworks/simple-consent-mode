@@ -30,9 +30,13 @@ class iworks_simple_consent_mode_base {
 	protected $meta_prefix = '_iw';
 	protected $base;
 	protected $dir;
-	protected $version;
 	protected $url;
 	protected $plugin_file;
+
+	/**
+	 * plugin version
+	 */
+	protected string $version = 'PLUGIN_VERSION';
 
 	/**
 	 * options
@@ -71,16 +75,18 @@ class iworks_simple_consent_mode_base {
 		 * WordPress Hooks
 		 */
 		add_action( 'init', array( $this, 'action_init' ) );
-		add_action( 'admin_init', array( $this, 'action_admin_init' ) );
+		/**
+		 * Simple Consent Mode database log table
+		 *
+		 * @since 1.1.0
+		 */
+		global $wpdb;
+		$wpdb->iworks_scm_log = $wpdb->prefix . 'iworks_scm_log';
 	}
 
 	public function action_init() {
 		$this->check_option_object();
 		$this->options->options_init();
-	}
-
-	public function action_admin_init() {
-		$this->check_option_object();
 	}
 
 	public function get_version( $file = null ) {
@@ -180,7 +186,7 @@ class iworks_simple_consent_mode_base {
 	 *
 	 * @since 1.0.0
 	 */
-	private function check_option_object() {
+	protected function check_option_object() {
 		if ( is_a( $this->options, 'iworks_options' ) ) {
 			return;
 		}

@@ -73,27 +73,10 @@ function iworks_simple_consent_mode_get_options() {
 	return $iworks_simple_consent_mode_options;
 }
 
-function iworks_simple_consent_mode_options_init() {
-	global $iworks_simple_consent_mode_options;
-	$iworks_simple_consent_mode_options->options_init();
-}
-
-function iworks_simple_consent_mode_activate() {
-	$iworks_simple_consent_mode_options = new iworks_options();
-	$iworks_simple_consent_mode_options->set_option_function_name( 'iworks_simple_consent_mode_options' );
-	$iworks_simple_consent_mode_options->set_option_prefix( IWORKS_SIMPLE_CONSENT_MODE_PREFIX );
-	$iworks_simple_consent_mode_options->activate();
-}
-
-function iworks_simple_consent_mode_deactivate() {
-	global $iworks_simple_consent_mode_options;
-	$iworks_simple_consent_mode_options->deactivate();
-}
-
 $iworks_simple_consent_mode = new iworks_simple_consent_mode();
 
 /**
  * install & uninstall
  */
-register_activation_hook( __FILE__, 'iworks_simple_consent_mode_activate' );
-register_deactivation_hook( __FILE__, 'iworks_simple_consent_mode_deactivate' );
+register_activation_hook( __FILE__, array( $iworks_simple_consent_mode, 'register_activation_hook' ) );
+register_deactivation_hook( __FILE__, array( $iworks_simple_consent_mode, 'register_deactivation_hook' ) );
