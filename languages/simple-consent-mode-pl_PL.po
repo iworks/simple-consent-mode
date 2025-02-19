@@ -1,28 +1,18 @@
-# Copyright (C) 2025 
-# This file is distributed under the same license as the  package.
+# Translation of Plugins - Simple Consent Mode - Development (trunk) in Polish
+# This file is distributed under the same license as the Plugins - Simple Consent Mode - Development (trunk) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: Plugins - Simple Consent Mode - Development (trunk)\n"
 "Report-Msgid-Bugs-To: http://iworks.pl\n"
-"POT-Creation-Date: 2025-02-19 16:40:27+00:00\n"
-"PO-Revision-Date: 2025-02-13 06:46+0100\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: pl_PL\n"
+"POT-Creation-Date: 2025-02-19 17:35:22+00:00\n"
+"PO-Revision-Date: 2025-02-19 17:34:15+0000\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 "
-"|| n%100>14) ? 1 : 2);\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
-"_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;"
-"esc_html_x:1,2c\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-Bookmarks: \n"
-"X-Textdomain-Support: yes\n"
-"X-Generator: Poedit 3.5\n"
-"X-Poedit-SearchPath-0: .\n"
+"Plural-Forms: nplurals=3; plural=(n == 1) ? 0 : ((n % 10 >= 2 && n % 10 <= 4 "
+"&& (n % 100 < 12 || n % 100 > 14)) ? 1 : 2);\n"
+"X-Generator: GlotPress/4.0.1\n"
 
 #: assets/templates/frontend/cookie/choose.php:79
 #: assets/templates/frontend/cookie/main.php:35 etc/options.php:78
@@ -61,7 +51,7 @@ msgstr ""
 #: etc/options.php:42 etc/options.php:181 etc/options.php:211
 #: etc/options.php:232 etc/options.php:243 etc/options.php:273
 msgid "You can use HTML tags in this field."
-msgstr ""
+msgstr "W tym polu możesz używać znaczników HTML."
 
 #: etc/options.php:48
 msgid "Buttons"
@@ -205,20 +195,19 @@ msgstr ""
 
 #: etc/options.php:375
 msgid "Log"
-msgstr ""
+msgstr "Dziennik"
 
 #: etc/options.php:381
 msgid "Enable"
-msgstr ""
+msgstr "Włącz"
 
 #: etc/options.php:383
 msgid " Enable or disable consent logging as needed."
-msgstr ""
+msgstr " W razie potrzeby włącz lub wyłącz rejestrowanie zgody."
 
 #: etc/options.php:392
-#, fuzzy
 msgid "Duration"
-msgstr "Opis"
+msgstr "Czas trwania"
 
 #: etc/options.php:395
 msgid ""
@@ -228,14 +217,20 @@ msgid ""
 "period. This helps manage storage and ensures logs are only kept for a "
 "predefined, manageable timeframe."
 msgstr ""
+"Ustawienie \"Czas trwania dziennika\" określa czas (w miesiącach), przez "
+"jaki wpisy dziennika będą przechowywane. Po upływie wybranego czasu system "
+"automatycznie usunie wszystkie wpisy dziennika starsze niż wybrany okres. "
+"Pomaga to w zarządzaniu pamięcią masową i zapewnia, że dzienniki są "
+"przechowywane tylko przez wstępnie zdefiniowany, możliwy do zarządzania "
+"okres."
 
 #: etc/options.php:399
 msgid "Export"
-msgstr ""
+msgstr "Eksport"
 
 #: etc/options.php:401
 msgid "Export CSV File"
-msgstr ""
+msgstr "Eksportuj plik CSV"
 
 #: etc/options.php:404
 msgid ""
@@ -243,6 +238,9 @@ msgid ""
 "CSV format. This provides an easy way to view, analyze, and share consent "
 "data in a structured, spreadsheet-compatible file."
 msgstr ""
+"Funkcja \"Eksportuj plik CSV\" umożliwia pobranie rejestru zgód w formacie "
+"CSV. Zapewnia to łatwy sposób przeglądania, analizowania i udostępniania "
+"danych zgody w ustrukturyzowanym pliku zgodnym z arkuszem kalkulacyjnym."
 
 #: etc/options.php:412
 msgid "About Consent Mode"
@@ -570,7 +568,7 @@ msgstr "http://iworks.pl/simple-consent-mode/"
 
 #. Description of the plugin/theme
 msgid "PLUGIN_TAGLINE"
-msgstr "PLUGIN_TAGLINE"
+msgstr ""
 
 #. Author of the plugin/theme
 msgid "Marcin Pietrzak"
@@ -601,36 +599,3 @@ msgstr "https://pl.wordpress.org/plugins/%s"
 msgctxt "plugins support home"
 msgid "https://wordpress.org/support/plugin/%s"
 msgstr "https://wordpress.org/support/plugin/%s"
-
-#~ msgid "Custom Consents"
-#~ msgstr "Własne zgody"
-
-#~ msgid "Functional Storage"
-#~ msgstr "Funkcjonalne"
-
-#~ msgid ""
-#~ "Manages the storage of cookies for non-essential functions like site "
-#~ "preferences, login status, and custom settings."
-#~ msgstr ""
-#~ "Zarządza przechowywaniem plików ciasteczek dla funkcji niebędących "
-#~ "niezbędnymi, takich jak preferencje witryny, status logowania i inne "
-#~ "ustawienia."
-
-#~ msgid "Show"
-#~ msgstr "Pokaż"
-
-#~ msgid "Functionality"
-#~ msgstr "Funkcjonalność"
-
-#~ msgid "Personalization Storage"
-#~ msgstr "Przechowywanie"
-
-#~ msgid ""
-#~ "Regulates whether data used to provide personalized user experiences "
-#~ "(like content recommendations) can be stored."
-#~ msgstr ""
-#~ "Reguluje, czy dane służące do zapewniania użytkownikom spersonalizowanych "
-#~ "doświadczeń (np. rekomendacji treści) mogą być przechowywane."
-
-#~ msgid "Personalizations"
-#~ msgstr "Personalizacje"
