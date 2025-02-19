@@ -62,7 +62,7 @@ module.exports = function(grunt) {
 			'!assets/scripts/src/**',
 			'!assets/scss/**',
 			'!assets/styles/frontend/**',
-			'!includes/iworks/class-simple-consent-mode-github.php',
+			'!includes/iworks/**/class-simple-consent-mode-github.php',
 			'!includes/pro/**',
 			'!languages/*.mo',
 			'!languages/*.po',
