@@ -70,7 +70,8 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-c
 
 = 1.1.0 - 2025-02-19 =
 
-* The Consent Log has been added.  [#1](https://github.com/iworks/simple-consent-mode/issues/1)
+* The Consent Log has been added. [#1](https://github.com/iworks/simple-consent-mode/issues/1).
+* In the description fields you can use HMTL tags now. [#2](https://github.com/iworks/simple-consent-mode/issues/2). Props for [sylwiastein](https://github.com/sylwiastein).
 
 = 1.0.0 - 2025-02-13 =
 

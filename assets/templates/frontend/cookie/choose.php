@@ -38,12 +38,12 @@ foreach ( $configuration as $one ) {
 				esc_attr( $one['codename'] ),
 				checked( in_array( $one['codename'], $cookie_value_consents ), true, false )
 			);
-			echo wp_kses_post( wpautop( esc_html( $options->get_option( $one['name'] ) ) ) );
+			echo wpautop( esc_html( $options->get_option( $one['name'] ) ) );
 			echo '</dt>';
 			break;
 		case 'desc':
 			echo '<dd>';
-			echo wp_kses_post( wpautop( esc_html( $options->get_option( $one['name'] ) ) ) );
+			echo wp_kses_post( wpautop( $options->get_option( $one['name'] ) ) );
 			echo '</dd>';
 			break;
 	}
