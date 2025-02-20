@@ -48,8 +48,8 @@ class iworks_simple_consent_mode_wp_admin extends iworks_simple_consent_mode_bas
 	 */
 	public function plugin_row_meta( $links, $file ) {
 		if ( $this->dir . '/simple-consent-mode.php' == $file ) {
-			if ( ! is_multisite() && current_user_can( $this->capability ) ) {
-				$links[] = '<a href="admin.php?page=' . $this->dir . '/admin/index.php">' . __( 'Settings', 'simple-consent-mode' ) . '</a>';
+			if ( ! is_multisite() && current_user_can( $this->get_capability() ) ) {
+				$links[] = '<a href="options-general.php?page=iw_scm_index">' . __( 'Settings', 'simple-consent-mode' ) . '</a>';
 			}
 			/* start:free */
 			$links[] = '<a href="http://iworks.pl/donate/simple-consent-mode.php">' . __( 'Donate', 'simple-consent-mode' ) . '</a>';

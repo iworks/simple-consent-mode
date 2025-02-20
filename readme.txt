@@ -71,6 +71,8 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-c
 = 1.1.1 - 2025-02-20 =
 
 * A typo in code has been fixed. [#3](https://github.com/iworks/simple-consent-mode/issues/3).
+* The Plugins row setting link has been fixed.
+* The capability to setting page has been fixed.
 
 = 1.1.0 - 2025-02-19 =
 

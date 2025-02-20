@@ -34,6 +34,11 @@ class iworks_simple_consent_mode_base {
 	protected $plugin_file;
 
 	/**
+	 * plugin settings capability
+	 */
+	private string $capability = 'manage_options';
+
+	/**
 	 * plugin version
 	 */
 	protected string $version = 'PLUGIN_VERSION';
@@ -110,7 +115,7 @@ class iworks_simple_consent_mode_base {
 		return $this->post_type;
 	}
 
-	public function get_this_capability() {
+	public function get_capability() {
 		return $this->capability;
 	}
 

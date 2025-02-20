@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - Simple Consent Mode - Development (trunk)\n"
 "Report-Msgid-Bugs-To: http://iworks.pl\n"
-"POT-Creation-Date: 2025-02-19 17:35:22+00:00\n"
+"POT-Creation-Date: 2025-02-20 20:58:12+00:00\n"
 "PO-Revision-Date: 2025-02-19 17:34:15+0000\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -377,7 +377,7 @@ msgid "WordPress Help Forum"
 msgstr "Forum pomocy WordPressa"
 
 #. translators: %1$s template site name, %2$s template slug, %3$s template name
-#: includes/iworks/class-simple-consent-mode-base.php:172
+#: includes/iworks/class-simple-consent-mode-base.php:177
 msgid "Missing template file: %1$s/%2$s/%3$s."
 msgstr "Brak pliku szablonu: %1$s/%2$s/%3$s."
 

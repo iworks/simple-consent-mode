@@ -27,8 +27,6 @@ require_once( dirname( __FILE__ ) . '/class-simple-consent-mode-base.php' );
 
 class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 
-	private $capability;
-
 	/**
 	 * configuration
 	 *
