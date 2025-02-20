@@ -400,9 +400,9 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 	public function register_activation_hook() {
 		$this->db_install();
 		$this->check_option_object();
-		$this - options->set_option_function_name( 'iworks_simple_consent_mode_options' );
-		$this - options->set_option_prefix( IWORKS_SIMPLE_CONSENT_MODE_PREFIX );
-		$this - options->activate();
+		$this->options->set_option_function_name( 'iworks_simple_consent_mode_options' );
+		$this->options->set_option_prefix( IWORKS_SIMPLE_CONSENT_MODE_PREFIX );
+		$this->options->activate();
 		do_action( 'iworks/simple-consent-mode/register_activation_hook' );
 	}
 
@@ -413,7 +413,7 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 	 */
 	public function register_deactivation_hook() {
 		$this->check_option_object();
-		$this - options->deactivate();
+		$this->options->deactivate();
 		do_action( 'iworks/simple-consent-mode/register_deactivation_hook' );
 	}
 

@@ -68,6 +68,10 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-c
 == Changelog ==
 
 
+= 1.1.1 - 2025-02-20 =
+
+* A typo in code has been fixed. [#3](https://github.com/iworks/simple-consent-mode/issues/3).
+
 = 1.1.0 - 2025-02-19 =
 
 * The Consent Log has been added. [#1](https://github.com/iworks/simple-consent-mode/issues/1).
