@@ -45,7 +45,7 @@ class iworks_simple_consent_mode_github extends iworks_simple_consent_mode_base 
 		load_plugin_textdomain(
 			'simple-consent-mode',
 			false,
-			plugin_basename( dirname( $this->dir ) ) . '/languages'
+			plugin_basename( $this->dir ) . '/languages'
 		);
 	}
 }
