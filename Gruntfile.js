@@ -127,6 +127,9 @@ module.exports = function(grunt) {
 			match: /PLUGIN_TAGLINE/g,
 			replace: '<%= pkg.tagline %>'
 		}, {
+			match: /PLUGIN_TAGS/g,
+			replace: '<%= pkg.tags.join(", ") %>'
+		}, {
 			match: /PLUGIN_TILL_YEAR/g,
 			replace: buildyear
 		}, {
@@ -173,7 +176,7 @@ module.exports = function(grunt) {
 				stripBanners: true,
 				banner: '/*! <%= pkg.title %> - <%= pkg.version %>\n' +
 				' * <%= pkg.homepage %>\n' +
-				' * Copyright (c) <%= grunt.template.today("yyyy") %>;' +
+				' * Copyright (c) <%= grunt.template.today("yyyy") %>;\n' +
 				' * Licensed <%= pkg.license %>' +
 				' */\n'
 			},
@@ -221,7 +224,7 @@ module.exports = function(grunt) {
 				options: {
 					banner: '/*! <%= pkg.title %> - <%= pkg.version %>\n' +
 					' * <%= pkg.homepage %>\n' +
-					' * Copyright (c) <%= grunt.template.today("yyyy") %>;' +
+					' * Copyright (c) <%= grunt.template.today("yyyy") %>;\n' +
 					' * Licensed <%= pkg.license %>' +
 					' */\n',
 					mangle: {
@@ -300,7 +303,7 @@ module.exports = function(grunt) {
 				files: [
 					'assets/sass/*.scss',
 					'assets/sass/**/*.scss',
-					'inc/modules/**/*.scss'
+					'include/modules/**/*.scss'
 				],
 				tasks: ['sass', 'concat_css', 'cssmin'],
 				options: {

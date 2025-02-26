@@ -3,8 +3,15 @@
     "title": "Simple Consent Mode",
     "tagline": "Simple Consent Mode",
     "description": "Simple Consent Mode for Europe and GTM.",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "homepage": "http://simple-consent-mode.iworks.pl/",
+    "tags": [
+        "consent mode",
+        "cookie banner",
+        "cookie consent",
+        "cookie notice",
+        "gdpr"
+    ],
     "author": [
         {
             "name": "Marcin Pietrzak",
