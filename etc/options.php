@@ -85,20 +85,69 @@ function iworks_simple_consent_mode_options() {
 			 */
 			array(
 				'type'  => 'heading',
-				'label' => __( 'Colors', 'simple-consent-mode' ),
+				'label' => __( 'Design', 'simple-consent-mode' ),
 				'since' => '1.0.0',
 			),
 			array(
 				'type'  => 'subheading',
-				'label' => __( 'Box', 'simple-consent-mode' ),
+				'label' => __( 'Dialog', 'simple-consent-mode' ),
 				'since' => '1.0.0',
+			),
+			array(
+				'name'              => 'd_logo',
+				'type'              => 'image',
+				'th'                => __( 'Logo', 'simple-consent-mode' ),
+				'sanitize_callback' => 'absint',
+				'since'             => '1.1.2',
+				'max-height' => 100,
+			),
+			array(
+				'name'              => 'd_max_width',
+				'type'              => 'number',
+				'class'             => 'small-text',
+				'th'                => __( 'Max Width', 'simple-consent-mode' ),
+				'label'             => __( 'px', 'simple-consent-mode' ),
+				'default'           => 900,
+				'sanitize_callback' => 'absint',
+				'since'             => '1.1.2',
+			),
+			array(
+				'name'              => 'd_border_radius',
+				'type'              => 'number',
+				'class'             => 'small-text',
+				'th'                => __( 'Border Radius', 'simple-consent-mode' ),
+				'label'             => __( 'px', 'simple-consent-mode' ),
+				'default'           => 5,
+				'sanitize_callback' => 'absint',
+				'since'             => '1.1.2',
+			),
+			array(
+				'name'              => 'c_bg',
+				'type'              => 'wpColorPicker',
+				'class'             => 'short-text',
+				'th'                => __( 'Background', 'simple-consent-mode' ),
+				'default'           => '#fff',
+				'sanitize_callback' => 'sanitize_hex_color',
+				'since'             => '1.0.0',
+			),
+			array(
+				'name'              => 'c_backdrop',
+				'type'              => 'wpColorPicker',
+				'class'             => 'short-text',
+				'th'                => __( 'Backdrop', 'simple-consent-mode' ),
+				'default'           => 'rgba(0,0,0,.7)',
+				'sanitize_callback' => 'sanitize_hex_color',
+				'since'             => '1.0.0',
+				'data'              => array(
+					'enableAlpha' => true,
+				),
 			),
 			array(
 				'name'              => 'c_primary',
 				'type'              => 'wpColorPicker',
 				'class'             => 'short-text',
 				'th'                => __( 'Primary', 'simple-consent-mode' ),
-				'default'           => '#fff',
+				'default'           => '#000',
 				'sanitize_callback' => 'sanitize_hex_color',
 				'since'             => '1.0.0',
 			),
@@ -107,7 +156,7 @@ function iworks_simple_consent_mode_options() {
 				'type'              => 'wpColorPicker',
 				'class'             => 'short-text',
 				'th'                => __( 'Accent', 'simple-consent-mode' ),
-				'default'           => '#97f',
+				'default'           => '#1f883d',
 				'sanitize_callback' => 'sanitize_hex_color',
 				'since'             => '1.0.0',
 			),
@@ -275,14 +324,14 @@ function iworks_simple_consent_mode_options() {
 			),
 			/**
 			 * Custom Consents
-			 * /
+			 */
 			array(
 				'type'  => 'heading',
 				'label' => esc_html__( 'Custom Consents', 'simple-consent-mode' ),
 			),
 			/**
 			 * functional_storage
-			 * /
+			 */
 			array(
 				'type'        => 'subheading',
 				'label'       => esc_html__( 'Functional Storage', 'simple-consent-mode' ),
@@ -292,6 +341,14 @@ function iworks_simple_consent_mode_options() {
 				'name'              => 'fust_show',
 				'type'              => 'checkbox',
 				'th'                => esc_html__( 'Show', 'simple-consent-mode' ),
+				'default'           => 0,
+				'sanitize_callback' => 'absint',
+				'classes'           => array( 'switch-button' ),
+			),
+			array(
+				'name'              => 'fust_on',
+				'type'              => 'checkbox',
+				'th'                => esc_html__( 'Always on', 'simple-consent-mode' ),
 				'default'           => 0,
 				'sanitize_callback' => 'absint',
 				'classes'           => array( 'switch-button' ),
@@ -314,7 +371,7 @@ function iworks_simple_consent_mode_options() {
 			),
 			/**
 			 * personalization_storage
-			 * /
+			 */
 			array(
 				'type'        => 'subheading',
 				'label'       => esc_html__( 'Personalization Storage', 'simple-consent-mode' ),
@@ -390,6 +447,7 @@ function iworks_simple_consent_mode_options() {
 				'type'              => 'number',
 				'class'             => 'small-text',
 				'th'                => __( 'Duration', 'simple-consent-mode' ),
+				'label'             => __( 'Months', 'simple-consent-mode' ),
 				'default'           => 12,
 				'sanitize_callback' => 'absint',
 				'description'       => esc_html__( 'The "Log Duration" setting specifies the length of time, in months, that log entries will be retained. Once the selected duration has passed, the system will automatically delete any log entries older than the chosen period. This helps manage storage and ensures logs are only kept for a predefined, manageable timeframe.', 'simple-consent-mode' ),

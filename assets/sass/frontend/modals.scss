@@ -2,18 +2,22 @@
 
 .scm {
 	&-modal {
+		background: {
+			color: var(--scm-color-bg, #fff);
+		}
+		border: {
+			radius: var(--scm-border-radius, 0 );
+			width: 0;
+		}
 		padding: var(--scm-spacer-16);
+		max: {
+			width: var( --scm-max-length, 24em );;
+		}
+		&::backdrop {
+			background-color: var(--scm-color-backdrop, rgba( 0, 0, 0, .7 ) );
+		}
 		&s {
 			&-container {
-				bottom: 1em;
-				box-sizing: border-box;
-				display: flex ;
-				flex-wrap: nowrap;
-				max-width: 24em;
-				overflow: hidden;
-				position: fixed;
-				right: 1em;
-				z-index: 2147483643;
 			}
 		}
 	}

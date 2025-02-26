@@ -47,7 +47,7 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 		add_action( 'wp_footer', array( $this, 'action_wp_footer' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'action_wp_enqueue_scripts_register_assets' ), 0 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'action_wp_enqueue_scripts_enqueue_assets' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'action_wp_enqueue_scripts_add_colors' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'action_wp_enqueue_scripts_add_css_variables' ) );
 		add_action( 'wp_ajax_simple_consent_mode_save_log', array( $this, 'action_ajax_save_log' ) );
 		add_action( 'wp_ajax_nopriv_simple_consent_mode_save_log', array( $this, 'action_ajax_save_log' ) );
 		add_action( 'shutdown', array( $this, 'action_shutdown_maybe_delete_log' ) );
@@ -65,6 +65,10 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 		 * iWorks Rate Class
 		 */
 		add_filter( 'iworks_rate_notice_logo_style', array( $this, 'filter_plugin_logo' ), 10, 2 );
+		/**
+		 * iWorks Options Hooks
+		 */
+		add_filter( 'iworks/option/get/simple-consent-mode.php/index/d_logo', array( $this, 'maybe_get_logo_from_other_settings' ) );
 		/**
 		 * load github class
 		 */
@@ -136,7 +140,7 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 			'icon',
 			'main',
 		);
-		echo '<div class="scm-modals-container">';
+		echo '<div id="scm-modals" class="scm-modals-container">';
 		foreach ( $files as $file ) {
 			$filename = $this->get_template_file_name( 'cookie', $file );
 			if ( is_wp_error( $filename ) ) {
@@ -227,19 +231,7 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 			),
 			'modals'   => array(
 				'choose' => array(
-					'buttons' => array(
-						array(
-							'data'            => array(
-								'action' => 'close',
-							),
-							'container_class' => 'scm-modal-button-container',
-							'classes'         => array(
-								'scm-modal-button',
-								'scm-modal-button-close',
-							),
-							'value'           => $this->options->get_option( 'btn_close' ),
-						),
-					),
+					'buttons' => array(),
 				),
 				'icon'   => array(),
 				'main'   => array(
@@ -259,35 +251,45 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 			);
 		}
 		/**
-		 * hide
+		 * hide icon
 		 */
-		$this->configuration['modals']['choose']['classes'][] = 'hidden';
 		if ( empty( $cookie_value ) ) {
 			$this->configuration['modals']['icon']['classes'][] = 'hidden';
-		} else {
-			$this->configuration['modals']['main']['classes'][] = 'hidden';
 		}
 		/**
 		 * buttons
 		 */
 		$buttons = array(
-			'allow',
-			'choose',
-			'deny',
+			'main'   => array(
+				'allow',
+				'choose',
+			),
+			'choose' => array(
+				'allow',
+				'save',
+				'deny',
+			),
 		);
-		foreach ( $buttons as $button ) {
-			$this->configuration['modals']['main']['buttons'][] = array(
-				'data'            => array(
-					'action' => $button,
-				),
-				'container_class' => 'scm-modal-button-container',
-				'classes'         => array(
-					'scm-modal-button',
-					sprintf( 'scm-modal-button-%s', $button ),
-				),
-				'value'           => $this->options->get_option( sprintf( 'btn_%s', $button ) ),
-			);
+		foreach ( $buttons as $dialog_id => $dialog_buttons ) {
+			foreach ( $dialog_buttons as $button ) {
+				$this->configuration['modals'][ $dialog_id ]['buttons'][] = array(
+					'data'            => array(
+						'action' => $button,
+					),
+					'container_class' => 'scm-modal-button-container',
+					'classes'         => array(
+						'scm-modal-button',
+						sprintf( 'scm-modal-button-%s', $button ),
+					),
+					'value'           => $this->options->get_option( sprintf( 'btn_%s', $button ) ),
+				);
+			}
 		}
+		/**
+		 * filter allow to change plugin frontend configuration
+		 *
+		 * @since 1.0.0
+		 */
 		return apply_filters(
 			'iworks/simple_consent_mode/configuration',
 			$this->configuration
@@ -332,9 +334,11 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 		wp_localize_script( $name, 'simple_consent_mode_data', $this->get_configuration() );
 	}
 
-	public function action_wp_enqueue_scripts_add_colors() {
+	public function action_wp_enqueue_scripts_add_css_variables() {
 		$css    = ':root {';
 		$colors = array(
+			'c_bg',
+			'c_backdrop',
 			'c_primary',
 			'c_accent',
 			'c_checkbox',
@@ -342,15 +346,27 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 			'i_accent',
 		);
 		foreach ( $colors as $name ) {
+			$value = $this->options->get_option( $name );
+			if ( empty( $value ) ) {
+				continue;
+			}
 			$code   = preg_replace( '/^._/', '', $name );
 			$prefix = '';
 			if ( preg_match( '/^i_/', $name ) ) {
 				$prefix = '-icon';
 			}
 			$css .= sprintf( '--scm-color%s-%s:', esc_attr( $prefix ), esc_attr( $code ) );
-			$css .= esc_attr( $this->options->get_option( $name ) );
+			$css .= esc_attr( $value );
 			$css .= ';';
 		}
+		$css .= sprintf(
+			'--scm-max-length: %dpx;',
+			$this->options->get_option( 'd_max_width' )
+		);
+		$css .= sprintf(
+			'--scm-border-radius: %dpx;',
+			$this->options->get_option( 'd_border_radius' )
+		);
 		$css .= '}';
 		wp_add_inline_style( $this->options->get_option_name( 'frontend' ), $css );
 	}
@@ -464,13 +480,13 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 				key ( consent_date ),
 				key ( user_id )
 			) $charset_collate;";
-			dbDelta( $sql );
+			dbdelta( $sql );
 			update_option( $option_name_db_version, $install );
 		}
 	}
 
 	/**
-	 * Insert Simple Cookie Mode Log element.
+	 * insert simple cookie mode log element.
 	 *
 	 * @since 1.1.0
 	 */
@@ -482,22 +498,22 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 		$keys   = array(
 			'consent_value',
 			'url',
-			'appCodeName',
-			'appName',
-			'appVersion',
+			'appcodename',
+			'appname',
+			'appversion',
 			'language',
 			'oscpu',
 			'platform',
 			'product',
-			'productSub',
-			'userAgent',
+			'productsub',
+			'useragent',
 			'vendor',
-			'vendorSub',
+			'vendorsub',
 		);
 		$data   = array(
 			'user_id'        => get_current_user_id(),
-			'ip'             => $_SERVER['REMOTE_ADDR'],
-			'ipx'            => isset( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : '',
+			'ip'             => $_server['remote_addr'],
+			'ipx'            => isset( $_server['http_x_forwarded_for'] ) ? $_server['http_x_forwarded_for'] : '',
 			'cookie_version' => $this->options->get_option( 'cookie_version' ),
 			'cookie_name'    => $this->get_cookie_name(),
 		);
@@ -509,7 +525,7 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 			'%s',
 		);
 		foreach ( $keys as $key ) {
-			$data[ $key ] = strip_tags( filter_input( INPUT_POST, $key ) );
+			$data[ $key ] = strip_tags( filter_input( input_post, $key ) );
 			$format[]     = '%s';
 		}
 		global $wpdb;
@@ -535,9 +551,29 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 		$wpdb->query(
 			$wpdb->prepare(
 				"delete from {$wpdb->iworks_scm_log} where consent_date < %s",
-				date( 'Y-m-d 00:00:00', strtotime( sprintf( '-%d months', $months ) ) ),
+				date( 'y-m-d 00:00:00', strtotime( sprintf( '-%d months', $months ) ) ),
 			)
 		);
+	}
+
+	/**
+	 * Try to use logo from settings or another plugin.
+	 *
+	 * Only when empty!
+	 *
+	 * @since 1.2.0
+	 */
+	public function maybe_get_logo_from_other_settings( $logo_id ) {
+		if ( ! empty( $logo_id ) ) {
+			return $logo_id;
+		}
+		$site_icon_id = intval( get_option('site_icon') );
+		if ( ! empty( $site_icon_id ) ) {
+			return $site_icon_id;
+		}
+
+
+			return $logo_id;
 	}
 
 }

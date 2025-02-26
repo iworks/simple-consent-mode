@@ -1,6 +1,7 @@
-/*! Simple Consent Mode - 1.1.1
+/*! Simple Consent Mode - 1.1.2
  * http://simple-consent-mode.iworks.pl/
- * Copyright (c) 2025; * Licensed GPL-3.0 */
+ * Copyright (c) 2025;
+ * Licensed GPL-3.0 */
 window.simple_consent_mode = window.simple_consent_mode || [];
 window.simple_consent_mode.functions = window.simple_consent_mode.functions || [];
 /**
@@ -21,6 +22,8 @@ window.addEventListener('load', function(event) {
 	 */
 	if (Object.keys(window.simple_consent_mode_data.consents).length) {
 		gtag('consent', 'update', window.simple_consent_mode_data.consents);
+	} else {
+		document.getElementById(window.simple_consent_mode_data.modals.main.id).showModal();
 	}
 	/**
 	 * checkbox
@@ -93,10 +96,11 @@ window.addEventListener('load', function(event) {
 					show.main = true;
 					break;
 			}
+			l(show.main);
 			if (show.main) {
-				document.getElementById(window.simple_consent_mode_data.modals.main.id).classList.remove('hidden');
+				document.getElementById(window.simple_consent_mode_data.modals.main.id).showModal();
 			} else {
-				document.getElementById(window.simple_consent_mode_data.modals.main.id).classList.add('hidden');
+				document.getElementById(window.simple_consent_mode_data.modals.main.id).close();
 			}
 			if (show.icon) {
 				document.getElementById(window.simple_consent_mode_data.modals.icon.id).classList.remove('hidden');
@@ -104,9 +108,9 @@ window.addEventListener('load', function(event) {
 				document.getElementById(window.simple_consent_mode_data.modals.icon.id).classList.add('hidden');
 			}
 			if (show.choose) {
-				document.getElementById(window.simple_consent_mode_data.modals.choose.id).classList.remove('hidden');
+				document.getElementById(window.simple_consent_mode_data.modals.choose.id).showModal();
 			} else {
-				document.getElementById(window.simple_consent_mode_data.modals.choose.id).classList.add('hidden');
+				document.getElementById(window.simple_consent_mode_data.modals.choose.id).close();
 			}
 		});
 	}
