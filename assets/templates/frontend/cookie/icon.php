@@ -2,10 +2,10 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 <div
-	id="<?php echo esc_attr( $args['modals']['icon']['id'] ); ?>"
-	class="<?php echo esc_attr( implode( ' ', $args['modals']['icon']['classes'] ) ); ?>"
+	id="<?php echo esc_attr( $args['icon']['id'] ); ?>"
+	class="<?php echo esc_attr( implode( ' ', $args['icon']['classes'] ) ); ?>"
 >
-	<button class="scm-modal-button" data-action="show">
+	<button class="scm-dialog-button" data-action="show">
 <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" >
 <path fill="var(--scm-color-icon-primary)" d="m 660.9,391.8 c -14.9,7 -31.2,10.6 -47.9,10.6 -20,0 -39.7,-5.2 -57,-15.3 -32.4,-18.7 -53.3,-52 -56.6,-88.7 -36.8,-3.2 -70.2,-24.3 -88.8,-56.5 C 392,209.4 390.7,170.1 406,136.8 382.4,120.3 366.1,95.59 360,67.48 280,70.05 206.8,98.93 148.2,145.7 l -88.36,131.6 -0.19,0.2 c -3.76,10.4 -7.04,21.1 -9.86,32.1 -7.46,28.7 -11.47,59 -11.47,90.3 0,199.3 162.28,361.5 361.58,361.5 78.8,0 151.9,-25.5 211.4,-68.4 1.1,-1.2 2.8,-2.3 4.8,-3.5 22.2,-16.7 42.5,-35.8 60.4,-57.1 l 49.1,-146 c 2.7,-15.9 4.2,-32.2 4.8,-48.7 -28.2,-6 -52.8,-22.3 -69.5,-45.9 z" />
 <circle r="81" cy="271" cx="307" />

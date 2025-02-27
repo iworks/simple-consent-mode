@@ -23,25 +23,84 @@ function iworks_simple_consent_mode_options() {
 				'label' => esc_html__( 'Main', 'simple-consent-mode' ),
 				'since' => '1.0.0',
 			),
+			/**
+			 * Consent
+			 */
 			array(
-				'name'              => 'm_main_show',
-				'type'              => 'checkbox',
-				'th'                => esc_html__( 'Show Description', 'simple-consent-mode' ),
-				'default'           => 1,
-				'sanitize_callback' => 'absint',
-				'classes'           => array( 'switch-button' ),
-				'since'             => '1.0.0',
+				'type'  => 'subheading',
+				'label' => esc_html__( 'Consent', 'simple-consent-mode' ),
+				'since' => '1.2.0',
+			),
+			array(
+				'name'              => 'm_main_title',
+				'type'              => 'text',
+				'th'                => esc_html__( 'Title', 'simple-consent-mode' ),
+				'sanitize_callback' => 'esc_html',
+				'default'           => __( 'Consent', 'simple-consent-mode' ),
+				'since'             => '1.2.0',
 			),
 			array(
 				'name'              => 'm_main_desc',
 				'type'              => 'textarea',
-				'th'                => esc_html__( 'Consents Modal Description', 'simple-consent-mode' ),
+				'th'                => esc_html__( 'Description', 'simple-consent-mode' ),
 				'sanitize_callback' => 'wp_kses_post',
 				'classes'           => array( 'large-text' ),
 				'default'           => esc_html__( 'This website uses cookies to ensure you get the best experience on our website.', 'simple-consent-mode' ),
 				'description'       => esc_html__( 'You can use HTML tags in this field.', 'simple-consent-mode' ),
 				'rows'              => 10,
 				'since'             => '1.0.0',
+			),
+			/**
+			 * Details
+			 */
+			array(
+				'type'  => 'subheading',
+				'label' => esc_html__( 'Details', 'simple-consent-mode' ),
+				'since' => '1.2.0',
+			),
+			array(
+				'name'              => 'm_details_title',
+				'type'              => 'text',
+				'th'                => esc_html__( 'Title', 'simple-consent-mode' ),
+				'sanitize_callback' => 'esc_html',
+				'default'           => __( 'Details', 'simple-consent-mode' ),
+				'since'             => '1.2.0',
+			),
+			/**
+			 * Consent
+			 */
+			array(
+				'type'  => 'subheading',
+				'label' => esc_html__( 'About Cookies', 'simple-consent-mode' ),
+				'since' => '1.2.0',
+			),
+			array(
+				'name'              => 'm_about_title',
+				'type'              => 'text',
+				'th'                => esc_html__( 'Title', 'simple-consent-mode' ),
+				'sanitize_callback' => 'esc_html',
+				'default'           => __( 'About Cookies', 'simple-consent-mode' ),
+				'since'             => '1.2.0',
+			),
+			array(
+				'name'              => 'm_about_desc',
+				'type'              => 'textarea',
+				'th'                => esc_html__( 'Description', 'simple-consent-mode' ),
+				'sanitize_callback' => 'wp_kses_post',
+				'classes'           => array( 'large-text' ),
+				'default'           => wpautop(
+					implode(
+						PHP_EOL . PHP_EOL,
+						array(
+							esc_html__( 'Cookies are small data files stored on your device by websites to remember your preferences, login details, or actions. There are different types, including session cookies (temporary) and persistent cookies (long-term). They help personalize your browsing experience but can also track your online behavior.', 'simple-consent-mode' ),
+							esc_html__( 'Consent refers to the permission websites must obtain from users before using cookies that collect personal data. Laws like the GDPR require websites to ask for explicit consent through cookie banners, allowing users to accept or reject cookies and control their privacy. You can also withdraw consent at any time, typically through the website’s privacy settings, which lets you manage or delete stored cookies whenever you choose.p', 'simple-consent-mode' ),
+							esc_html__( 'For more details on how a website uses cookies and collects data, you can refer to the website’s privacy policy. This document outlines the types of cookies used, data collected, and how your information is stored or shared. It also explains how you can manage your preferences.', 'simple-consent-mode' ),
+						)
+					)
+				),
+				'description'       => esc_html__( 'You can use HTML tags in this field.', 'simple-consent-mode' ),
+				'rows'              => 10,
+				'since'             => '1.2.0',
 			),
 			array(
 				'type'  => 'subheading',
@@ -94,14 +153,6 @@ function iworks_simple_consent_mode_options() {
 				'since' => '1.0.0',
 			),
 			array(
-				'name'              => 'd_logo',
-				'type'              => 'image',
-				'th'                => __( 'Logo', 'simple-consent-mode' ),
-				'sanitize_callback' => 'absint',
-				'since'             => '1.1.2',
-				'max-height' => 100,
-			),
-			array(
 				'name'              => 'd_max_width',
 				'type'              => 'number',
 				'class'             => 'small-text',
@@ -152,14 +203,84 @@ function iworks_simple_consent_mode_options() {
 				'since'             => '1.0.0',
 			),
 			array(
-				'name'              => 'c_accent',
+				'type'  => 'subheading',
+				'label' => __( 'Logo', 'simple-consent-mode' ),
+				'since' => '1.2.0',
+			),
+			/**
+			 * Logo
+			 */
+			array(
+				'name'              => 'd_logo',
+				'type'              => 'image',
+				'th'                => __( 'Logo', 'simple-consent-mode' ),
+				'sanitize_callback' => 'absint',
+				'since'             => '1.2.0',
+				'max-height'        => 100,
+			),
+			array(
+				'name'              => 'd_logo_max_height',
+				'type'              => 'number',
+				'class'             => 'small-text',
+				'th'                => __( 'Max Height', 'simple-consent-mode' ),
+				'label'             => __( 'px', 'simple-consent-mode' ),
+				'default'           => 48,
+				'sanitize_callback' => 'absint',
+				'since'             => '1.2.0',
+			),
+			/**
+			 * Button Primary
+			 */
+			array(
+				'type'  => 'subheading',
+				'label' => __( 'Button Primary', 'simple-consent-mode' ),
+				'since' => '1.0.0',
+			),
+			array(
+				'name'              => 'c_btn_pri_text',
 				'type'              => 'wpColorPicker',
 				'class'             => 'short-text',
-				'th'                => __( 'Accent', 'simple-consent-mode' ),
+				'th'                => __( 'Text', 'simple-consent-mode' ),
+				'default'           => '#fff',
+				'sanitize_callback' => 'sanitize_hex_color',
+				'since'             => '1.2.0',
+			),
+			array(
+				'name'              => 'c_btn_pri_bg',
+				'type'              => 'wpColorPicker',
+				'class'             => 'short-text',
+				'th'                => __( 'Background', 'simple-consent-mode' ),
 				'default'           => '#1f883d',
 				'sanitize_callback' => 'sanitize_hex_color',
-				'since'             => '1.0.0',
+				'since'             => '1.2.0',
 			),
+			/**
+			 * Button
+			 */
+			array(
+				'type'  => 'subheading',
+				'label' => __( 'Button', 'simple-consent-mode' ),
+				'since' => '1.0.0',
+			),
+			array(
+				'name'              => 'c_btn_text',
+				'type'              => 'wpColorPicker',
+				'class'             => 'short-text',
+				'th'                => __( 'Text', 'simple-consent-mode' ),
+				'default'           => '#d0d0d0',
+				'sanitize_callback' => 'sanitize_hex_color',
+				'since'             => '1.2.0',
+			),
+			array(
+				'name'              => 'c_btn_bg',
+				'type'              => 'wpColorPicker',
+				'class'             => 'short-text',
+				'th'                => __( 'Background', 'simple-consent-mode' ),
+				'default'           => '#fff',
+				'sanitize_callback' => 'sanitize_hex_color',
+				'since'             => '1.2.0',
+			),
+
 			array(
 				'name'              => 'c_checkbox',
 				'type'              => 'wpColorPicker',

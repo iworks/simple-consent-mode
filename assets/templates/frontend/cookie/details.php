@@ -1,12 +1,17 @@
+<?php defined( 'ABSPATH' ) || exit; ?>
+<?php $key = preg_replace( '/\.php$/', '', basename( __FILE__ ) ); ?>
 <?php
-defined( 'ABSPATH' ) || exit;
 $options       = iworks_simple_consent_mode_get_options();
 $configuration = iworks_simple_consent_mode_options();
 $configuration = $configuration['index']['options'];
 $cookie_value  = isset( $args['cookie'] ) && isset( $args['cookie']['value'] ) ? $args['cookie']['value'] : '';
-?><dialog
-	id="<?php echo esc_attr( $args['modals']['choose']['id'] ); ?>"
-	class="<?php echo esc_attr( implode( ' ', $args['modals']['choose']['classes'] ) ); ?>"
+?>
+<div
+	id="<?php echo esc_attr( $args['tabs'][ $key ]['id'] ); ?>"
+	class="<?php echo esc_attr( implode( ' ', $args['tabs'][ $key ]['classes'] ) ); ?>"
+	role="tabpanel"
+	aria-labelledby="<?php echo esc_attr( $args['tabs'][ $key ]['id'] ); ?>-tab"
+	aria-expanded="false"
 >
 <dl>
 <?php
@@ -30,9 +35,9 @@ foreach ( $configuration as $one ) {
 	switch ( $matches[2] ) {
 		case 'title':
 			echo '<dt>';
-			echo '<label class="scm-modal-switch">';
+			echo '<label class="scm-dialog-switch">';
 			printf(
-				'<input type="checkbox" id="%s" name="%s" value="%s" class="scm-modal-switch-checkbox" %s>',
+				'<input type="checkbox" id="%s" name="%s" value="%s" class="scm-dialog-switch-checkbox" %s>',
 				esc_attr( $one['name'] ),
 				esc_attr( $matches[1] ),
 				esc_attr( $one['codename'] ),
@@ -50,31 +55,5 @@ foreach ( $configuration as $one ) {
 }
 ?>
 </dl>
-		<ul class="scm-modal-buttons">
-<?php
-foreach ( $args['modals']['choose']['buttons'] as $button ) {
-	$data = '';
-	if ( isset( $button['data'] ) ) {
-		foreach ( $button['data'] as $data_key => $data_value ) {
-			$data .= sprintf(
-				' data-%s="%s"',
-				esc_attr( $data_key ),
-				esc_attr( $data_value )
-			);
-		}
-	}
-	printf( '<li class="%s">', esc_attr( $button['container_class'] ) );
-	printf(
-		'<button class="%s"%s>%s</button>',
-		esc_attr( implode( ' ', $button['classes'] ) ),
-		/* $data is already escaped above in a foreach() */
-		$data,
-		esc_html( $button['value'] )
-	);
-	echo '</li>';
-}
-?>
-		</ul>
-	</footer>
-</dialog>
+</div>
 

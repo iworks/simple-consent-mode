@@ -136,11 +136,9 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 	public function action_wp_footer() {
 		$args  = $this->get_configuration();
 		$files = array(
-			'choose',
 			'icon',
-			'main',
+			'dialog',
 		);
-		echo '<div id="scm-modals" class="scm-modals-container">';
 		foreach ( $files as $file ) {
 			$filename = $this->get_template_file_name( 'cookie', $file );
 			if ( is_wp_error( $filename ) ) {
@@ -149,7 +147,6 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 			$args['id'] = $this->options->get_option_name( $file );
 			load_template( $filename, true, $args );
 		}
-		echo '</div>';
 	}
 
 	/**
@@ -229,61 +226,67 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 				'timezone' => 0,
 				'value'    => $cookie_value,
 			),
-			'modals'   => array(
-				'choose' => array(
-					'buttons' => array(),
-				),
-				'icon'   => array(),
-				'main'   => array(
-					'description' => $this->options->get_option( 'm_main_desc' ),
-					'buttons'     => array(),
-				),
+			'logo'     => wp_get_attachment_image_url( $this->options->get_option( 'd_logo' ) ),
+			'tabs'     => array(
+				'main'    => array(),
+				'details' => array(),
+				'about'   => array(),
 			),
+			'buttons'  => array(),
 			'nonce'    => wp_create_nonce( 'simple_consent_mode' ),
 			'ajaxurl'  => admin_url( 'admin-ajax.php' ),
+			'icon'     => array(
+				'id'      => $this->options->get_option_name( 'icon' ),
+				'classes' => array(),
+			),
 		);
-		foreach ( $this->configuration['modals'] as $key => $data ) {
-			$this->configuration['modals'][ $key ]['id']      = $this->options->get_option_name( $key );
-			$this->configuration['modals'][ $key ]['classes'] = array(
-				'scm-modal',
-				sprintf( 'scm-modal-%s', $key ),
-				$this->options->get_option_name( 'modal' ),
+		/**
+		 * tabs
+		 */
+		foreach ( $this->configuration['tabs'] as $key => $data ) {
+			$this->configuration['tabs'][ $key ] = array(
+				'id'           => preg_replace( '/_/', '-', $this->options->get_option_name( $key ) ),
+				'title'        => $this->options->get_option( sprintf( 'm_%s_title', $key ) ),
+				'desc'         => $this->options->get_option( sprintf( 'm_%s_desc', $key ) ),
+				'classes'      => array(
+					'scm-dialog-content-tab',
+					sprintf( 'scm-dialog-content-%s', $key ),
+					$this->options->get_option_name( 'dialog' ),
+				),
+				'menu_classes' => array(),
 			);
+			if ( 'main' === $key ) {
+				$this->configuration['tabs'][ $key ]['classes'][]      = 'current';
+				$this->configuration['tabs'][ $key ]['menu_classes'][] = 'current';
+			}
 		}
 		/**
 		 * hide icon
 		 */
 		if ( empty( $cookie_value ) ) {
-			$this->configuration['modals']['icon']['classes'][] = 'hidden';
+			$this->configuration['icon']['classes'][] = 'hidden';
 		}
 		/**
 		 * buttons
 		 */
 		$buttons = array(
-			'main'   => array(
-				'allow',
-				'choose',
-			),
-			'choose' => array(
-				'allow',
-				'save',
-				'deny',
-			),
+			'allow',
+			'choose',
+			'deny',
+			'save',
 		);
-		foreach ( $buttons as $dialog_id => $dialog_buttons ) {
-			foreach ( $dialog_buttons as $button ) {
-				$this->configuration['modals'][ $dialog_id ]['buttons'][] = array(
-					'data'            => array(
-						'action' => $button,
-					),
-					'container_class' => 'scm-modal-button-container',
-					'classes'         => array(
-						'scm-modal-button',
-						sprintf( 'scm-modal-button-%s', $button ),
-					),
-					'value'           => $this->options->get_option( sprintf( 'btn_%s', $button ) ),
-				);
-			}
+		foreach ( $buttons as $dialog_id => $button ) {
+			$this->configuration['buttons'][] = array(
+				'data'            => array(
+					'action' => $button,
+				),
+				'container_class' => 'scm-dialog-button-container',
+				'classes'         => array(
+					'scm-dialog-button',
+					sprintf( 'scm-dialog-button-%s', $button ),
+				),
+				'value'           => $this->options->get_option( sprintf( 'btn_%s', $button ) ),
+			);
 		}
 		/**
 		 * filter allow to change plugin frontend configuration
@@ -340,7 +343,10 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 			'c_bg',
 			'c_backdrop',
 			'c_primary',
-			'c_accent',
+			'c_btn_text',
+			'c_btn_bg',
+			'c_btn_pri_text',
+			'c_btn_pri_bg',
 			'c_checkbox',
 			'i_primary',
 			'i_accent',
@@ -351,6 +357,7 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 				continue;
 			}
 			$code   = preg_replace( '/^._/', '', $name );
+			$code   = preg_replace( '/_/', '-', $code );
 			$prefix = '';
 			if ( preg_match( '/^i_/', $name ) ) {
 				$prefix = '-icon';
@@ -359,6 +366,10 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 			$css .= esc_attr( $value );
 			$css .= ';';
 		}
+		$css .= sprintf(
+			'--scm-logo-max-height: %dpx;',
+			$this->options->get_option( 'd_logo_max_height' )
+		);
 		$css .= sprintf(
 			'--scm-max-length: %dpx;',
 			$this->options->get_option( 'd_max_width' )
@@ -567,11 +578,10 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 		if ( ! empty( $logo_id ) ) {
 			return $logo_id;
 		}
-		$site_icon_id = intval( get_option('site_icon') );
+		$site_icon_id = intval( get_option( 'site_icon' ) );
 		if ( ! empty( $site_icon_id ) ) {
 			return $site_icon_id;
 		}
-
 
 			return $logo_id;
 	}

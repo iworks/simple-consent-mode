@@ -4,7 +4,9 @@
 
 	--scm-spacer-base: 16px;
 	--scm-spacer-8: calc(.5 * var(--scm-spacer-base));
+	--scm-spacer-12: calc(.75 * var(--scm-spacer-base));
 	--scm-spacer-16: var(--scm-spacer-base);
+	--scm-spacer-22: calc(1.375 * var(--scm-spacer-base));
 	--scm-spacer-32: calc(2 * var(--scm-spacer-base));
 
 	--scm-font-size: 16px;

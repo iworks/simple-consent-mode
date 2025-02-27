@@ -3,29 +3,12 @@
 .scm {
 	&-modal {
 
-		&-description {
-			p {
-				&:first-child {
-					margin: {
-						top: 0;
-					}
-				}
-			}
-		}
-
 		&-button {
 			&-allow {
-				font: {
-					weight: 600;
-				}
+			background: {
+				color: var(--scm-color-btn-pri-bg);
 			}
-
-			&-deny {
-				color: var(--scm-color-primary);
-
-				background: {
-					color: transparent;
-				}
+			color: var(--scm-color-btn-pri-text);
 			}
 		}
 	}

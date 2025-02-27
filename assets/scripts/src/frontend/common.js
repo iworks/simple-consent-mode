@@ -6,8 +6,8 @@ window.simple_consent_mode.functions = window.simple_consent_mode.functions || [
  */
 window.addEventListener('load', function(event) {
 	var buttons, checkboxes, i;
-	var modal = document.getElementById('scm-modals');
-	if (modal && 1 > modal.length) {
+	var dialog = document.getElementById('scm-dialog');
+	if (dialog && 1 > dialog.length) {
 		return;
 	}
 	/**
@@ -20,16 +20,16 @@ window.addEventListener('load', function(event) {
 	if (Object.keys(window.simple_consent_mode_data.consents).length) {
 		gtag('consent', 'update', window.simple_consent_mode_data.consents);
 	} else {
-		document.getElementById(window.simple_consent_mode_data.modals.main.id).showModal();
+		dialog.showModal();
 	}
 	/**
 	 * checkbox
 	 */
-	checkboxes = document.getElementsByClassName('scm-modal-switch-checkbox');
+	checkboxes = document.getElementsByClassName('scm-dialog-switch-checkbox');
 	for (i = 0; i < checkboxes.length; i++) {
 		checkboxes[i].addEventListener('click', function(event) {
 			var cookie_value = '';
-			var checkboxes_inside = document.getElementsByClassName('scm-modal-switch-checkbox');
+			var checkboxes_inside = document.getElementsByClassName('scm-dialog-switch-checkbox');
 			for (var j = 0; j < checkboxes_inside.length; j++) {
 				var gtag_value = {};
 				gtag_value[checkboxes_inside[j].value] = 'denied';
@@ -51,7 +51,7 @@ window.addEventListener('load', function(event) {
 	/**
 	 * buttons
 	 */
-	buttons = document.getElementsByClassName('scm-modal-button');
+	buttons = document.getElementsByClassName('scm-dialog-button');
 	for (i = 0; i < buttons.length; i++) {
 		buttons[i].addEventListener('click', function(event) {
 			var show = {

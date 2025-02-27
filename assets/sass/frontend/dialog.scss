@@ -1,0 +1,195 @@
+@import '../_mixin';
+.sr-only {
+	@include reset_min;
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+}
+.scm {
+	&-dialog {
+		background: {
+			color: var(--scm-color-bg, #fff);
+		}
+		border: {
+			radius: var(--scm-border-radius, 0 );
+			width: 0;
+		}
+		max: {
+			width: var( --scm-max-length, 900px );;
+		}
+		padding: 0;
+		&::backdrop {
+			background-color: var(--scm-color-backdrop, rgba( 0, 0, 0, .7 ) );
+		}
+		/* header */
+		&-header {
+			&-logo {
+				max-height: var(--scm-logo-max-height, 48px );
+			}
+			border: {
+				bottom: 1px solid var(--scm-color-btn-text);
+			}
+			padding: var(--scm-spacer-22);
+		}
+		&-content {
+			display: flex;
+			flex: {
+				direction: column-reverse;
+			}
+			&s {
+				border: {
+					bottom: 1px solid var(--scm-color-btn-text);
+				}
+			}
+			&-tab {
+				height: 0;
+				overflow: hidden;
+				padding: 0;
+				width: 0;
+				&.current {
+					display: block;
+					height: auto;
+					overflow: auto;
+					padding: var(--scm-spacer-22);
+					width: auto;
+				}
+				&s {
+					@include reset_ul;
+					border: {
+						bottom: 1px solid var(--scm-color-btn-text);
+					}
+					display: grid;
+					grid: {
+						template: {
+							columns: repeat( 3, 1fr );
+						}
+					}
+					a {
+						border: {
+							bottom: 3px solid transparent;
+						}
+						display: block;
+						font: {
+							size: smaller;
+						}
+						padding: var(--scm-spacer-12);
+						text: {
+							decoration: none;
+							align: center;
+						}
+						&.current {
+							border: {
+								bottom: 3px solid var(--scm-color-btn-text);
+							}
+						}
+						&:active,
+						&:focus,
+						&:focus-within,
+						&:hover {
+							border: {
+								bottom: 3px solid var(--scm-color-btn-pri-bg);
+							}
+						}
+					}
+				}
+			}
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		&s {
+			&-container {
+				.scm-modal {
+				}
+			}
+		}
+		&-button {
+			@include reset;
+			background: {
+				color: var(--scm-color-btn-bg);
+			}
+			color: var(--scm-color-btn-text);
+			font: {
+				size: var(--scm-font-size-button);
+			}
+			padding: var(--scm-padding-button-v) var(--scm-padding-button-h);
+			@media screen and (max-width: 782px) {
+				display: block;
+				width: 100%;
+			}
+			&:hover {
+				cursor: pointer;
+			}
+			&s {
+				@include reset_ul;
+				display: flex;
+				flex: {
+					direction: row-reverse;
+				}
+				@media screen and (max-width: 782px) {
+					display: block;
+					li {
+						display: block;
+						padding: {
+							top: var(--scm-spacer-16);
+						}
+					}
+				}
+				gap: var(--scm-spacer-16);
+				align: {
+					items: center;
+				}
+				justify: {
+					content: center;
+				}
+			}
+			&[data-action="close"] {
+				padding: 0;
+				background: none;
+				border: 0;
+				position: absolute;
+				right: 0;
+				top: 0;
+				height: 32px;
+				width: 32px;
+				&:hover {
+					cursor: pointer;
+				}
+				svg {
+					height: 28px;
+					width: 28px;
+					margin: 2px;
+				}
+			}
+		}
+		&.hidden {
+			button {
+				&[data-action="close"] {
+					display: none;
+				}
+			}
+		}
+	}
+}
