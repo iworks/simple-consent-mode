@@ -2,6 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 <div class="scm-dialog-header">
+	<div class="scm-dialog-header-container">
 <?php
 if ( $args['logo'] ) {
 	printf(
@@ -10,6 +11,10 @@ if ( $args['logo'] ) {
 		esc_attr( get_bloginfo( 'name' ) )
 	);
 }
+echo '<p>';
+bloginfo( 'name' );
+echo '</p>';
 ?>
+	</div>
 </div>
 

@@ -34,6 +34,13 @@
 				bottom: 1px solid var(--scm-color-btn-text);
 			}
 			padding: var(--scm-spacer-22);
+			&-container {
+				display: flex;
+				gap: var(--scm-spacer-32);
+				align: {
+					items: center;
+				}
+			}
 		}
 		&-content {
 			display: flex;

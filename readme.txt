@@ -70,7 +70,7 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-c
 
 = 1.2.0 - 2025-02-25 =
 * The frontend has been refactored.
-* The [iWorks Options](https://github.com/iworks/wordpress-options-class) module has been updated to 2.9.6.
+* The [iWorks Options](https://github.com/iworks/wordpress-options-class) module has been updated to 2.9.7.
 * Translation loading for [github releases](https://github.com/iworks/simple-consent-mode/releases) has been fixed.
 
 = 1.1.1 - 2025-02-20 =
