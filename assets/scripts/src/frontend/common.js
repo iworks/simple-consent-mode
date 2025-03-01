@@ -39,6 +39,8 @@ window.addEventListener('load', function(event) {
 			var i;
 			event.preventDefault();
 			switch (this.dataset.action) {
+				case 'choose':
+					return;
 				case 'show':
 					/**
 					 * open dialog & hide icon

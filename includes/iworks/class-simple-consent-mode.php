@@ -107,7 +107,6 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 	public function action_wp_head_add_defaults() {
 		// Set default consent to 'denied' as a placeholder
 		// Determine actual values based on your own requirements
-
 		$settings = array();
 		foreach ( $this->types_of_consent as $one ) {
 			$settings[ $one ] = 'denied';
@@ -527,9 +526,6 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 		if ( 1 > intval( $this->options->get_option( 'log_status' ) ) ) {
 			exit;
 		}
-
-		l( $_POST );
-
 		$keys   = array(
 			'consent_value',
 			'url',
