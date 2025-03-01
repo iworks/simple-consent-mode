@@ -7,5 +7,5 @@
 	aria-labelledby="<?php echo esc_attr( $args['tabs'][ $key ]['id'] ); ?>-tab"
 	aria-expanded="false"
 >
-about
+<?php echo wp_kses_post( wpautop( $args['tabs'][ $key ]['desc'] ) ); ?>
 </div>

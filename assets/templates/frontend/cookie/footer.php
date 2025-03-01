@@ -1,7 +1,7 @@
 <footer class="scm-dialog-buttons">
 	<ul class="scm-dialog-buttons-wrapper">
 <?php
-foreach ( $args['buttons'] as $button ) {
+foreach ( $args['buttons'] as $button_key => $button ) {
 	$data = '';
 	if ( isset( $button['data'] ) ) {
 		foreach ( $button['data'] as $data_key => $data_value ) {
@@ -12,12 +12,14 @@ foreach ( $args['buttons'] as $button ) {
 			);
 		}
 	}
-	printf( '<li class="%s">', esc_attr( $button['container_class'] ) );
+	printf( '<li class="%s">', esc_attr( implode( ' ', $button['container_classes'] ) ) );
 	printf(
-		'<button class="%s"%s>%s</button>',
+		'<button id="scm-dialog-button-%s" class="%s"%s%s>%s</button>',
+		esc_attr( $button_key ),
 		esc_attr( implode( ' ', $button['classes'] ) ),
 		/* $data is already escaped above in a foreach()*/
 		$data,
+		isset( $button['tab-index'] ) ? sprintf( ' tab-index="%d"', $button['tab-index'] ) : '',
 		esc_html( $button['value'] )
 	);
 	echo '</li>';

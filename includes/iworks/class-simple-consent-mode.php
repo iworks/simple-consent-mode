@@ -34,6 +34,21 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 	 */
 	private array $configuration = array();
 
+	/**
+	 * types of consent
+	 *
+	 * @since 1.2.0
+	 */
+	private array $types_of_consent = array(
+		'ad_personalization',
+		'ad_storage',
+		'ad_user_data',
+		'analytics_storage',
+		'functionality_storage',
+		'personalization_storage',
+		'security_storage',
+	);
+
 	public function __construct() {
 		parent::__construct();
 		/**
@@ -92,15 +107,11 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 	public function action_wp_head_add_defaults() {
 		// Set default consent to 'denied' as a placeholder
 		// Determine actual values based on your own requirements
-		$settings = array(
-			'ad_storage'              => 'denied',
-			'ad_user_data'            => 'denied',
-			'ad_personalization'      => 'denied',
-			'analytics_storage'       => 'denied',
-			'functionality_storage'   => 'denied',
-			'personalization_storage' => 'denied',
-			'security_storage'        => 'denied',
-		);
+
+		$settings = array();
+		foreach ( $this->types_of_consent as $one ) {
+			$settings[ $one ] = 'denied';
+		}
 		echo esc_html( $this->eol );
 		printf(
 			'<script data-name="%s" data-version="%s">',
@@ -144,7 +155,6 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 			if ( is_wp_error( $filename ) ) {
 				continue;
 			}
-			$args['id'] = $this->options->get_option_name( $file );
 			load_template( $filename, true, $args );
 		}
 	}
@@ -162,7 +172,7 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 		$file = '/assets/styles/simple-consent-mode-frontend' . $this->dev . '.css';
 		wp_register_style(
 			$name,
-			plugins_url( $file, $this->base ),
+			plugins_url( $file, $this->plugin_file_path ),
 			array(),
 			$this->get_version( $file )
 		);
@@ -172,7 +182,7 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 		$file = '/assets/scripts/simple-consent-mode-frontend' . $this->dev . '.js';
 		wp_register_script(
 			$name,
-			plugins_url( $file, $this->base ),
+			plugins_url( $file, $this->plugin_file_path ),
 			array(),
 			$this->get_version( $file ),
 			array(
@@ -217,8 +227,14 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 			isset( $_COOKIE[ $cookie_name ] ) ? wp_unslash( $_COOKIE[ $cookie_name ] ) : null
 		);
 		$this->configuration = array(
-			'consents' => $this->set_consents( $cookie_value ),
-			'cookie'   => array(
+			'current_tab' => 'main',
+			'consents'    => array(
+				'available' => $this->types_of_consent,
+				'types'     => $this->get_enabled_types_of_consent(),
+				'user'      => $this->get_consents( $cookie_value ),
+				'forced'    => $this->get_foreced_types_of_consent(),
+			),
+			'cookie'      => array(
 				'expires'  => YEAR_IN_SECONDS,
 				'name'     => $cookie_name,
 				'path'     => '/',
@@ -226,18 +242,29 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 				'timezone' => 0,
 				'value'    => $cookie_value,
 			),
-			'logo'     => wp_get_attachment_image_url( $this->options->get_option( 'd_logo' ) ),
-			'tabs'     => array(
+			'logo'        => array(
+				'src'  => wp_get_attachment_image_url( $this->options->get_option( 'd_logo' ) ),
+				'show' => $this->options->get_option( 'd_logo_show' ),
+			),
+			'tabs'        => array(
 				'main'    => array(),
 				'details' => array(),
 				'about'   => array(),
 			),
-			'buttons'  => array(),
-			'nonce'    => wp_create_nonce( 'simple_consent_mode' ),
-			'ajaxurl'  => admin_url( 'admin-ajax.php' ),
-			'icon'     => array(
-				'id'      => $this->options->get_option_name( 'icon' ),
-				'classes' => array(),
+			'buttons'     => array(),
+			'nonce'       => wp_create_nonce( 'simple_consent_mode' ),
+			'ajaxurl'     => admin_url( 'admin-ajax.php' ),
+			'icon'        => array(
+				'id'      => $this->get_id( 'icon' ),
+				'classes' => array(
+					$this->get_id( 'icon' ),
+				),
+			),
+			'dialog'      => array(
+				'id'      => $this->get_id( 'dialog' ),
+				'classes' => array(
+					$this->get_id( 'dialog' ),
+				),
 			),
 		);
 		/**
@@ -245,20 +272,18 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 		 */
 		foreach ( $this->configuration['tabs'] as $key => $data ) {
 			$this->configuration['tabs'][ $key ] = array(
-				'id'           => preg_replace( '/_/', '-', $this->options->get_option_name( $key ) ),
+				'id'           => $this->get_id( $key, 'dialog' ),
 				'title'        => $this->options->get_option( sprintf( 'm_%s_title', $key ) ),
 				'desc'         => $this->options->get_option( sprintf( 'm_%s_desc', $key ) ),
 				'classes'      => array(
 					'scm-dialog-content-tab',
-					sprintf( 'scm-dialog-content-%s', $key ),
+					sprintf( '%s-%s', $this->get_id( 'content', 'dialog' ), $key ),
 					$this->options->get_option_name( 'dialog' ),
 				),
-				'menu_classes' => array(),
+				'menu_classes' => array(
+					'scm-dialog-content-tabs-tab',
+				),
 			);
-			if ( 'main' === $key ) {
-				$this->configuration['tabs'][ $key ]['classes'][]      = 'current';
-				$this->configuration['tabs'][ $key ]['menu_classes'][] = 'current';
-			}
 		}
 		/**
 		 * hide icon
@@ -269,25 +294,43 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 		/**
 		 * buttons
 		 */
-		$buttons = array(
+		$buttons                             = array(
 			'allow',
+			'selected',
 			'choose',
 			'deny',
-			'save',
 		);
-		foreach ( $buttons as $dialog_id => $button ) {
-			$this->configuration['buttons'][] = array(
-				'data'            => array(
+		$this->configuration['buttons_list'] = array_keys( $buttons );
+		foreach ( $buttons as $button ) {
+			$this->configuration['buttons'][ $button ] = array(
+				'id'                => $this->get_id( 'button', 'dialog', $button ),
+				'data'              => array(
 					'action' => $button,
 				),
-				'container_class' => 'scm-dialog-button-container',
-				'classes'         => array(
+				'container_classes' => array(
+					'scm-dialog-button-container',
+				),
+				'classes'           => array(
 					'scm-dialog-button',
 					sprintf( 'scm-dialog-button-%s', $button ),
 				),
-				'value'           => $this->options->get_option( sprintf( 'btn_%s', $button ) ),
+				'value'             => $this->options->get_option( sprintf( 'btn_%s', $button ) ),
 			);
+			switch ( $button ) {
+				case 'allow':
+					$this->configuration['buttons'][ $button ]['tab-index'][] = 1;
+					break;
+				case 'selected':
+				case 'deny':
+					$this->configuration['buttons'][ $button ]['container_classes'][] = 'hidden';
+					break;
+			}
 		}
+		/**
+		 * allow button
+		 */
+		$this->configuration['buttons']['allow']['data']['text-primary']    = $this->configuration['buttons']['allow']['value'];
+		$this->configuration['buttons']['allow']['data']['text-secoundary'] = $this->options->get_option( 'btn_allow_all' );
 		/**
 		 * filter allow to change plugin frontend configuration
 		 *
@@ -299,18 +342,23 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 		);
 	}
 
-	private function set_consents( $value ) {
+	private function get_consents( $value ) {
+		$consents = array();
 		switch ( $value ) {
 			case 'deny':
 			case null:
-				return array();
+				return $consents;
 			case 'allow':
-				return array(
-					'ad_storage'         => 'granted',
-					'ad_personalization' => 'granted',
-					'ad_user_data'       => 'granted',
-					'analytics_storage'  => 'granted',
+				$consents = array(
+					'ad_storage'              => 'granted',
+					'ad_personalization'      => 'granted',
+					'ad_user_data'            => 'granted',
+					'analytics_storage'       => 'granted',
+					'functionality_storage'   => 'granted',
+					'analytics_storage'       => 'granted',
+					'personalization_storage' => 'granted',
 				);
+				return $consents;
 				break;
 		}
 		/**
@@ -371,12 +419,16 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 			$this->options->get_option( 'd_logo_max_height' )
 		);
 		$css .= sprintf(
-			'--scm-max-length: %dpx;',
-			$this->options->get_option( 'd_max_width' )
+			'--scm-dialog-width: %dpx;',
+			$this->options->get_option( 'd_width' )
 		);
 		$css .= sprintf(
 			'--scm-border-radius: %dpx;',
 			$this->options->get_option( 'd_border_radius' )
+		);
+		$css .= sprintf(
+			'--scm-button-border-radius: %dpx;',
+			$this->options->get_option( 'd_btn_border_radius' )
 		);
 		$css .= '}';
 		wp_add_inline_style( $this->options->get_option_name( 'frontend' ), $css );
@@ -506,6 +558,9 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 		if ( 1 > intval( $this->options->get_option( 'log_status' ) ) ) {
 			exit;
 		}
+
+		l( $_POST );
+
 		$keys   = array(
 			'consent_value',
 			'url',
@@ -523,8 +578,8 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 		);
 		$data   = array(
 			'user_id'        => get_current_user_id(),
-			'ip'             => $_server['remote_addr'],
-			'ipx'            => isset( $_server['http_x_forwarded_for'] ) ? $_server['http_x_forwarded_for'] : '',
+			'ip'             => $_SERVER['REMOTE_ADDR'],
+			'ipx'            => isset( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : '',
 			'cookie_version' => $this->options->get_option( 'cookie_version' ),
 			'cookie_name'    => $this->get_cookie_name(),
 		);
@@ -536,8 +591,12 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 			'%s',
 		);
 		foreach ( $keys as $key ) {
-			$data[ $key ] = strip_tags( filter_input( input_post, $key ) );
-			$format[]     = '%s';
+			$data[ $key ] = '';
+			$value        = filter_input( INPUT_POST, $key );
+			if ( ! empty( $value ) && 'undefined' !== $value ) {
+				$data[ $key ] = strip_tags( $value );
+			}
+			$format[] = '%s';
 		}
 		global $wpdb;
 		$wpdb->insert(
@@ -586,4 +645,63 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 			return $logo_id;
 	}
 
+	/**
+	 * build id or name
+	 *
+	 * @since 1.2.0
+	 */
+	private function get_id( $name, $prefix = '', $sufix = '' ) {
+		$value = 'scm';
+		if ( $prefix ) {
+			$value .= '-';
+			$value .= $prefix;
+		}
+		$value .= '-';
+		$value .= $name;
+		if ( $sufix ) {
+			$value .= '-';
+			$value .= $sufix;
+		}
+		return esc_attr( $value );
+	}
+
+	/**
+	 * get curent allowed types
+	 *
+	 * @since 1.2.0
+	 */
+	private function get_enabled_types_of_consent() {
+		$enabled_types_of_consent = array(
+			'ad_personalization',
+			'ad_storage',
+			'ad_user_data',
+			'analytics_storage',
+		);
+		if ( $this->options->get_option( 'fust_show' ) ) {
+			$enabled_types_of_consent[] = 'functionality_storage';
+		}
+		if ( $this->options->get_option( 'pest_show' ) ) {
+			$enabled_types_of_consent[] = 'personalization_storage';
+		}
+		if ( $this->options->get_option( 'sest_show' ) ) {
+			$enabled_types_of_consent[] = 'security_storage';
+		}
+		return $enabled_types_of_consent;
+	}
+
+	/**
+	 * get forced allowed types
+	 *
+	 * @since 1.2.0
+	 */
+	private function get_foreced_types_of_consent() {
+		$forced_types_of_consent = array();
+		if (
+			$this->options->get_option( 'fust_show' )
+			&& $this->options->get_option( 'fust_on' )
+		) {
+			$forced_types_of_consent[] = 'functionality_storage';
+		}
+		return $forced_types_of_consent;
+	}
 }

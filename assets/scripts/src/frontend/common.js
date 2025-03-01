@@ -1,4 +1,4 @@
-/* global window, document, gtag, l */
+/* global window, document, gtag  */
 window.simple_consent_mode = window.simple_consent_mode || [];
 window.simple_consent_mode.functions = window.simple_consent_mode.functions || [];
 /**
@@ -7,7 +7,7 @@ window.simple_consent_mode.functions = window.simple_consent_mode.functions || [
 window.addEventListener('load', function(event) {
 	var buttons, checkboxes, i;
 	var dialog = document.getElementById('scm-dialog');
-	if (dialog && 1 > dialog.length) {
+	if (!dialog || 1 > dialog.length) {
 		return;
 	}
 	/**
@@ -15,10 +15,24 @@ window.addEventListener('load', function(event) {
 	 */
 	window.simple_consent_mode.functions.choosen = function() {};
 	/**
+	 * close dialog & show icon
+	 */
+	window.simple_consent_mode.functions.close_dialog = function() {
+		document.getElementById('scm-dialog').close();
+		document.getElementById('scm-icon').show();
+	};
+	/**
+	 * update status
+	 */
+	window.simple_consent_mode.functions.update_consents = function(consents) {
+		window.simple_consent_mode.functions.set_cookie(JSON.stringify(consents));
+		window.simple_consent_mode.functions.save_log(consents);
+	};
+	/**
 	 * set consents
 	 */
-	if (Object.keys(window.simple_consent_mode_data.consents).length) {
-		gtag('consent', 'update', window.simple_consent_mode_data.consents);
+	if (Object.keys(window.simple_consent_mode_data.consents.user).length) {
+		gtag('consent', 'update', window.simple_consent_mode_data.consents.user);
 	} else {
 		dialog.showModal();
 	}
@@ -28,24 +42,7 @@ window.addEventListener('load', function(event) {
 	checkboxes = document.getElementsByClassName('scm-dialog-switch-checkbox');
 	for (i = 0; i < checkboxes.length; i++) {
 		checkboxes[i].addEventListener('click', function(event) {
-			var cookie_value = '';
-			var checkboxes_inside = document.getElementsByClassName('scm-dialog-switch-checkbox');
-			for (var j = 0; j < checkboxes_inside.length; j++) {
-				var gtag_value = {};
-				gtag_value[checkboxes_inside[j].value] = 'denied';
-				if (checkboxes_inside[j].checked) {
-					if (cookie_value) {
-						cookie_value += ',';
-					}
-					cookie_value += checkboxes_inside[j].value;
-					gtag_value[checkboxes_inside[j].value] = 'granted';
-				}
-				gtag('consent', 'update', gtag_value);
-			}
-			if (cookie_value) {
-				window.simple_consent_mode.functions.set_cookie('choose:' + cookie_value);
-				window.simple_consent_mode.functions.save_log(cookie_value);
-			}
+			window.simple_consent_mode.functions.show_hide_buttons();
 		});
 	}
 	/**
@@ -54,61 +51,40 @@ window.addEventListener('load', function(event) {
 	buttons = document.getElementsByClassName('scm-dialog-button');
 	for (i = 0; i < buttons.length; i++) {
 		buttons[i].addEventListener('click', function(event) {
-			var show = {
-				main: false,
-				icon: false,
-				choose: false,
-			};
+			var consents = {};
+			var enabled_types_of_consents = window.simple_consent_mode_data.consents.types;
+			var forced_types_of_consents = window.simple_consent_mode_data.consents.forced;
+			var i;
 			event.preventDefault();
 			switch (this.dataset.action) {
 				case 'allow':
-					window.simple_consent_mode.functions.set_cookie(this.dataset.action);
-					window.simple_consent_mode.functions.save_log(this.dataset.action);
-					show.icon = true;
-					gtag('consent', 'update', {
-						ad_storage: 'granted',
-						ad_personalization: 'granted',
-						ad_user_data: 'granted',
-						analytics_storage: 'granted'
-					});
+					for (i = 0; i < enabled_types_of_consents.length; i++) {
+						consents[enabled_types_of_consents[i]] = 'granted';
+					}
 					break;
 				case 'deny':
-					window.simple_consent_mode.functions.set_cookie(this.dataset.action);
-					window.simple_consent_mode.functions.save_log(this.dataset.action);
-					show.icon = true;
-					gtag('consent', 'update', {
-						ad_storage: 'denied',
-						ad_personalization: 'denied',
-						ad_user_data: 'denied',
-						analytics_storage: 'denied'
-					});
+					for (i = 0; i < enabled_types_of_consents.length; i++) {
+						if (-1 === forced_types_of_consents.indexOf(enabled_types_of_consents[i])) {
+							consents[enabled_types_of_consents[i]] = 'denied';
+						} else {
+							consents[enabled_types_of_consents[i]] = 'granted';
+						}
+					}
 					break;
-				case 'close':
-					show.icon = true;
-					break;
-				case 'choose':
-					show.choose = true;
-					break;
-				case 'show':
-					show.main = true;
-					break;
+				default:
+					var checkboxes = document.getElementsByClassName('scm-dialog-switch-checkbox');
+					for (i = 0; i < enabled_types_of_consents.length; i++) {
+						consents[enabled_types_of_consents[i]] = 'denied';
+					}
+					for (i = 0; i < checkboxes.length; i++) {
+						if ( checkboxes[i].checked ) {
+							consents[checkboxes[i].value] = 'granted';
+						}
+					}
 			}
-			l(show.main);
-			if (show.main) {
-				document.getElementById(window.simple_consent_mode_data.modals.main.id).showModal();
-			} else {
-				document.getElementById(window.simple_consent_mode_data.modals.main.id).close();
-			}
-			if (show.icon) {
-				document.getElementById(window.simple_consent_mode_data.modals.icon.id).classList.remove('hidden');
-			} else {
-				document.getElementById(window.simple_consent_mode_data.modals.icon.id).classList.add('hidden');
-			}
-			if (show.choose) {
-				document.getElementById(window.simple_consent_mode_data.modals.choose.id).showModal();
-			} else {
-				document.getElementById(window.simple_consent_mode_data.modals.choose.id).close();
-			}
+			window.simple_consent_mode.functions.update_consents(consents);
+			document.getElementById('scm-dialog').close();
+			document.getElementById('scm-icon').classList.remove('hidden');
 		});
 	}
 });

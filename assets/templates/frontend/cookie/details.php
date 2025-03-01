@@ -15,12 +15,25 @@ $cookie_value  = isset( $args['cookie'] ) && isset( $args['cookie']['value'] ) ?
 >
 <dl>
 <?php
-$consents              = array(
-	'anst',
-	'adst',
-	'adpe',
-	'auda',
+$consents = array(
+	'fust' => array(
+		'check_show' => true,
+		'check_on'   => true,
+	),
+	'anst' => array(),
+	'adst' => array(),
+	'adpe' => array(),
+	'auda' => array(),
+	'pest' => array(
+		'check_show' => true,
+	),
+	'sest' => array(
+		'check_show' => true,
+	),
 );
+/**
+ * check current consents
+ */
 $cookie_value_consents = array();
 if ( preg_match( '/^choose:(.+)$/', $cookie_value, $matches ) ) {
 	$cookie_value_consents = preg_split( '/,/', $matches[1] );
@@ -29,21 +42,47 @@ foreach ( $configuration as $one ) {
 	if ( ! isset( $one['name'] ) ) {
 		continue;
 	}
-	if ( ! preg_match( '/^(anst|adst|adpe|auda)_(title|desc)$/', $one['name'], $matches ) ) {
+	if ( ! preg_match( '/^(' . implode( '|', array_keys( $consents ) ) . ')_(title|desc)$/', $one['name'], $matches ) ) {
+		continue;
+	}
+	if (
+		isset( $consents[ $matches[1] ]['check_show'] )
+		&& $consents[ $matches[1] ]['check_show']
+		&& ! $options->get_option( $matches[1] . '_show' )
+	) {
 		continue;
 	}
 	switch ( $matches[2] ) {
 		case 'title':
+			/**
+			 * default check
+			 */
+			$default_checked = false;
+			$readonly        = '';
+			if (
+			isset( $consents[ $matches[1] ]['check_on'] )
+			&& $consents[ $matches[1] ]['check_on']
+			&& $options->get_option( $matches[1] . '_on' )
+			) {
+				$default_checked = true;
+				$readonly        = ' readonly="readonly" disabled="disabled"';
+			}
 			echo '<dt>';
 			echo '<label class="scm-dialog-switch">';
 			printf(
-				'<input type="checkbox" id="%s" name="%s" value="%s" class="scm-dialog-switch-checkbox" %s>',
+				'<input type="checkbox" id="%s" name="%s" value="%s" class="scm-dialog-switch-checkbox" %s %s>',
 				esc_attr( $one['name'] ),
 				esc_attr( $matches[1] ),
 				esc_attr( $one['codename'] ),
-				checked( in_array( $one['codename'], $cookie_value_consents ), true, false )
+				checked( ( $default_checked || in_array( $one['codename'], $cookie_value_consents ) ), true, false ),
+				$readonly
 			);
-			echo wpautop( esc_html( $options->get_option( $one['name'] ) ) );
+			$label = esc_html( $options->get_option( $one['name'] ) );
+			if ( $default_checked ) {
+				$label .= ' ';
+				$label .= esc_html__( '(always on)', 'simple-consent-mode' );
+			}
+			echo wpautop( $label );
 			echo '</dt>';
 			break;
 		case 'desc':

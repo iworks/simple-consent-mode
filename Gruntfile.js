@@ -84,9 +84,6 @@ module.exports = function(grunt) {
 		css_files_compile: {
 			'assets/styles/frontend/settings.css': 'assets/sass/settings.scss',
 			'assets/styles/frontend/dialog.css': 'assets/sass/frontend/dialog.scss',
-			'assets/styles/frontend/modal.choose.css': 'assets/sass/frontend/modal.choose.scss',
-			'assets/styles/frontend/modal.main.css': 'assets/sass/frontend/modal.main.scss',
-			'assets/styles/frontend/modal.icon.css': 'assets/sass/frontend/modal.icon.scss',
 		},
 
 		replace_patterns: [{

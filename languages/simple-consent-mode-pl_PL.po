@@ -4,142 +4,305 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - Simple Consent Mode - Development (trunk)\n"
 "Report-Msgid-Bugs-To: http://iworks.pl\n"
-"POT-Creation-Date: 2025-02-26 07:23:19+00:00\n"
-"PO-Revision-Date: 2025-02-23 18:32:15+0000\n"
+"POT-Creation-Date: 2025-03-01 14:23:22+00:00\n"
+"PO-Revision-Date: 2025-03-01 15:23+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 1) ? 0 : ((n % 10 >= 2 && n % 10 <= 4 "
 "&& (n % 100 < 12 || n % 100 > 14)) ? 1 : 2);\n"
-"X-Generator: GlotPress/4.0.1\n"
+"X-Generator: Poedit 3.5\n"
 
-#: assets/templates/frontend/cookie/icon.php:23
+#: assets/templates/frontend/cookie/details.php:83
+msgid "(always on)"
+msgstr "(zawsze włączone)"
+
+#: assets/templates/frontend/cookie/icon.php:22
 msgid "Show Consents Configuration"
 msgstr "Pokaż konfigurację zgód"
 
-#: etc/options.php:15
+#: etc/options.php:13
 msgid "Cookie Consent"
 msgstr "Zgoda na pliki cookie"
 
-#: etc/options.php:23
+#: etc/options.php:21
 msgid "Main"
 msgstr "Główne"
 
-#: etc/options.php:29
-msgid "Show Description"
-msgstr "Pokaż opis"
+#: etc/options.php:29 etc/options.php:37
+msgid "Consent"
+msgstr "Zgoda"
 
-#: etc/options.php:38
-msgid "Consents Modal Description"
-msgstr "Opis modalu zgody"
+#: etc/options.php:35 etc/options.php:78 etc/options.php:94 etc/options.php:393
+#: etc/options.php:419 etc/options.php:449 etc/options.php:479
+#: etc/options.php:511 etc/options.php:548 etc/options.php:581
+msgid "Title"
+msgstr "Tytuł"
 
-#: etc/options.php:41
+#: etc/options.php:43 etc/options.php:102 etc/options.php:402
+#: etc/options.php:429 etc/options.php:459 etc/options.php:491
+#: etc/options.php:521 etc/options.php:557 etc/options.php:590
+msgid "Description"
+msgstr "Opis"
+
+#: etc/options.php:50
 msgid ""
-"This website uses cookies to ensure you get the best experience on our "
-"website."
+"We use cookies to personalize content and ads, to provide social media "
+"features and to analyze traffic to our site."
 msgstr ""
-"Witryna korzysta z plików cookie w celu zapewnienia jak najlepszego jej "
-"przeglądania i używania."
+"Wykorzystujemy ciasteczka do spersonalizowania treści i reklam, aby oferować "
+"funkcje społecznościowe i analizować ruch w naszej witrynie."
 
-#: etc/options.php:42 etc/options.php:229 etc/options.php:259
-#: etc/options.php:280 etc/options.php:291 etc/options.php:321
+#: etc/options.php:51
+msgid ""
+"We share information about your use of our site with social media, "
+"advertising and analytics partners. These partners may combine this "
+"information with other data they have provided to you or obtained through "
+"your use of their services."
+msgstr ""
+"Informacje o tym, jak korzystasz z naszej witryny, udostępniamy partnerom "
+"społecznościowym, reklamowym i analitycznym. Partnerzy mogą połączyć te "
+"informacje z innymi danymi otrzymanymi od Ciebie lub uzyskanymi podczas "
+"korzystania z ich usług."
+
+#. translators: %s link to explains
+#: etc/options.php:54
+msgid "Information on how Google processes data can be found %s."
+msgstr ""
+"Informacja o tym, w jaki sposób Google przetwarza dane, znajdują się %s."
+
+#: etc/options.php:57
+msgid "here"
+msgstr "tutaj"
+
+#: etc/options.php:63 etc/options.php:115 etc/options.php:434
+#: etc/options.php:464 etc/options.php:485 etc/options.php:496
+#: etc/options.php:526
 msgid "You can use HTML tags in this field."
 msgstr "W tym polu możesz używać znaczników HTML."
 
-#: etc/options.php:48
+#: etc/options.php:72 etc/options.php:80
+msgid "Details"
+msgstr "Szczegóły"
+
+#: etc/options.php:88 etc/options.php:96
+msgid "About Cookies"
+msgstr "O ciasteczkach"
+
+#: etc/options.php:109
+msgid ""
+"Cookies are small data files stored on your device by websites to remember "
+"your preferences, login details, or actions. There are different types, "
+"including session cookies (temporary) and persistent cookies (long-term). "
+"They help personalize your browsing experience but can also track your online "
+"behavior."
+msgstr ""
+"Ciasteczka to małe pliki danych przechowywane na urządzeniu przez witryny "
+"internetowe w celu zapamiętania preferencji, danych logowania lub działań. "
+"Istnieją różne typy, w tym ciasteczka sesyjne (tymczasowe) i trwałe "
+"(długoterminowe). Pomagają one spersonalizować wrażenia z przeglądania, ale "
+"mogą również śledzić zachowanie online."
+
+#: etc/options.php:110
+msgid ""
+"Consent refers to the permission websites must obtain from users before using "
+"cookies that collect personal data. Laws like the GDPR require websites to "
+"ask for explicit consent through cookie banners, allowing users to accept or "
+"reject cookies and control their privacy. You can also withdraw consent at "
+"any time, typically through the website’s privacy settings, which lets you "
+"manage or delete stored cookies whenever you choose."
+msgstr ""
+"Zgoda odnosi się do zgody, którą witryny muszą uzyskać od użytkowników przed "
+"użyciem ciasteczek gromadzących dane osobowe. Przepisy takie jak GDPR "
+"wymagają, aby witryny prosiły o wyraźną zgodę, umożliwiając użytkownikom "
+"akceptowanie lub odrzucanie ciasteczek i kontrolowanie swojej prywatności. "
+"Możesz również wycofać zgodę w dowolnym momencie, zazwyczaj za pośrednictwem "
+"ustawień prywatności witryny, które umożliwiają zarządzanie lub usuwanie "
+"przechowywanych ciasteczek w dowolnym momencie."
+
+#: etc/options.php:111
+msgid ""
+"For more details on how a website uses cookies and collects data, you can "
+"refer to the website’s privacy policy. This document outlines the types of "
+"cookies used, data collected, and how your information is stored or shared. "
+"It also explains how you can manage your preferences."
+msgstr ""
+"Aby uzyskać więcej szczegółów na temat tego, jak witryna internetowa używa "
+"ciasteczek i jak zbiera dane, zapoznaj się z polityką prywatności witryny. "
+"Ten dokument opisuje rodzaje używanych plików cookie, zbierane dane oraz "
+"sposób przechowywania lub udostępniania Twoich informacji. Wyjaśnia również, "
+"jak możesz zarządzać swoimi preferencjami."
+
+#: etc/options.php:121
 msgid "Buttons"
 msgstr "Przyciski"
 
-#: etc/options.php:54
+#: etc/options.php:127 etc/options.php:136 etc/options.php:138
 msgid "Allow All"
 msgstr "Zezwól na wszystko"
 
-#: etc/options.php:56
-msgid "Allow All Consents"
-msgstr "Udziel wszystkich zgód"
+#: etc/options.php:128
+msgid "On the first tab"
+msgstr "Na każdej następnej"
 
-#: etc/options.php:62 etc/options.php:64
+#: etc/options.php:130
+msgid "OK"
+msgstr "OK"
+
+#: etc/options.php:140
+msgid "Not on the first tab"
+msgstr "W pierwszej zakładce"
+
+#: etc/options.php:145 etc/options.php:147
+msgid "Allow Selection"
+msgstr "Zezwól na wybór"
+
+#: etc/options.php:153
 msgid "Choose Consents"
 msgstr "Wybierz zgody"
 
-#: etc/options.php:70
+#: etc/options.php:154
+msgid "Personalize"
+msgstr "Personalizuj"
+
+#: etc/options.php:161
 msgid "Deny All Consents"
 msgstr "Odrzuć wszystkie zgody"
 
-#: etc/options.php:72
+#: etc/options.php:163
 msgid "Deny"
-msgstr "Odrzuć"
+msgstr "Odmów"
 
-#: etc/options.php:78 etc/options.php:80
-msgid "Close"
-msgstr "Zamknij"
-
-#: etc/options.php:88
+#: etc/options.php:171
 msgid "Design"
-msgstr ""
+msgstr "Wygląd"
 
-#: etc/options.php:93
+#: etc/options.php:176
 msgid "Dialog"
-msgstr ""
+msgstr "Okno modalne"
 
-#: etc/options.php:99
-msgid "Logo"
-msgstr ""
+#: etc/options.php:183
+msgid "Width"
+msgstr "Długość"
 
-#: etc/options.php:107
-msgid "Max Width"
-msgstr ""
-
-#: etc/options.php:108 etc/options.php:118
+#: etc/options.php:184 etc/options.php:194 etc/options.php:258
+#: etc/options.php:302
 msgid "px"
-msgstr ""
+msgstr "px"
 
-#: etc/options.php:117
-msgid "Border Radius"
-msgstr ""
+#: etc/options.php:193 etc/options.php:301
+msgid "Radius"
+msgstr "Zaokrąglenie"
 
-#: etc/options.php:127
+#: etc/options.php:203 etc/options.php:284 etc/options.php:320
 msgid "Background"
-msgstr ""
+msgstr "Tło"
 
-#: etc/options.php:136
+#: etc/options.php:212
 msgid "Backdrop"
-msgstr ""
+msgstr "Tło okna modalnego"
 
-#: etc/options.php:148
+#: etc/options.php:224
 msgid "Primary"
 msgstr "Główny"
 
-#: etc/options.php:157
-msgid "Accent"
-msgstr "Akcent"
+#: etc/options.php:234
+msgid "Logo"
+msgstr "Logo"
 
-#: etc/options.php:166
+#: etc/options.php:240 etc/options.php:377 etc/options.php:540
+#: etc/options.php:573
+msgid "Show"
+msgstr "Pokaż"
+
+#: etc/options.php:248
+msgid "Image"
+msgstr "Obrazek"
+
+#: etc/options.php:257
+msgid "Max Height"
+msgstr "Maksymalna wysokość"
+
+#: etc/options.php:268
+msgid "Button Primary"
+msgstr "Podstawowy przyciks"
+
+#: etc/options.php:275 etc/options.php:311
+msgid "Text"
+msgstr "Tekst"
+
+#: etc/options.php:294
+msgid "Button"
+msgstr "Przycisk"
+
+#: etc/options.php:330
 msgid "Checkbox"
 msgstr "Pole zaznaczenia"
 
-#: etc/options.php:173
+#: etc/options.php:337
 msgid "Icon"
 msgstr "Ikonka"
 
-#: etc/options.php:180
+#: etc/options.php:344
 msgid "Icon Primary"
 msgstr "Kolor podstawowy ikonki"
 
-#: etc/options.php:189
+#: etc/options.php:353
 msgid "Icon Accent"
 msgstr "Akcent kolorystyczny ikonki"
 
-#: etc/options.php:199
-msgid "Required Consents"
-msgstr "Zgody wymagane"
+#: etc/options.php:363
+msgid "Consents"
+msgstr "Zgody"
 
-#: etc/options.php:207
+#: etc/options.php:371
+msgid "Functional"
+msgstr "Funkcjonalne"
+
+#: etc/options.php:372
+msgid "Manages the storage of cookies for essential functions like login."
+msgstr ""
+"Zarządza przechowywaniem ciasteczek dla podstawowych funkcji, takich jak "
+"logowanie."
+
+#: etc/options.php:385
+msgid "Always on"
+msgstr "Zawsze włączone"
+
+#: etc/options.php:396
+msgid "Functionality"
+msgstr "Funkcjonalność"
+
+#: etc/options.php:405
+msgid ""
+"Necessary cookies help make a website usable by enabling basic functions such "
+"as page navigation and access to secure areas of the website. The website "
+"cannot function properly without these cookies."
+msgstr ""
+"Ciasteczka niezbędne do funkcjonowania witryny internetowej, umożliwiając "
+"podstawowe funkcje, takie jak nawigacja po stronach i dostęp do bezpiecznych "
+"obszarów witryny. Witryna internetowa nie może działać prawidłowo bez tych "
+"ciasteczek."
+
+#: etc/options.php:412
 msgid "Analytics Storage"
 msgstr "Przechowywanie statystyk"
 
-#: etc/options.php:208 etc/options.php:226
+#: etc/options.php:413
+msgid ""
+"Enables storage (such as cookies) related to analytics e.g. visit duration."
+msgstr ""
+"Umożliwia przechowywanie danych (np. ciasteczek) dotyczących statystyk, np. "
+"czasu trwania wizyty."
+
+#: etc/options.php:422
+msgid "Analytic Storage"
+msgstr "Przechowywanie statystyk"
+
+#: etc/options.php:431
 msgid ""
 "Controls whether data related to website usage and user behavior can be "
 "stored for analytics purposes (e.g., Google Analytics)."
@@ -148,38 +311,33 @@ msgstr ""
 "użytkowników mogą być przechowywane w celach analitycznych (np. Google "
 "Analytics)."
 
-#: etc/options.php:214 etc/options.php:244 etc/options.php:274
-#: etc/options.php:306 etc/options.php:358 etc/options.php:390
-msgid "Title"
-msgstr "Tytuł"
-
-#: etc/options.php:217
-msgid "Analytic Storage"
-msgstr "Przechowywanie statystyk"
-
-#: etc/options.php:224 etc/options.php:254 etc/options.php:286
-#: etc/options.php:316 etc/options.php:366 etc/options.php:398
-msgid "Description"
-msgstr "Opis"
-
-#: etc/options.php:237 etc/options.php:247
+#: etc/options.php:442 etc/options.php:452
 msgid "Ad Storage"
 msgstr "Przechowywanie reklam"
 
-#: etc/options.php:238 etc/options.php:256
+#: etc/options.php:443
+msgid "Enables storage (such as cookies) related to advertising."
+msgstr ""
+"Umożliwia przechowywanie danych (np. ciasteczek) związanych z reklamami."
+
+#: etc/options.php:461
 msgid ""
 "Manages whether advertising-related data (like targeting and tracking "
 "cookies) can be stored and processed for ad services."
 msgstr ""
-"Zarządza tym, czy dane związane z reklamami (np. ciasteczka do targetowania "
-"i śledzenia) mogą być przechowywane i przetwarzane na potrzeby usług "
+"Zarządza tym, czy dane związane z reklamami (np. ciasteczka do targetowania i "
+"śledzenia) mogą być przechowywane i przetwarzane na potrzeby usług "
 "reklamowych."
 
-#: etc/options.php:267 etc/options.php:276
+#: etc/options.php:472 etc/options.php:481
 msgid "Ad Personalization"
 msgstr "Personalizacja reklam"
 
-#: etc/options.php:268 etc/options.php:288
+#: etc/options.php:473
+msgid "Sets consent for personalized advertising."
+msgstr "Określa stan zgody na reklamy spersonalizowane."
+
+#: etc/options.php:493
 msgid ""
 "Determines if personalized ads can be shown based on user behavior and "
 "preferences, using stored data for targeting."
@@ -187,11 +345,22 @@ msgstr ""
 "Określa, czy można wyświetlać spersonalizowane reklamy na podstawie zachowań "
 "i preferencji użytkownika, wykorzystując w tym celu zapisane dane."
 
-#: etc/options.php:299 etc/options.php:309
+#: etc/options.php:504 etc/options.php:514
 msgid "Ad User Data"
 msgstr "Przechowywanie danych użytkownika"
 
-#: etc/options.php:300 etc/options.php:318
+#: etc/options.php:505
+msgid ""
+"Sets consent for sending user data related to advertising to Google. The "
+"ad_user_data consent type is required for measurement use cases, such as "
+"enhanced conversions and tag-based conversion tracking."
+msgstr ""
+"Określa stan zgody na wysyłanie do Google danych użytkownika związanych z "
+"reklamami. Typ zgody ad_user_data jest wymagany w przypadkach użycia "
+"związanych z pomiarem, np. na potrzeby konwersji rozszerzonych i śledzenia "
+"konwersji na podstawie tagu."
+
+#: etc/options.php:523
 msgid ""
 "Controls the storage of user-specific data for ad tracking, profiling, and "
 "measuring ad effectiveness."
@@ -199,59 +368,63 @@ msgstr ""
 "Kontroluje przechowywanie danych specyficznych dla użytkownika, służących do "
 "śledzenia reklam, profilowania i pomiaru skuteczności reklam."
 
-#: etc/options.php:329
-#, fuzzy
-msgid "Custom Consents"
-msgstr "Wybierz zgody"
-
-#: etc/options.php:336
-#, fuzzy
-msgid "Functional Storage"
-msgstr "Przechowywanie statystyk"
-
-#: etc/options.php:337 etc/options.php:369
-msgid ""
-"Manages the storage of cookies for non-essential functions like site "
-"preferences, login status, and custom settings."
-msgstr ""
-
-#: etc/options.php:342 etc/options.php:382
-msgid "Show"
-msgstr ""
-
-#: etc/options.php:350
-msgid "Always on"
-msgstr ""
-
-#: etc/options.php:361
-msgid "Functionality"
-msgstr ""
-
-#: etc/options.php:376
-#, fuzzy
+#: etc/options.php:534
 msgid "Personalization Storage"
-msgstr "Personalizacja reklam"
+msgstr "Przechowywanie"
 
-#: etc/options.php:377 etc/options.php:401
+#: etc/options.php:535
+msgid "Enables storage related to personalization e.g. video recommendations"
+msgstr ""
+"Umożliwia przechowywanie danych dotyczących personalizacji, np. rekomendacji "
+"filmów"
+
+#: etc/options.php:551
+msgid "Personalizations"
+msgstr "Personalizacja"
+
+#: etc/options.php:560
 msgid ""
 "Regulates whether data used to provide personalized user experiences (like "
 "content recommendations) can be stored."
 msgstr ""
+"Reguluje, czy dane służące do zapewniania użytkownikom spersonalizowanych "
+"doświadczeń (np. rekomendacji treści) mogą być przechowywane."
 
-#: etc/options.php:393
-#, fuzzy
-msgid "Personalizations"
-msgstr "Personalizacja reklam"
+#: etc/options.php:567
+msgid "Security Storage"
+msgstr "Bezpieczeństwo"
 
-#: etc/options.php:408 etc/options.php:413
+#: etc/options.php:568
+msgid ""
+"Enables storage related to security such as authentication functionality, "
+"fraud prevention, and other user protection."
+msgstr ""
+"Umożliwia przechowywanie danych związanych z zabezpieczeniami, takimi jak "
+"funkcja uwierzytelniania, zapobieganie oszustwom i inne mechanizmy ochrony "
+"użytkowników."
+
+#: etc/options.php:584
+msgid "Security"
+msgstr "Bezpieczeństwo"
+
+#: etc/options.php:593
+msgid ""
+"Security storage is the practice of safely storing sensitive data using "
+"encryption or secure methods to prevent unauthorized access or theft."
+msgstr ""
+"Przechowywanie danych w bezpiecznym miejscu polega na stosowaniu szyfrowania "
+"i innych bezpiecznych metod, aby uniemożliwić nieautoryzowany dostęp lub "
+"kradzież."
+
+#: etc/options.php:600 etc/options.php:605
 msgid "Cookie"
 msgstr "Ciasteczko"
 
-#: etc/options.php:420
+#: etc/options.php:612
 msgid "Version"
 msgstr "Wersja"
 
-#: etc/options.php:423
+#: etc/options.php:615
 msgid ""
 "Changing the cookie version requires you to obtain new consent. This should "
 "be done in the event of changes to the scope of required consents."
@@ -259,27 +432,27 @@ msgstr ""
 "Zmiana wersji pliku cookie wymaga uzyskania nowej zgody. Należy to zrobić w "
 "przypadku zmian w zakresie wymaganych zgód."
 
-#: etc/options.php:431
+#: etc/options.php:623
 msgid "Log"
 msgstr "Dziennik"
 
-#: etc/options.php:437
+#: etc/options.php:629
 msgid "Enable"
 msgstr "Włącz"
 
-#: etc/options.php:439
-msgid " Enable or disable consent logging as needed."
-msgstr " W razie potrzeby włącz lub wyłącz rejestrowanie zgody."
+#: etc/options.php:631
+msgid "Enable or disable consent logging as needed."
+msgstr "W razie potrzeby włącz lub wyłącz rejestrowanie zgody."
 
-#: etc/options.php:448
+#: etc/options.php:640
 msgid "Duration"
 msgstr "Czas trwania"
 
-#: etc/options.php:449
+#: etc/options.php:641
 msgid "Months"
-msgstr ""
+msgstr "Miesięcy"
 
-#: etc/options.php:452
+#: etc/options.php:644
 msgid ""
 "The \"Log Duration\" setting specifies the length of time, in months, that "
 "log entries will be retained. Once the selected duration has passed, the "
@@ -287,22 +460,21 @@ msgid ""
 "period. This helps manage storage and ensures logs are only kept for a "
 "predefined, manageable timeframe."
 msgstr ""
-"Ustawienie \"Czas trwania dziennika\" określa czas (w miesiącach), przez "
-"jaki wpisy dziennika będą przechowywane. Po upływie wybranego czasu system "
+"Ustawienie \"Czas trwania dziennika\" określa czas (w miesiącach), przez jaki "
+"wpisy dziennika będą przechowywane. Po upływie wybranego czasu system "
 "automatycznie usunie wszystkie wpisy dziennika starsze niż wybrany okres. "
 "Pomaga to w zarządzaniu pamięcią masową i zapewnia, że dzienniki są "
-"przechowywane tylko przez wstępnie zdefiniowany, możliwy do zarządzania "
-"okres."
+"przechowywane tylko przez wstępnie zdefiniowany, możliwy do zarządzania okres."
 
-#: etc/options.php:456
+#: etc/options.php:648
 msgid "Export"
 msgstr "Eksport"
 
-#: etc/options.php:458
+#: etc/options.php:650
 msgid "Export CSV File"
 msgstr "Eksportuj plik CSV"
 
-#: etc/options.php:461
+#: etc/options.php:653
 msgid ""
 "The \"Export CSV File\" feature allows you to download the consents log in a "
 "CSV format. This provides an easy way to view, analyze, and share consent "
@@ -312,11 +484,11 @@ msgstr ""
 "CSV. Zapewnia to łatwy sposób przeglądania, analizowania i udostępniania "
 "danych zgody w ustrukturyzowanym pliku zgodnym z arkuszem kalkulacyjnym."
 
-#: etc/options.php:469
+#: etc/options.php:661
 msgid "About Consent Mode"
 msgstr "O zgodach"
 
-#: etc/options.php:470
+#: etc/options.php:662
 msgid ""
 "Consent Mode is a tool provided by Google that allows websites to adjust the "
 "behavior of Google tags (such as Google Analytics, Google Ads, and others) "
@@ -329,11 +501,11 @@ msgstr ""
 "przetwarzanie danych. Umożliwia bardziej zgodne gromadzenie danych przy "
 "jednoczesnym poszanowaniu preferencji prywatności użytkownika."
 
-#: etc/options.php:475
+#: etc/options.php:667
 msgid "Consent Type"
 msgstr "Typ zgody"
 
-#: etc/options.php:476
+#: etc/options.php:668
 msgid ""
 "This option defines the type of consent requested from users, determining "
 "whether they consent to cookies for specific purposes (e.g., analytics, "
@@ -343,26 +515,26 @@ msgstr ""
 "wyrażają oni zgodę na pliki cookie w określonych celach (np. analityka, "
 "marketing itp.). Zazwyczaj opcje obejmują:"
 
-#: etc/options.php:481
+#: etc/options.php:673
 msgid "Default Consent Behavior"
 msgstr "Domyślne zachowanie zgody"
 
-#: etc/options.php:482
+#: etc/options.php:674
 msgid ""
 "If the user has not yet provided consent or declined, you can define the "
 "default behavior. By default, Google tags will work in a limited mode (for "
 "example, without tracking conversions or storing data for ad targeting)."
 msgstr ""
 "Jeśli użytkownik nie wyraził jeszcze zgody lub odmówił, możesz zdefiniować "
-"domyślne zachowanie. Domyślnie tagi Google będą działać w trybie "
-"ograniczonym (na przykład bez śledzenia konwersji lub przechowywania danych "
-"do kierowania reklam)."
+"domyślne zachowanie. Domyślnie tagi Google będą działać w trybie ograniczonym "
+"(na przykład bez śledzenia konwersji lub przechowywania danych do kierowania "
+"reklam)."
 
-#: etc/options.php:487
+#: etc/options.php:679
 msgid "Consent Update Mechanism"
 msgstr "Mechanizm aktualizacji zgody"
 
-#: etc/options.php:488
+#: etc/options.php:680
 msgid ""
 "This feature allows websites to update the user's consent status if they "
 "change their preferences after the initial consent. It ensures that Google "
@@ -370,15 +542,15 @@ msgid ""
 "behavior based on the new consent status."
 msgstr ""
 "Funkcja umożliwia witrynom aktualizowanie statusu zgody użytkownika, jeśli "
-"zmienią swoje preferencje po wyrażeniu początkowej zgody. Zapewnia, że ​​"
-"usługi Google (takie jak Analytics i Ads) zareagują odpowiednio i dostosują "
-"swoje zachowanie na podstawie nowego statusu zgody."
+"zmienią swoje preferencje po wyrażeniu początkowej zgody. Zapewnia, że ​​usługi "
+"Google (takie jak Analytics i Ads) zareagują odpowiednio i dostosują swoje "
+"zachowanie na podstawie nowego statusu zgody."
 
-#: etc/options.php:493
+#: etc/options.php:685
 msgid "Consent Mode Events"
 msgstr "Wydarzenia Consent Mode"
 
-#: etc/options.php:494
+#: etc/options.php:686
 msgid ""
 "Consent Mode events provide a way to trigger certain actions when consent "
 "preferences are updated. For instance, if a user consents to analytics "
@@ -390,11 +562,11 @@ msgstr ""
 "zgodę na przechowywanie analiz, witryna może wyzwolić określone zdarzenie, "
 "aby rozpocząć śledzenie interakcji użytkownika."
 
-#: etc/options.php:499
+#: etc/options.php:691
 msgid "Data Retention Options"
 msgstr "Opcje przechowywania danych"
 
-#: etc/options.php:500
+#: etc/options.php:692
 msgid ""
 "With Consent Mode, you can set up specific data retention policies to define "
 "how long user data should be stored based on their consent. For example, if "
@@ -405,49 +577,53 @@ msgstr ""
 "podstawie jego zgody. Na przykład, jeśli użytkownicy wycofają zgodę, zebrane "
 "dane mogą zostać usunięte lub zanonimizowane."
 
-#: etc/options.php:505
+#: etc/options.php:697
 msgid "Tracking Blocking (No Consent)"
 msgstr "Blokowanie śledzenia (brak zgody)"
 
-#: etc/options.php:506
+#: etc/options.php:698
 msgid ""
 "In cases where the user has not given consent for cookies or data tracking, "
 "this option ensures that all data collection and tracking mechanisms are "
 "blocked, fully respecting the user's privacy preferences."
 msgstr ""
-"W przypadku, gdy użytkownik nie wyraził zgody na stosowanie plików cookie "
-"lub śledzenie danych, opcja ta zapewnia, że ​​wszelkie mechanizmy gromadzenia "
-"i śledzenia danych zostaną zablokowane, w pełni respektując preferencje "
+"W przypadku, gdy użytkownik nie wyraził zgody na stosowanie plików cookie lub "
+"śledzenie danych, opcja ta zapewnia, że ​​wszelkie mechanizmy gromadzenia i "
+"śledzenia danych zostaną zablokowane, w pełni respektując preferencje "
 "użytkownika dotyczące prywatności."
 
-#: etc/options.php:512 etc/options.php:553
+#: etc/options.php:704 etc/options.php:745
 msgid "We are waiting for your message"
 msgstr "Czekamy na twoją wiadomość"
 
-#: etc/options.php:519
+#: etc/options.php:711
 msgid "I love what I do!"
 msgstr "Kocham to, co robię!"
 
-#: etc/options.php:538
+#: etc/options.php:730
 msgid "Below are some links to help spread this plugin to other users"
 msgstr ""
 "Poniżej znajdują się odnośniki, które pomogą w rozpowszechnianiu wtyczki "
 "wśród innych użytkowników"
 
-#: etc/options.php:540
+#: etc/options.php:732
 msgid "Give it a five stars on WordPress.org"
 msgstr "Daj pięć gwiazdek na WordPress.org"
 
-#: etc/options.php:541
+#: etc/options.php:733
 msgid "Link to it so others can easily find it"
 msgstr "Odnośnik, aby inni mogli łatwo znaleźć"
 
-#: etc/options.php:555
+#: etc/options.php:747
 msgid "WordPress Help Forum"
 msgstr "Forum pomocy WordPressa"
 
+#: etc/options.php:755
+msgid "Google codename"
+msgstr "Kod Google"
+
 #. translators: %1$s template site name, %2$s template slug, %3$s template name
-#: includes/iworks/class-simple-consent-mode-base.php:177
+#: includes/iworks/class-simple-consent-mode-base.php:179
 msgid "Missing template file: %1$s/%2$s/%3$s."
 msgstr "Brak pliku szablonu: %1$s/%2$s/%3$s."
 
@@ -459,44 +635,44 @@ msgstr "Proste zgody"
 msgid "An error occurred while getting the configuration."
 msgstr "Wystąpił błąd w czasie pobierania konfiguracji."
 
-#: includes/iworks/options/options.php:864
-#: includes/iworks/options/options.php:1972
+#: includes/iworks/options/options.php:842
+#: includes/iworks/options/options.php:1950
 msgid "Select Image"
 msgstr "Wybierz obrazek"
 
-#: includes/iworks/options/options.php:869
+#: includes/iworks/options/options.php:847
 msgid "Delete image"
 msgstr "Usuń obrazek"
 
-#: includes/iworks/options/options.php:977
+#: includes/iworks/options/options.php:955
 msgid "Save Changes"
 msgstr "Zapisz zmiany"
 
-#: includes/iworks/options/options.php:1866
+#: includes/iworks/options/options.php:1844
 msgid "Country"
 msgstr "Kraj"
 
-#: includes/iworks/options/options.php:1867
+#: includes/iworks/options/options.php:1845
 msgid "City"
 msgstr "Miasto"
 
-#: includes/iworks/options/options.php:1868
+#: includes/iworks/options/options.php:1846
 msgid "Street"
 msgstr "Ulica"
 
-#: includes/iworks/options/options.php:1869
+#: includes/iworks/options/options.php:1847
 msgid "ZIP code"
 msgstr "Kod pocztowy"
 
-#: includes/iworks/options/options.php:2025
+#: includes/iworks/options/options.php:2003
 msgid "OFF"
 msgstr "Wyłącz"
 
-#: includes/iworks/options/options.php:2026
+#: includes/iworks/options/options.php:2004
 msgid "ON"
 msgstr "Włącz"
 
-#: includes/iworks/options/options.php:2091
+#: includes/iworks/options/options.php:2069
 msgid "Failed Security Check"
 msgstr "Nieudana kontrola bezpieczeństwa"
 
@@ -550,14 +726,13 @@ msgstr "Dziękujemy za używanie naszej wtyczki %s!"
 #: includes/iworks/rate/templates/thanks.php:31
 msgid ""
 "Please let us know what you think about our plugin. It is important that we "
-"can develop this tool. Thank you for all the ratings, reviews and donates. "
-"If you have a technical problem, please before you add a review %1$scheck "
-"our FAQ%2$s or contact us if you did not find help there. We will try to "
-"help you!"
+"can develop this tool. Thank you for all the ratings, reviews and donates. If "
+"you have a technical problem, please before you add a review %1$scheck our "
+"FAQ%2$s or contact us if you did not find help there. We will try to help you!"
 msgstr ""
 "Powiedz nam co myślisz o naszej wtyczce. To jest bardzo ważne dla nas i "
-"pozwoli nam ją rozwijać. Dziękujemy serdecznie za wszystkie oceny, recenzje "
-"i dodatkowe wsparcie. Jeżeli masz problem techniczny, prosimy zanim dodasz "
+"pozwoli nam ją rozwijać. Dziękujemy serdecznie za wszystkie oceny, recenzje i "
+"dodatkowe wsparcie. Jeżeli masz problem techniczny, prosimy zanim dodasz "
 "recenzję %1$ssprawdź nasze FAQ%2$s lub skontaktuj się z nami, jeżeli nie "
 "znajdziesz tam pomocy. Postaramy się tobie pomóc!"
 
@@ -580,17 +755,16 @@ msgid ""
 "However, working on plugins and technical support requires many hours of "
 "work. If you want to appreciate it, you can provide me a coffee."
 msgstr ""
-"Praca nad wtyczkami oraz świadczenie pomocy technicznej wymaga ode mnie "
-"wielu godzin ciężkiej pracy. Jeżeli chcesz to docenić, możesz postawić mi "
-"kawę."
+"Praca nad wtyczkami oraz świadczenie pomocy technicznej wymaga ode mnie wielu "
+"godzin ciężkiej pracy. Jeżeli chcesz to docenić, możesz postawić mi kawę."
 
 #: includes/iworks/rate/templates/widgets/donate.php:3
 msgid ""
 "If every plugin user did it, I could devote myself fully to working on this "
 "plugin. Thanks everyone!"
 msgstr ""
-"Gdyby każdy użytkownik wtyczki to zrobił, to mógłbym poświęcić cały swój "
-"czas pracy nad wtyczką. Dziękuję każdemu!"
+"Gdyby każdy użytkownik wtyczki to zrobił, to mógłbym poświęcić cały swój czas "
+"pracy nad wtyczką. Dziękuję każdemu!"
 
 #: includes/iworks/rate/templates/widgets/donate.php:4
 msgid "Provide me a coffee"
@@ -599,8 +773,8 @@ msgstr "Postaw mi kawę"
 #: includes/iworks/rate/templates/widgets/support.php:4
 msgid ""
 "Do you have a technical problem? Please contact us. We will be happy to help "
-"you. Or maybe you have an idea for a new feature? Please let us know about "
-"it by filling the support form. We will try to add it!"
+"you. Or maybe you have an idea for a new feature? Please let us know about it "
+"by filling the support form. We will try to add it!"
 msgstr ""
 "Masz problem techniczny? Prosimy o kontakt z nami. Z przyjemnością tobie "
 "pomożemy. A może masz pomysł na nową funkcjonalność? Poinformuj nas o tym, "
@@ -620,9 +794,9 @@ msgstr ""
 
 #: includes/iworks/rate/templates/widgets/support.php:26
 msgid ""
-"Do you like our plugin? Could you rate him? Please let us know what you "
-"think about our plugin. It is important that we can develop this tool. Thank "
-"you for all the ratings, reviews and donates."
+"Do you like our plugin? Could you rate him? Please let us know what you think "
+"about our plugin. It is important that we can develop this tool. Thank you "
+"for all the ratings, reviews and donates."
 msgstr ""
 "Jak podoba się nasza wtyczka? Masz możliwość ją ocenić? Daj nam znać, co o "
 "niej myślisz. To dla nas bardzo ważne, aby móc ją rozwijać. Dziękujemy za "
@@ -638,7 +812,7 @@ msgstr "http://iworks.pl/simple-consent-mode/"
 
 #. Description of the plugin/theme
 msgid "PLUGIN_TAGLINE"
-msgstr ""
+msgstr "PLUGIN_TAGLINE"
 
 #. Author of the plugin/theme
 msgid "Marcin Pietrzak"
@@ -648,12 +822,12 @@ msgstr "Marcin Pietrzak"
 msgid "http://iworks.pl/"
 msgstr "http://iworks.pl/"
 
-#: etc/options.php:541
+#: etc/options.php:733
 msgctxt "plugin home page on WordPress.org"
 msgid "https://wordpress.org/plugins/simple-consent-mode/"
 msgstr "https://pl.wordpress.org/plugins/simple-consent-mode/"
 
-#: etc/options.php:555
+#: etc/options.php:747
 msgctxt "link to support forum on WordPress.org"
 msgid "https://wordpress.org/support/plugin/simple-consent-mode/"
 msgstr "https://pl.wordpress.org/support/plugin/simple-consent-mode/"
@@ -669,6 +843,37 @@ msgstr "https://pl.wordpress.org/plugins/%s"
 msgctxt "plugins support home"
 msgid "https://wordpress.org/support/plugin/%s"
 msgstr "https://wordpress.org/support/plugin/%s"
+
+#~ msgid "This site uses cookies"
+#~ msgstr "Witryna wykorzystuje ciasteczka"
+
+#~ msgid "Required Consents"
+#~ msgstr "Zgody wymagane"
+
+#~ msgid "Custom Consents"
+#~ msgstr "Własne zgody"
+
+#~ msgid "Show Description"
+#~ msgstr "Pokaż opis"
+
+#~ msgid "Consents Modal Description"
+#~ msgstr "Opis modalu zgody"
+
+#~ msgid ""
+#~ "This website uses cookies to ensure you get the best experience on our "
+#~ "website."
+#~ msgstr ""
+#~ "Witryna korzysta z plików cookie w celu zapewnienia jak najlepszego jej "
+#~ "przeglądania i używania."
+
+#~ msgid "Allow All Consents"
+#~ msgstr "Udziel wszystkich zgód"
+
+#~ msgid "Close"
+#~ msgstr "Zamknij"
+
+#~ msgid "Accent"
+#~ msgstr "Akcent"
 
 #~ msgid "Box"
 #~ msgstr "Pojemnik"

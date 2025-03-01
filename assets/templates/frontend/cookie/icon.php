@@ -1,9 +1,8 @@
-<?php
-defined( 'ABSPATH' ) || exit;
-?>
+<?php defined( 'ABSPATH' ) || exit; ?>
+<?php $key = preg_replace( '/\.php$/', '', basename( __FILE__ ) ); ?>
 <div
-	id="<?php echo esc_attr( $args['icon']['id'] ); ?>"
-	class="<?php echo esc_attr( implode( ' ', $args['icon']['classes'] ) ); ?>"
+	id="<?php echo esc_attr( $args[ $key ]['id'] ); ?>"
+	class="<?php echo esc_attr( implode( ' ', $args[ $key ]['classes'] ) ); ?>"
 >
 	<button class="scm-dialog-button" data-action="show">
 <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" >

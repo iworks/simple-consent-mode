@@ -32,6 +32,7 @@ class iworks_simple_consent_mode_base {
 	protected $dir;
 	protected $url;
 	protected $plugin_file;
+	protected $plugin_file_path;
 
 	/**
 	 * plugin settings capability
@@ -69,13 +70,14 @@ class iworks_simple_consent_mode_base {
 		$this->debug = ( defined( 'WP_DEBUG' ) && WP_DEBUG ) || ( defined( 'IWORKS_DEV_MODE' ) && IWORKS_DEV_MODE );
 		$this->dev   = $this->debug ? '' : '.min';
 		$this->eol   = $this->debug ? PHP_EOL : '';
-		$this->base  = dirname( dirname( __FILE__ ) );
-		$this->dir   = basename( dirname( $this->base ) );
+		$this->base  = dirname( dirname( __DIR__ ) );
+		$this->dir   = basename( $this->base );
 		$this->url   = plugins_url( $this->dir );
 		/**
 		 * plugin ID
 		 */
-		$this->plugin_file = plugin_basename( dirname( $this->base ) . '/simple-consent-mode.php' );
+		$this->plugin_file_path = $this->base . '/simple-consent-mode.php';
+		$this->plugin_file      = plugin_basename( $this->plugin_file_path );
 		/**
 		 * WordPress Hooks
 		 */

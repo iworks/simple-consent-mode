@@ -1,7 +1,5 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
-}
+defined( 'ABSPATH' ) || exit;
 
 function iworks_simple_consent_mode_options() {
 	$options = array();
@@ -45,7 +43,23 @@ function iworks_simple_consent_mode_options() {
 				'th'                => esc_html__( 'Description', 'simple-consent-mode' ),
 				'sanitize_callback' => 'wp_kses_post',
 				'classes'           => array( 'large-text' ),
-				'default'           => esc_html__( 'This website uses cookies to ensure you get the best experience on our website.', 'simple-consent-mode' ),
+				'default'           => wpautop(
+					implode(
+						PHP_EOL . PHP_EOL,
+						array(
+							esc_html__( 'We use cookies to personalize content and ads, to provide social media features and to analyze traffic to our site.', 'simple-consent-mode' ),
+							esc_html__( 'We share information about your use of our site with social media, advertising and analytics partners. These partners may combine this information with other data they have provided to you or obtained through your use of their services.', 'simple-consent-mode' ),
+							sprintf(
+								/* translators: %s link to explains */
+								esc_html__( 'Information on how Google processes data can be found %s.', 'simple-consent-mode' ),
+								sprintf(
+									'<a href="#" target="_blank">%s</a>',
+									esc_html__( 'here', 'simple-consent-mode' )
+								)
+							),
+						)
+					)
+				),
 				'description'       => esc_html__( 'You can use HTML tags in this field.', 'simple-consent-mode' ),
 				'rows'              => 10,
 				'since'             => '1.0.0',
@@ -93,7 +107,7 @@ function iworks_simple_consent_mode_options() {
 						PHP_EOL . PHP_EOL,
 						array(
 							esc_html__( 'Cookies are small data files stored on your device by websites to remember your preferences, login details, or actions. There are different types, including session cookies (temporary) and persistent cookies (long-term). They help personalize your browsing experience but can also track your online behavior.', 'simple-consent-mode' ),
-							esc_html__( 'Consent refers to the permission websites must obtain from users before using cookies that collect personal data. Laws like the GDPR require websites to ask for explicit consent through cookie banners, allowing users to accept or reject cookies and control their privacy. You can also withdraw consent at any time, typically through the website’s privacy settings, which lets you manage or delete stored cookies whenever you choose.p', 'simple-consent-mode' ),
+							esc_html__( 'Consent refers to the permission websites must obtain from users before using cookies that collect personal data. Laws like the GDPR require websites to ask for explicit consent through cookie banners, allowing users to accept or reject cookies and control their privacy. You can also withdraw consent at any time, typically through the website’s privacy settings, which lets you manage or delete stored cookies whenever you choose.', 'simple-consent-mode' ),
 							esc_html__( 'For more details on how a website uses cookies and collects data, you can refer to the website’s privacy policy. This document outlines the types of cookies used, data collected, and how your information is stored or shared. It also explains how you can manage your preferences.', 'simple-consent-mode' ),
 						)
 					)
@@ -111,16 +125,34 @@ function iworks_simple_consent_mode_options() {
 				'name'              => 'btn_allow',
 				'type'              => 'text',
 				'th'                => esc_html__( 'Allow All', 'simple-consent-mode' ),
+				'description'       => esc_html__( 'On the first tab', 'simple-consent-mode' ),
 				'sanitize_callback' => 'esc_html',
-				'default'           => __( 'Allow All Consents', 'simple-consent-mode' ),
+				'default'           => __( 'OK', 'simple-consent-mode' ),
 				'since'             => '1.0.0',
+			),
+			array(
+				'name'              => 'btn_allow_all',
+				'type'              => 'text',
+				'th'                => esc_html__( 'Allow All', 'simple-consent-mode' ),
+				'sanitize_callback' => 'esc_html',
+				'default'           => __( 'Allow All', 'simple-consent-mode' ),
+				'since'             => '1.2.0',
+				'description'       => esc_html__( 'Not on the first tab', 'simple-consent-mode' ),
+			),
+			array(
+				'name'              => 'btn_selected',
+				'type'              => 'text',
+				'th'                => esc_html__( 'Allow Selection', 'simple-consent-mode' ),
+				'sanitize_callback' => 'esc_html',
+				'default'           => __( 'Allow Selection', 'simple-consent-mode' ),
+				'since'             => '1.2.0',
 			),
 			array(
 				'name'              => 'btn_choose',
 				'type'              => 'text',
 				'th'                => esc_html__( 'Choose Consents', 'simple-consent-mode' ),
+				'default'           => __( 'Personalize', 'simple-consent-mode' ),
 				'sanitize_callback' => 'esc_html',
-				'default'           => __( 'Choose Consents', 'simple-consent-mode' ),
 				'since'             => '1.0.0',
 			),
 			array(
@@ -129,14 +161,6 @@ function iworks_simple_consent_mode_options() {
 				'th'                => esc_html__( 'Deny All Consents', 'simple-consent-mode' ),
 				'sanitize_callback' => 'esc_html',
 				'default'           => __( 'Deny', 'simple-consent-mode' ),
-				'since'             => '1.0.0',
-			),
-			array(
-				'name'              => 'btn_close',
-				'type'              => 'text',
-				'th'                => esc_html__( 'Close', 'simple-consent-mode' ),
-				'sanitize_callback' => 'esc_html',
-				'default'           => __( 'Close', 'simple-consent-mode' ),
 				'since'             => '1.0.0',
 			),
 			/**
@@ -153,20 +177,20 @@ function iworks_simple_consent_mode_options() {
 				'since' => '1.0.0',
 			),
 			array(
-				'name'              => 'd_max_width',
+				'name'              => 'd_width',
 				'type'              => 'number',
 				'class'             => 'small-text',
-				'th'                => __( 'Max Width', 'simple-consent-mode' ),
+				'th'                => __( 'Width', 'simple-consent-mode' ),
 				'label'             => __( 'px', 'simple-consent-mode' ),
 				'default'           => 900,
 				'sanitize_callback' => 'absint',
-				'since'             => '1.1.2',
+				'since'             => '1.2.0',
 			),
 			array(
 				'name'              => 'd_border_radius',
 				'type'              => 'number',
 				'class'             => 'small-text',
-				'th'                => __( 'Border Radius', 'simple-consent-mode' ),
+				'th'                => __( 'Radius', 'simple-consent-mode' ),
 				'label'             => __( 'px', 'simple-consent-mode' ),
 				'default'           => 5,
 				'sanitize_callback' => 'absint',
@@ -202,18 +226,26 @@ function iworks_simple_consent_mode_options() {
 				'sanitize_callback' => 'sanitize_hex_color',
 				'since'             => '1.0.0',
 			),
+			/**
+			 * Logo
+			 */
 			array(
 				'type'  => 'subheading',
 				'label' => __( 'Logo', 'simple-consent-mode' ),
 				'since' => '1.2.0',
 			),
-			/**
-			 * Logo
-			 */
+			array(
+				'name'              => 'd_logo_show',
+				'type'              => 'checkbox',
+				'th'                => esc_html__( 'Show', 'simple-consent-mode' ),
+				'default'           => 1,
+				'sanitize_callback' => 'absint',
+				'classes'           => array( 'switch-button' ),
+			),
 			array(
 				'name'              => 'd_logo',
 				'type'              => 'image',
-				'th'                => __( 'Logo', 'simple-consent-mode' ),
+				'th'                => __( 'Image', 'simple-consent-mode' ),
 				'sanitize_callback' => 'absint',
 				'since'             => '1.2.0',
 				'max-height'        => 100,
@@ -263,11 +295,21 @@ function iworks_simple_consent_mode_options() {
 				'since' => '1.0.0',
 			),
 			array(
+				'name'              => 'd_btn_border_radius',
+				'type'              => 'number',
+				'class'             => 'small-text',
+				'th'                => __( 'Radius', 'simple-consent-mode' ),
+				'label'             => __( 'px', 'simple-consent-mode' ),
+				'default'           => 5,
+				'sanitize_callback' => 'absint',
+				'since'             => '1.1.2',
+			),
+			array(
 				'name'              => 'c_btn_text',
 				'type'              => 'wpColorPicker',
 				'class'             => 'short-text',
 				'th'                => __( 'Text', 'simple-consent-mode' ),
-				'default'           => '#d0d0d0',
+				'default'           => '#888',
 				'sanitize_callback' => 'sanitize_hex_color',
 				'since'             => '1.2.0',
 			),
@@ -318,8 +360,49 @@ function iworks_simple_consent_mode_options() {
 			 */
 			array(
 				'type'  => 'heading',
-				'label' => esc_html__( 'Required Consents', 'simple-consent-mode' ),
+				'label' => esc_html__( 'Consents', 'simple-consent-mode' ),
 				'since' => '1.0.0',
+			),
+			/**
+			 * Necessary
+			 */
+			array(
+				'type'        => 'subheading',
+				'label'       => esc_html__( 'Functional', 'simple-consent-mode' ),
+				'description' => esc_html__( 'Manages the storage of cookies for essential functions like login.', 'simple-consent-mode' ) . iworks_simple_consent_modes_options_g_code( 'functional_storage' ),
+			),
+			array(
+				'name'              => 'fust_show',
+				'type'              => 'checkbox',
+				'th'                => esc_html__( 'Show', 'simple-consent-mode' ),
+				'default'           => 0,
+				'sanitize_callback' => 'absint',
+				'classes'           => array( 'switch-button' ),
+			),
+			array(
+				'name'              => 'fust_on',
+				'type'              => 'checkbox',
+				'th'                => esc_html__( 'Always on', 'simple-consent-mode' ),
+				'default'           => 0,
+				'sanitize_callback' => 'absint',
+				'classes'           => array( 'switch-button' ),
+			),
+			array(
+				'name'              => 'fust_title',
+				'type'              => 'text',
+				'th'                => esc_html__( 'Title', 'simple-consent-mode' ),
+				'sanitize_callback' => 'esc_html',
+				'classes'           => array( 'large-text' ),
+				'default'           => __( 'Functionality', 'simple-consent-mode' ),
+				'codename'          => 'functional_storage',
+			),
+			array(
+				'name'              => 'fust_desc',
+				'type'              => 'textarea',
+				'th'                => esc_html__( 'Description', 'simple-consent-mode' ),
+				'sanitize_callback' => 'esc_html',
+				'classes'           => array( 'large-text' ),
+				'default'           => __( 'Necessary cookies help make a website usable by enabling basic functions such as page navigation and access to secure areas of the website. The website cannot function properly without these cookies.', 'simple-consent-mode' ),
 			),
 			/**
 			 * analytics_storage
@@ -327,7 +410,7 @@ function iworks_simple_consent_mode_options() {
 			array(
 				'type'        => 'subheading',
 				'label'       => esc_html__( 'Analytics Storage', 'simple-consent-mode' ),
-				'description' => esc_html__( 'Controls whether data related to website usage and user behavior can be stored for analytics purposes (e.g., Google Analytics).', 'simple-consent-mode' ),
+				'description' => esc_html__( 'Enables storage (such as cookies) related to analytics e.g. visit duration.', 'simple-consent-mode' ) . iworks_simple_consent_modes_options_g_code( 'analytics_storage' ),
 				'since'       => '1.0.0',
 			),
 			array(
@@ -357,7 +440,7 @@ function iworks_simple_consent_mode_options() {
 			array(
 				'type'        => 'subheading',
 				'label'       => esc_html__( 'Ad Storage', 'simple-consent-mode' ),
-				'description' => esc_html__( 'Manages whether advertising-related data (like targeting and tracking cookies) can be stored and processed for ad services.', 'simple-consent-mode' ),
+				'description' => esc_html__( 'Enables storage (such as cookies) related to advertising.', 'simple-consent-mode' ) . iworks_simple_consent_modes_options_g_code( 'ad_storage' ),
 				'since'       => '1.0.0',
 			),
 			array(
@@ -387,7 +470,7 @@ function iworks_simple_consent_mode_options() {
 			array(
 				'type'        => 'subheading',
 				'label'       => esc_html__( 'Ad Personalization', 'simple-consent-mode' ),
-				'description' => esc_html__( 'Determines if personalized ads can be shown based on user behavior and preferences, using stored data for targeting.', 'simple-consent-mode' ),
+				'description' => esc_html__( 'Sets consent for personalized advertising.', 'simple-consent-mode' ) . iworks_simple_consent_modes_options_g_code( 'ad_personalization' ),
 				'since'       => '1.0.0',
 			),
 			array(
@@ -419,7 +502,7 @@ function iworks_simple_consent_mode_options() {
 			array(
 				'type'        => 'subheading',
 				'label'       => esc_html__( 'Ad User Data', 'simple-consent-mode' ),
-				'description' => esc_html__( 'Controls the storage of user-specific data for ad tracking, profiling, and measuring ad effectiveness.', 'simple-consent-mode' ),
+				'description' => esc_html__( 'Sets consent for sending user data related to advertising to Google. The ad_user_data consent type is required for measurement use cases, such as enhanced conversions and tag-based conversion tracking.', 'simple-consent-mode' ) . iworks_simple_consent_modes_options_g_code( 'ad_user_data' ),
 				'since'       => '1.0.0',
 			),
 			array(
@@ -444,59 +527,12 @@ function iworks_simple_consent_mode_options() {
 				'rows'              => 5,
 			),
 			/**
-			 * Custom Consents
-			 */
-			array(
-				'type'  => 'heading',
-				'label' => esc_html__( 'Custom Consents', 'simple-consent-mode' ),
-			),
-			/**
-			 * functional_storage
-			 */
-			array(
-				'type'        => 'subheading',
-				'label'       => esc_html__( 'Functional Storage', 'simple-consent-mode' ),
-				'description' => esc_html__( 'Manages the storage of cookies for non-essential functions like site preferences, login status, and custom settings.', 'simple-consent-mode' ),
-			),
-			array(
-				'name'              => 'fust_show',
-				'type'              => 'checkbox',
-				'th'                => esc_html__( 'Show', 'simple-consent-mode' ),
-				'default'           => 0,
-				'sanitize_callback' => 'absint',
-				'classes'           => array( 'switch-button' ),
-			),
-			array(
-				'name'              => 'fust_on',
-				'type'              => 'checkbox',
-				'th'                => esc_html__( 'Always on', 'simple-consent-mode' ),
-				'default'           => 0,
-				'sanitize_callback' => 'absint',
-				'classes'           => array( 'switch-button' ),
-			),
-			array(
-				'name'              => 'fust_title',
-				'type'              => 'text',
-				'th'                => esc_html__( 'Title', 'simple-consent-mode' ),
-				'sanitize_callback' => 'esc_html',
-				'classes'           => array( 'large-text' ),
-				'default'           => __( 'Functionality', 'simple-consent-mode' ),
-			),
-			array(
-				'name'              => 'fust_desc',
-				'type'              => 'textarea',
-				'th'                => esc_html__( 'Description', 'simple-consent-mode' ),
-				'sanitize_callback' => 'esc_html',
-				'classes'           => array( 'large-text' ),
-				'default'           => __( 'Manages the storage of cookies for non-essential functions like site preferences, login status, and custom settings.', 'simple-consent-mode' ),
-			),
-			/**
 			 * personalization_storage
 			 */
 			array(
 				'type'        => 'subheading',
 				'label'       => esc_html__( 'Personalization Storage', 'simple-consent-mode' ),
-				'description' => esc_html__( 'Regulates whether data used to provide personalized user experiences (like content recommendations) can be stored.', 'simple-consent-mode' ),
+				'description' => esc_html__( 'Enables storage related to personalization e.g. video recommendations', 'simple-consent-mode' ) . iworks_simple_consent_modes_options_g_code( 'personalization_storage' ),
 			),
 			array(
 				'name'              => 'pest_show',
@@ -513,6 +549,7 @@ function iworks_simple_consent_mode_options() {
 				'sanitize_callback' => 'esc_html',
 				'classes'           => array( 'large-text' ),
 				'default'           => __( 'Personalizations', 'simple-consent-mode' ),
+				'codename'          => 'personalization_storage',
 			),
 			array(
 				'name'              => 'pest_desc',
@@ -521,6 +558,39 @@ function iworks_simple_consent_mode_options() {
 				'sanitize_callback' => 'esc_html',
 				'classes'           => array( 'large-text' ),
 				'default'           => __( 'Regulates whether data used to provide personalized user experiences (like content recommendations) can be stored.', 'simple-consent-mode' ),
+			),
+			/**
+			 * security_storage
+			 */
+			array(
+				'type'        => 'subheading',
+				'label'       => esc_html__( 'Security Storage', 'simple-consent-mode' ),
+				'description' => esc_html__( 'Enables storage related to security such as authentication functionality, fraud prevention, and other user protection.', 'simple-consent-mode' ) . iworks_simple_consent_modes_options_g_code( 'security_storage' ),
+			),
+			array(
+				'name'              => 'sest_show',
+				'type'              => 'checkbox',
+				'th'                => esc_html__( 'Show', 'simple-consent-mode' ),
+				'default'           => 0,
+				'sanitize_callback' => 'absint',
+				'classes'           => array( 'switch-button' ),
+			),
+			array(
+				'name'              => 'sest_title',
+				'type'              => 'text',
+				'th'                => esc_html__( 'Title', 'simple-consent-mode' ),
+				'sanitize_callback' => 'esc_html',
+				'classes'           => array( 'large-text' ),
+				'default'           => __( 'Security', 'simple-consent-mode' ),
+				'codename'          => 'security_storage',
+			),
+			array(
+				'name'              => 'sest_desc',
+				'type'              => 'textarea',
+				'th'                => esc_html__( 'Description', 'simple-consent-mode' ),
+				'sanitize_callback' => 'esc_html',
+				'classes'           => array( 'large-text' ),
+				'default'           => __( 'Security storage is the practice of safely storing sensitive data using encryption or secure methods to prevent unauthorized access or theft.', 'simple-consent-mode' ),
 			),
 			/**
 			 * cookie
@@ -558,7 +628,7 @@ function iworks_simple_consent_mode_options() {
 				'type'              => 'checkbox',
 				'th'                => esc_html__( 'Enable', 'simple-consent-mode' ),
 				'default'           => 1,
-				'description'       => esc_html__( ' Enable or disable consent logging as needed.', 'simple-consent-mode' ),
+				'description'       => esc_html__( 'Enable or disable consent logging as needed.', 'simple-consent-mode' ),
 				'sanitize_callback' => 'absint',
 				'classes'           => array( 'switch-button' ),
 				'since'             => '1.1.0',
@@ -677,4 +747,12 @@ function iworks_simple_consent_modes_options_need_assistance( $iworks_simple_con
 	<li><a href="<?php echo esc_attr_x( 'https://wordpress.org/support/plugin/simple-consent-mode/', 'link to support forum on WordPress.org', 'simple-consent-mode' ); ?>"><?php esc_html_e( 'WordPress Help Forum', 'simple-consent-mode' ); ?></a></li>
 </ul>
 	<?php
+}
+
+function iworks_simple_consent_modes_options_g_code( $gcode ) {
+	return sprintf(
+		' [%s: %s]',
+		esc_html__( 'Google codename', 'simple-consent-mode' ),
+		$gcode
+	);
 }
