@@ -35,9 +35,14 @@ $consents = array(
  * check current consents
  */
 $cookie_value_consents = array();
-if ( preg_match( '/^choose:(.+)$/', $cookie_value, $matches ) ) {
-	$cookie_value_consents = preg_split( '/,/', $matches[1] );
+foreach ( $args['consents']['user'] as $consent => $status ) {
+	if ( 'granted' === $status ) {
+		$cookie_value_consents[] = $consent;
+	}
 }
+/**
+ * produce
+ */
 foreach ( $configuration as $one ) {
 	if ( ! isset( $one['name'] ) ) {
 		continue;

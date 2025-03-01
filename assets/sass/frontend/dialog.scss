@@ -253,4 +253,22 @@
 			}
 		}
 	}
+
+	&-icon {
+		width: 48px;
+		height: 48px;
+		position: fixed;
+		left: var(--scm-spacer-16);
+		bottom: var(--scm-spacer-16);
+		.scm-dialog-button {
+			@include reset;
+			min-width: unset;
+			width: 48px;
+			height: 48px;
+			svg {
+				width: 48px;
+				height: 48px;
+			}
+		}
+	}
 }

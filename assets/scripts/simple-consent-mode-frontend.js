@@ -1,4 +1,4 @@
-/*! Simple Consent Mode - 1.1.2
+/*! Simple Consent Mode - 1.2.0
  * http://simple-consent-mode.iworks.pl/
  * Copyright (c) 2025;
  * Licensed GPL-3.0 */
@@ -13,24 +13,6 @@ window.addEventListener('load', function(event) {
 	if (!dialog || 1 > dialog.length) {
 		return;
 	}
-	/**
-	 * allow choosen
-	 */
-	window.simple_consent_mode.functions.choosen = function() {};
-	/**
-	 * close dialog & show icon
-	 */
-	window.simple_consent_mode.functions.close_dialog = function() {
-		document.getElementById('scm-dialog').close();
-		document.getElementById('scm-icon').show();
-	};
-	/**
-	 * update status
-	 */
-	window.simple_consent_mode.functions.update_consents = function(consents) {
-		window.simple_consent_mode.functions.set_cookie(JSON.stringify(consents));
-		window.simple_consent_mode.functions.save_log(consents);
-	};
 	/**
 	 * set consents
 	 */
@@ -60,6 +42,13 @@ window.addEventListener('load', function(event) {
 			var i;
 			event.preventDefault();
 			switch (this.dataset.action) {
+				case 'show':
+					/**
+					 * open dialog & hide icon
+					 */
+					document.getElementById('scm-dialog').showModal();
+					document.getElementById('scm-icon').classList.add('hidden');
+					return;
 				case 'allow':
 					for (i = 0; i < enabled_types_of_consents.length; i++) {
 						consents[enabled_types_of_consents[i]] = 'granted';
@@ -80,12 +69,19 @@ window.addEventListener('load', function(event) {
 						consents[enabled_types_of_consents[i]] = 'denied';
 					}
 					for (i = 0; i < checkboxes.length; i++) {
-						if ( checkboxes[i].checked ) {
+						if (checkboxes[i].checked) {
 							consents[checkboxes[i].value] = 'granted';
 						}
 					}
 			}
-			window.simple_consent_mode.functions.update_consents(consents);
+			/**
+			 * update status
+			 */
+			window.simple_consent_mode.functions.set_cookie(JSON.stringify(consents));
+			window.simple_consent_mode.functions.save_log(consents);
+			/**
+			 * close dialog & show icon
+			 */
 			document.getElementById('scm-dialog').close();
 			document.getElementById('scm-icon').classList.remove('hidden');
 		});

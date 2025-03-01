@@ -231,7 +231,7 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 			'consents'    => array(
 				'available' => $this->types_of_consent,
 				'types'     => $this->get_enabled_types_of_consent(),
-				'user'      => $this->get_consents( $cookie_value ),
+				'user'      => $this->check_and_prepare_user_consents( $cookie_value ),
 				'forced'    => $this->get_foreced_types_of_consent(),
 			),
 			'cookie'      => array(
@@ -340,37 +340,6 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 			'iworks/simple_consent_mode/configuration',
 			$this->configuration
 		);
-	}
-
-	private function get_consents( $value ) {
-		$consents = array();
-		switch ( $value ) {
-			case 'deny':
-			case null:
-				return $consents;
-			case 'allow':
-				$consents = array(
-					'ad_storage'              => 'granted',
-					'ad_personalization'      => 'granted',
-					'ad_user_data'            => 'granted',
-					'analytics_storage'       => 'granted',
-					'functionality_storage'   => 'granted',
-					'analytics_storage'       => 'granted',
-					'personalization_storage' => 'granted',
-				);
-				return $consents;
-				break;
-		}
-		/**
-		 * choosen
-		 */
-		$consents = array();
-		if ( preg_match( '/^choose:(.+)$/', $value, $matches ) ) {
-			foreach ( preg_split( '/,/', $matches[1] ) as $one ) {
-				$consents[ $one ] = 'granted';
-			}
-		}
-		return $consents;
 	}
 
 	/**
@@ -703,5 +672,22 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 			$forced_types_of_consent[] = 'functionality_storage';
 		}
 		return $forced_types_of_consent;
+	}
+
+	/**
+	 * get and check cookie value
+	 *
+	 * @since 1.2.0
+	 */
+	private function check_and_prepare_user_consents( $cookie_value ) {
+		if ( empty( $cookie_value ) ) {
+			return array();
+		}
+		$value = json_decode( $cookie_value, true );
+		if ( empty( $value ) ) {
+			return array();
+		}
+		return $value;
+
 	}
 }
