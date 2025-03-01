@@ -76,6 +76,7 @@ window.addEventListener('load', function(event) {
 			/**
 			 * update status
 			 */
+			gtag('consent', 'update', consents );
 			window.simple_consent_mode.functions.set_cookie(JSON.stringify(consents));
 			window.simple_consent_mode.functions.save_log(consents);
 			/**
