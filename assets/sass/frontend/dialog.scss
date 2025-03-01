@@ -67,6 +67,9 @@
 					bottom: 1px solid var(--scm-color-btn-text);
 				}
 			}
+			li {
+				@include reset_min;
+			}
 			&-tab {
 				height: 0;
 				overflow: hidden;
@@ -143,6 +146,9 @@
 			}
 			padding: var(--scm-spacer-8) var(--scm-spacer-32);
 			min-width: 180px;
+			text: {
+				align: center;
+			}
 			&:hover {
 				cursor: pointer;
 				border: {
