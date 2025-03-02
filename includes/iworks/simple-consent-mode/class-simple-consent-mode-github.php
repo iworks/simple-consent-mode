@@ -145,7 +145,7 @@ class iworks_simple_consent_mode_github extends iworks_simple_consent_mode_base 
 				'Description' => $details['Description'],
 				'Updates'     => $repo['body'],
 			),
-			'download_link'     => $repo['zipball_url'],
+			'download_link'     => $repo['assets'][0]['browser_download_url'],
 		);
 		// Return the plugin data as an object
 		return (object) $plugin;
