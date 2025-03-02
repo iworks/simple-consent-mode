@@ -67,6 +67,8 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-c
 
 == Changelog ==
 
+= 1.2.1 - 2025-02-25 =
+* Wrong data decode has been fixed.
 
 = 1.2.0 - 2025-02-25 =
 * The frontend has been refactored.

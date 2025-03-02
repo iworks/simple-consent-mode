@@ -225,6 +225,13 @@ class iworks_simple_consent_mode_base {
 			return array();
 		}
 		/**
+		 * try json
+		 */
+		$data = json_decode( $cookie_value, true );
+		if ( is_array( $data ) && ! empty( $data ) ) {
+			return $data;
+		}
+		/**
 		 * old log format
 		 */
 		switch ( $cookie_value ) {
