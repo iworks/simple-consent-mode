@@ -68,7 +68,7 @@ class iworks_simple_consent_mode_wp_admin extends iworks_simple_consent_mode_bas
 		$file = '/assets/scripts/simple-consent-mode-admin' . $this->dev . '.js';
 		wp_register_script(
 			$name,
-			plugins_url( $file, $this->base ),
+			plugins_url( $file, $this->plugin_file_path ),
 			array(),
 			$this->get_version( $file ),
 			array(
@@ -101,12 +101,79 @@ class iworks_simple_consent_mode_wp_admin extends iworks_simple_consent_mode_bas
 		header( 'Content-Type: text/csv' );
 		header( 'Content-Disposition: attachment; filename=' . $file );
 		$out = fopen( 'php://output', 'w' );
-		fputcsv( $out, $wpdb->get_col( "desc {$wpdb->iworks_scm_log}" ) );
-		foreach ( $wpdb->get_results( "select * from {$wpdb->iworks_scm_log} order by 1", ARRAY_N ) as $row ) {
+		/**
+		 * print head
+		 */
+		$data = $wpdb->get_col( "desc {$wpdb->iworks_scm_log}" );
+		$row  = array();
+		foreach ( $data as $one ) {
+			if ( 'consent_value' === $one ) {
+				continue;
+			}
+			$row[] = $this->capitalize( $one );
+		}
+		foreach ( $this->types_of_consent as $type ) {
+			$row[] = $this->capitalize( $type );
+		}
+		$row[] = 'RAW Consent Data';
+		fputcsv( $out, $row );
+		/**
+		 * put data
+		 */
+		foreach ( $wpdb->get_results( "select * from {$wpdb->iworks_scm_log} order by 1", ARRAY_A ) as $data ) {
+			$row = array();
+			foreach ( $data as $key => $one ) {
+				if ( 'consent_value' === $key ) {
+					continue;
+				}
+				$row[] = $one;
+			}
+			$consents = $this->check_and_prepare_user_consents( $data['consent_value'] );
+			foreach ( $this->types_of_consent as $type ) {
+				$row[] = isset( $consents[ $type ] ) ? $consents[ $type ] : '-';
+			}
+			$row[] = $data['consent_value'];
 			fputcsv( $out, $row );
 		}
 		fclose( $out );
 		exit;
+	}
+
+	/**
+	 * capitalize string
+	 *
+	 * @since 1.2.0
+	 */
+	private function capitalize( $one ) {
+		$data = array();
+		if ( preg_match( '/_/', $one ) ) {
+			$data = explode( '_', $one );
+		} elseif ( preg_match( '/[A-Z]/', $one ) ) {
+			$data = preg_split( '/(?=[A-Z])/', $one );
+		} else {
+			$data = array( $one );
+		}
+		$result = array();
+		foreach ( $data as $one ) {
+			$one = strtolower( $one );
+			switch ( $one ) {
+				case 'id':
+				case 'scm':
+				case 'ip':
+				case 'url':
+					$result[] = strtoupper( $one );
+					break;
+				case 'oscpu':
+					$result[] = 'OS CPU';
+					break;
+				case 'ipx':
+					$result[] = 'X-Forwarded-For';
+					break;
+				default:
+					$result[] = ucfirst( $one );
+			}
+		}
+		return implode( ' ', $result );
 	}
 }
 

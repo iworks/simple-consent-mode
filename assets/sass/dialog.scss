@@ -1,4 +1,4 @@
-@import '../_mixin';
+@import '_mixin';
 .sr-only {
 	@include reset_min;
 	position: absolute;
@@ -83,6 +83,9 @@
 					height: auto;
 					max-height: 50vh;
 					overflow: auto;
+				}
+				p {
+					margin: 1em 0;
 				}
 				&s {
 					@include reset_ul;

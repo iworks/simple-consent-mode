@@ -83,7 +83,7 @@ module.exports = function(grunt) {
 		// SASS files to process. Resulting CSS files will be minified as well.
 		css_files_compile: {
 			'assets/styles/frontend/settings.css': 'assets/sass/settings.scss',
-			'assets/styles/frontend/dialog.css': 'assets/sass/frontend/dialog.scss',
+			'assets/styles/frontend/dialog.css': 'assets/sass/dialog.scss',
 		},
 
 		replace_patterns: [{

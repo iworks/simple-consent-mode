@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - Simple Consent Mode - Development (trunk)\n"
 "Report-Msgid-Bugs-To: http://iworks.pl\n"
-"POT-Creation-Date: 2025-03-01 16:40:12+00:00\n"
+"POT-Creation-Date: 2025-03-02 08:06:51+00:00\n"
 "PO-Revision-Date: 2025-03-01 15:23+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -624,7 +624,7 @@ msgid "Google codename"
 msgstr "Kod Google"
 
 #. translators: %1$s template site name, %2$s template slug, %3$s template name
-#: includes/iworks/class-simple-consent-mode-base.php:179
+#: includes/iworks/class-simple-consent-mode-base.php:194
 msgid "Missing template file: %1$s/%2$s/%3$s."
 msgstr "Brak pliku szablonu: %1$s/%2$s/%3$s."
 

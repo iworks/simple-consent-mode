@@ -34,21 +34,6 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 	 */
 	private array $configuration = array();
 
-	/**
-	 * types of consent
-	 *
-	 * @since 1.2.0
-	 */
-	private array $types_of_consent = array(
-		'ad_personalization',
-		'ad_storage',
-		'ad_user_data',
-		'analytics_storage',
-		'functionality_storage',
-		'personalization_storage',
-		'security_storage',
-	);
-
 	public function __construct() {
 		parent::__construct();
 		/**
@@ -670,20 +655,4 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 		return $forced_types_of_consent;
 	}
 
-	/**
-	 * get and check cookie value
-	 *
-	 * @since 1.2.0
-	 */
-	private function check_and_prepare_user_consents( $cookie_value ) {
-		if ( empty( $cookie_value ) ) {
-			return array();
-		}
-		$value = json_decode( $cookie_value, true );
-		if ( empty( $value ) ) {
-			return array();
-		}
-		return $value;
-
-	}
 }

@@ -63,6 +63,21 @@ class iworks_simple_consent_mode_base {
 	 */
 	protected string $eol = '';
 
+	/**
+	 * types of consent
+	 *
+	 * @since 1.2.0
+	 */
+	protected array $types_of_consent = array(
+		'ad_personalization',
+		'ad_storage',
+		'ad_user_data',
+		'analytics_storage',
+		'functionality_storage',
+		'personalization_storage',
+		'security_storage',
+	);
+
 	public function __construct() {
 		/**
 		 * static settings
@@ -198,5 +213,51 @@ class iworks_simple_consent_mode_base {
 			return;
 		}
 		$this->options = iworks_simple_consent_mode_get_options();
+	}
+
+	/**
+	 * get and check cookie value
+	 *
+	 * @since 1.2.0
+	 */
+	protected function check_and_prepare_user_consents( $cookie_value ) {
+		if ( empty( $cookie_value ) ) {
+			return array();
+		}
+		/**
+		 * old log format
+		 */
+		switch ( $cookie_value ) {
+			case 'deny':
+				return array(
+					'ad_personalization' => 'denied',
+					'ad_storage'         => 'denied',
+					'ad_user_data'       => 'denied',
+					'analytics_storage'  => 'denied',
+				);
+			case 'all':
+				return array(
+					'ad_personalization' => 'granted',
+					'ad_storage'         => 'granted',
+					'ad_user_data'       => 'granted',
+					'analytics_storage'  => 'granted',
+				);
+		}
+		/**
+		 * format
+		 *
+		 * @since 1.2.0
+		 */
+		$user_consents = array();
+		if ( empty( $cookie_value ) ) {
+			return $user_consents;
+		}
+		foreach ( explode( ',', $cookie_value ) as $one ) {
+			$data = explode( ':', $one );
+			if ( 1 < sizeof( $data ) ) {
+				$user_consents[ $data[0] ] = $data[1];
+			}
+		}
+		return $user_consents;
 	}
 }
