@@ -227,7 +227,7 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 				'value'    => $cookie_value,
 			),
 			'logo'        => array(
-				'src'  => wp_get_attachment_image_url( $this->options->get_option( 'd_logo' ) ),
+				'src'  => wp_get_attachment_image_url( $this->options->get_option( 'd_logo' ), 'full' ),
 				'show' => $this->options->get_option( 'd_logo_show' ),
 			),
 			'tabs'        => array(
