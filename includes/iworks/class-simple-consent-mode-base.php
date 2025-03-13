@@ -30,6 +30,7 @@ class iworks_simple_consent_mode_base {
 	protected $meta_prefix = '_iw';
 	protected $base;
 	protected $dir;
+	protected $version;
 	protected $url;
 	protected $plugin_file;
 	protected $plugin_file_path;
@@ -83,11 +84,20 @@ class iworks_simple_consent_mode_base {
 		 * static settings
 		 */
 		$this->debug = ( defined( 'WP_DEBUG' ) && WP_DEBUG ) || ( defined( 'IWORKS_DEV_MODE' ) && IWORKS_DEV_MODE );
-		$this->dev   = $this->debug ? '' : '.min';
-		$this->eol   = $this->debug ? PHP_EOL : '';
-		$this->base  = dirname( dirname( __DIR__ ) );
-		$this->dir   = basename( $this->base );
-		$this->url   = plugins_url( $this->dir );
+		/**
+		 * use minimized scripts if not debug
+		 */
+		$this->dev = $this->debug ? '' : '.min';
+		/**
+		 * add EOL if debug
+		 */
+		$this->eol = $this->debug ? PHP_EOL : '';
+		/**
+		 * directories and urls
+		 */
+		$this->base = dirname( dirname( __DIR__ ) );
+		$this->dir  = basename( $this->base );
+		$this->url  = plugins_url( $this->dir );
 		/**
 		 * plugin ID
 		 */
