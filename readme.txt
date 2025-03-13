@@ -67,15 +67,17 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-c
 
 == Changelog ==
 
-= 1.2.2 - 2025-02-25 =
+= 1.2.2 - 2025-03-13 =
 * Wrong GitHub releases zip file URL has been fixed.
+* Improved build process for better performance and efficiency.
+* Updated the [iWorks Options](https://github.com/iworks/wordpress-options-class) module to version 2.9.8.
 
 = 1.2.1 - 2025-02-25 =
 * Wrong data decode has been fixed.
 
 = 1.2.0 - 2025-02-25 =
 * The frontend has been refactored.
-* The [iWorks Options](https://github.com/iworks/wordpress-options-class) module has been updated to 2.9.7.
+* Updated the [iWorks Options](https://github.com/iworks/wordpress-options-class) module to version 2.9.7.
 * Translation loading for [github releases](https://github.com/iworks/simple-consent-mode/releases) has been fixed.
 
 = 1.1.1 - 2025-02-20 =
