@@ -68,9 +68,11 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-c
 == Changelog ==
 
 = 1.2.2 - 2025-03-13 =
-* Wrong GitHub releases zip file URL has been fixed.
+* Enhanced CSS class selectors to prevent conflicts with theme styles.
 * Improved build process for better performance and efficiency.
+* The dialog logo has been corrected to prevent the use of the cropped version.
 * Updated the [iWorks Options](https://github.com/iworks/wordpress-options-class) module to version 2.9.8.
+* Wrong [GitHub releases](https://github.com/iworks/simple-consent-mode/releases)  zip file URL has been fixed.
 
 = 1.2.1 - 2025-02-25 =
 * Wrong data decode has been fixed.
