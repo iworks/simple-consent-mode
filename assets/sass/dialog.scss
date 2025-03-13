@@ -9,8 +9,8 @@
 	clip: rect(0, 0, 0, 0);
 	white-space: nowrap;
 }
-.scm {
-	&-dialog {
+dialog {
+	&#scm-dialog {
 		background: {
 			color: var(--scm-color-bg, #fff);
 		}
@@ -24,245 +24,250 @@
 		&::backdrop {
 			background-color: var(--scm-color-backdrop, rgba( 0, 0, 0, .7 ) );
 		}
-		/* wrapper */
-		&-wrapper {
-		}
-		/* header */
-		&-header {
-			&-logo {
-				max-height: var(--scm-logo-max-height, 48px );
-			}
-			border: {
-				bottom: 1px solid var(--scm-color-btn-text);
-			}
-			padding: var(--scm-spacer-22);
-			&-container {
-				p {
-					text: {
-						align: center;
+		.scm {
+			&-dialog {
+				/* wrapper */
+				&-wrapper {
+				}
+				/* header */
+				&-header {
+					&-logo {
+						max-height: var(--scm-logo-max-height, 48px );
 					}
-				}
-				&:has(img) {
-					display: flex;
-					gap: var(--scm-spacer-32);
-					align: {
-						items: center;
-					}
-					p {
-						margin: 0;
-						text: {
-							align: left;
-						}
-					}
-				}
-			}
-		}
-		&-content {
-			display: flex;
-			flex: {
-				direction: column-reverse;
-			}
-			&s {
-				border: {
-					bottom: 1px solid var(--scm-color-btn-text);
-				}
-			}
-			li {
-				@include reset_min;
-			}
-			&-tab {
-				height: 0;
-				overflow: hidden;
-				padding: 0;
-				width: 0;
-				position: relative;
-				&[aria-expanded="true"] {
-					display: block;
-					padding: var(--scm-spacer-22);
-					width: auto;
-					height: auto;
-					max-height: 50vh;
-					overflow: auto;
-				}
-				p {
-					margin: 1em 0;
-				}
-				&s {
-					@include reset_ul;
 					border: {
 						bottom: 1px solid var(--scm-color-btn-text);
 					}
-					display: grid;
-					grid: {
-						template: {
-							columns: repeat( 3, 1fr );
-						}
-					}
-					a {
-						border: {
-							bottom: 3px solid transparent;
-						}
-						display: block;
-						font: {
-							size: smaller;
-						}
-						padding: var(--scm-spacer-12);
-						text: {
-							decoration: none;
-							align: center;
-						}
-						&:active,
-						&:focus,
-						&:focus-within,
-						&:hover {
-							border: {
-								bottom: 3px solid var(--scm-color-btn-pri-bg);
+					padding: var(--scm-spacer-22);
+					&-container {
+						p {
+							text: {
+								align: center;
 							}
 						}
-						&[aria-selected="true"] {
-							border: {
-								bottom: 3px solid var(--scm-color-btn-text);
+						&:has(img) {
+							display: flex;
+							gap: var(--scm-spacer-32);
+							align: {
+								items: center;
 							}
-							&:hover {
-								cursor: default;
+							p {
+								margin: 0;
+								text: {
+									align: left;
+								}
 							}
 						}
 					}
 				}
-			}
-		}
-		&-button {
-			background: {
-				color: var(--scm-color-btn-bg);
-			}
-			border: {
-				color: var(--scm-color-btn-text);
-				radius: var(--scm-button-border-radius);
-				style: solid;
-				width: 1px;
-			}
-			color: var(--scm-color-btn-text);
-			display: block;
-			font: {
-				size: var(--scm-font-size);
-				weight: var(--scm-font-weight-bold);
-			}
-			padding: var(--scm-spacer-8) var(--scm-spacer-32);
-			min-width: 180px;
-			text: {
-				align: center;
-			}
-			&:hover {
-				cursor: pointer;
-				border: {
-					color: var(--scm-color-btn-pri-bg);
-				}
-			}
-			&:active,
-			&:focus,
-			&:focus-within {
-				box: {
-					shadow: 0 0 8px 0 #ddd;
-				}
-			}
-			&-allow {
-				background: {
-					color: var(--scm-color-btn-pri-bg);
-				}
-				color: var(--scm-color-btn-pri-text);
-			}
-			&s {
-				&-wrapper {
-					@include reset_ul;
+				&-content {
 					display: flex;
 					flex: {
-						direction: row-reverse;
+						direction: column-reverse;
 					}
-					gap: var(--scm-spacer-32);
-					justify: {
-						content: flex-start;
+					&s {
+						border: {
+							bottom: 1px solid var(--scm-color-btn-text);
+						}
 					}
-					padding: var(--scm-spacer-22);
+					li {
+						@include reset_min;
+					}
+					&-tab {
+						height: 0;
+						overflow: hidden;
+						padding: 0;
+						width: 0;
+						position: relative;
+						&[aria-expanded="true"] {
+							display: block;
+							padding: var(--scm-spacer-22);
+							width: auto;
+							height: auto;
+							max-height: 50vh;
+							overflow: auto;
+						}
+						p {
+							margin: 1em 0;
+						}
+						&s {
+							@include reset_ul;
+							border: {
+								bottom: 1px solid var(--scm-color-btn-text);
+							}
+							display: grid;
+							grid: {
+								template: {
+									columns: repeat( 3, 1fr );
+								}
+							}
+							a {
+								border: {
+									bottom: 3px solid transparent;
+								}
+								display: block;
+								font: {
+									size: smaller;
+								}
+								padding: var(--scm-spacer-12);
+								text: {
+									decoration: none;
+									align: center;
+								}
+								&:active,
+								&:focus,
+								&:focus-within,
+								&:hover {
+									border: {
+										bottom: 3px solid var(--scm-color-btn-pri-bg);
+									}
+								}
+								&[aria-selected="true"] {
+									border: {
+										bottom: 3px solid var(--scm-color-btn-text);
+									}
+									&:hover {
+										cursor: default;
+									}
+								}
+							}
+						}
+					}
 				}
-			}
-			&-container {
-				&.hidden {
-					display: none;
+				&-button {
+					background: {
+						color: var(--scm-color-btn-bg);
+					}
+					border: {
+						color: var(--scm-color-btn-text);
+						radius: var(--scm-button-border-radius);
+						style: solid;
+						width: 1px;
+					}
+					color: var(--scm-color-btn-text);
+					display: block;
+					font: {
+						size: var(--scm-font-size);
+						weight: var(--scm-font-weight-bold);
+					}
+					padding: var(--scm-spacer-8) var(--scm-spacer-32);
+					min-width: 180px;
+					text: {
+						align: center;
+					}
+					&:hover {
+						cursor: pointer;
+						border: {
+							color: var(--scm-color-btn-pri-bg);
+						}
+					}
+					&:active,
+					&:focus,
+					&:focus-within {
+						box: {
+							shadow: 0 0 8px 0 #ddd;
+						}
+					}
+					&-allow {
+						background: {
+							color: var(--scm-color-btn-pri-bg);
+						}
+						color: var(--scm-color-btn-pri-text);
+					}
+					&s {
+						&-wrapper {
+							@include reset_ul;
+							display: flex;
+							flex: {
+								direction: row-reverse;
+							}
+							gap: var(--scm-spacer-32);
+							justify: {
+								content: flex-start;
+							}
+							padding: var(--scm-spacer-22);
+						}
+					}
+					&-container {
+						&.hidden {
+							display: none;
+						}
+					}
 				}
-			}
-		}
-		dl {
-			font: {
-				size: var(--scm-font-size-dl);
-			}
-		}
-
-		dt {
-			font: {
-				weight: var(--scm-font-weight-bolder);
-			}
-			@media screen and (max-width: 782px) {
-				margin: {
-					bottom: var(--scm-spacer-16);
+				dl {
+					font: {
+						size: var(--scm-font-size-dl);
+					}
 				}
-			}
-		}
 
-		dd {
-			@media screen and (max-width: 782px) {
-				display: none;
-			}
-			margin: {
-				inline: {
-					start: 0;
+				dt {
+					font: {
+						weight: var(--scm-font-weight-bolder);
+					}
+					@media screen and (max-width: 782px) {
+						margin: {
+							bottom: var(--scm-spacer-16);
+						}
+					}
 				}
-			}
 
-			font: {
-				size: .875em;
-				weight: var(--scm-font-weight-thin);
-			}
+				dd {
+					@media screen and (max-width: 782px) {
+						display: none;
+					}
+					margin: {
+						inline: {
+							start: 0;
+						}
+					}
 
-			padding: {
-				bottom: var(--scm-spacer-16);
-			}
-		}
-		&-switch {
-			display: grid;
+					font: {
+						size: .875em;
+						weight: var(--scm-font-weight-thin);
+					}
 
-			grid: {
-				template: {
-					columns: 40px auto;
+					padding: {
+						bottom: var(--scm-spacer-16);
+					}
 				}
-			}
+				&-switch {
+					display: grid;
 
-			gap: var(--scm-spacer-8);
+					grid: {
+						template: {
+							columns: 40px auto;
+						}
+					}
 
-			align: {
-				items: center;
-			}
+					gap: var(--scm-spacer-8);
 
-			input,
-			p {
-				margin: 0;
-				padding: 0;
-			}
+					align: {
+						items: center;
+					}
 
-			input {
-				&[type="checkbox"] {
-					width: 40px;
-					height: 40px;
+					input,
+					p {
+						margin: 0;
+						padding: 0;
+					}
 
-					&:checked {
-						accent: {
-							color: var(--scm-color-checkbox);
+					input {
+						&[type="checkbox"] {
+							width: 40px;
+							height: 40px;
+
+							&:checked {
+								accent: {
+									color: var(--scm-color-checkbox);
+								}
+							}
 						}
 					}
 				}
 			}
 		}
 	}
-
+}
+.scm {
 	&-icon {
 		width: 48px;
 		height: 48px;
