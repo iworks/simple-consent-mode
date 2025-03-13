@@ -30,7 +30,6 @@ class iworks_simple_consent_mode_base {
 	protected $meta_prefix = '_iw';
 	protected $base;
 	protected $dir;
-	protected $version;
 	protected $url;
 	protected $plugin_file;
 	protected $plugin_file_path;
