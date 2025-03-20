@@ -124,8 +124,8 @@ class iworks_simple_consent_mode_github extends iworks_simple_consent_mode_base 
 		if ( $args->slug !== $this->basename ) {
 			return $result;
 		}
-		$repo = $this->get_repository_info();
-		if ( empty( $repo ) ) {
+		$repo_info = $this->get_repository_info();
+		if ( empty( $repo_info ) ) {
 			return $result;
 		}
 		$details = get_plugin_data( dirname( $this->base ) . '/' . $this->plugin_file );
@@ -135,17 +135,17 @@ class iworks_simple_consent_mode_github extends iworks_simple_consent_mode_base 
 			'slug'              => $this->basename,
 			'requires'          => $details['RequiresWP'],
 			'requires_php'      => $details['RequiresPHP'],
-			'version'           => $repo['tag_name'],
+			'version'           => $repo_info['tag_name'],
 			'author'            => $details['AuthorName'],
 			'author_profile'    => $details['AuthorURI'],
-			'last_updated'      => $repo['published_at'],
+			'last_updated'      => $repo_info['published_at'],
 			'homepage'          => $details['PluginURI'],
 			'short_description' => $details['Description'],
 			'sections'          => array(
 				'Description' => $details['Description'],
-				'Updates'     => $repo['body'],
+				'Updates'     => $repo_info['body'],
 			),
-			'download_link'     => $repo['assets'][0]['browser_download_url'],
+			'download_link'     => $repo_info['assets'][0]['browser_download_url'],
 		);
 		// Return the plugin data as an object
 		return (object) $plugin;
@@ -206,7 +206,7 @@ class iworks_simple_consent_mode_github extends iworks_simple_consent_mode_base 
 			'id'          => $repo_info['html_url'],
 			'url'         => $repo_info['html_url'],
 			'slug'        => current( explode( '/', $this->basename ) ),
-			'package'     => $repo_info['zipball_url'],
+			'package'     => $repo_info['assets'][0]['browser_download_url'],
 			'new_version' => $repo_info['tag_name'],
 		);
 
