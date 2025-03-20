@@ -1,4 +1,5 @@
 @import '_mixin';
+
 .sr-only {
 	@include reset_min;
 	position: absolute;
@@ -9,49 +10,63 @@
 	clip: rect(0, 0, 0, 0);
 	white-space: nowrap;
 }
+
 dialog {
 	&#scm-dialog {
 		background: {
 			color: var(--scm-color-bg, #fff);
 		}
+
 		border: {
-			radius: var(--scm-border-radius, 0 );
+			radius: var(--scm-border-radius, 0);
 			width: 0;
 		}
+
 		max-height: 80vh;
-		width: var( --scm-dialog-width, 900px );;
+		width: var(--scm-dialog-width, 900px);
+		;
 		padding: 0;
+
 		&::backdrop {
-			background-color: var(--scm-color-backdrop, rgba( 0, 0, 0, .7 ) );
+			background-color: var(--scm-color-backdrop, rgba(0, 0, 0, .7));
 		}
+
 		.scm {
 			&-dialog {
+
 				/* wrapper */
-				&-wrapper {
-				}
+				&-wrapper {}
+
 				/* header */
 				&-header {
 					&-logo {
-						max-height: var(--scm-logo-max-height, 48px );
+						max-height: var(--scm-logo-max-height, 48px);
 					}
+
 					border: {
 						bottom: 1px solid var(--scm-color-btn-text);
 					}
+
 					padding: var(--scm-spacer-22);
+
 					&-container {
 						p {
 							text: {
 								align: center;
 							}
 						}
+
 						&:has(img) {
 							display: flex;
 							gap: var(--scm-spacer-32);
+
 							align: {
 								items: center;
 							}
+
 							p {
 								margin: 0;
+
 								text: {
 									align: left;
 								}
@@ -59,25 +74,31 @@ dialog {
 						}
 					}
 				}
+
 				&-content {
 					display: flex;
+
 					flex: {
 						direction: column-reverse;
 					}
+
 					&s {
 						border: {
 							bottom: 1px solid var(--scm-color-btn-text);
 						}
 					}
+
 					li {
 						@include reset_min;
 					}
+
 					&-tab {
 						height: 0;
 						overflow: hidden;
 						padding: 0;
 						width: 0;
 						position: relative;
+
 						&[aria-expanded="true"] {
 							display: block;
 							padding: var(--scm-spacer-22);
@@ -86,33 +107,50 @@ dialog {
 							max-height: 50vh;
 							overflow: auto;
 						}
+
 						p {
 							margin: 1em 0;
 						}
+
 						&s {
 							@include reset_ul;
+
 							border: {
 								bottom: 1px solid var(--scm-color-btn-text);
 							}
-							display: grid;
-							grid: {
-								template: {
-									columns: repeat( 3, 1fr );
+
+							@include small {
+								display: grid;
+
+								grid: {
+									template: {
+										columns: repeat(3, 1fr);
+									}
 								}
 							}
+
 							a {
 								border: {
 									bottom: 3px solid transparent;
 								}
+
 								display: block;
+
 								font: {
 									size: smaller;
 								}
-								padding: var(--scm-spacer-12);
+
+								padding: var(--scm-spacer-8);
+
+								@include small {
+									padding: var(--scm-spacer-12);
+								}
+
 								text: {
 									decoration: none;
 									align: center;
 								}
+
 								&:active,
 								&:focus,
 								&:focus-within,
@@ -121,10 +159,26 @@ dialog {
 										bottom: 3px solid var(--scm-color-btn-pri-bg);
 									}
 								}
+
 								&[aria-selected="true"] {
-									border: {
-										bottom: 3px solid var(--scm-color-btn-text);
+									color: var(--scm-color-btn-pri-text);
+
+									background: {
+										color: var(--scm-color-btn-pri-bg);
 									}
+
+									@include small {
+										color: inherit;
+
+										background: {
+											color: inherit;
+										}
+
+										border: {
+											bottom: 3px solid var(--scm-color-btn-text);
+										}
+									}
+
 									&:hover {
 										cursor: default;
 									}
@@ -133,33 +187,48 @@ dialog {
 						}
 					}
 				}
+
 				&-button {
 					background: {
 						color: var(--scm-color-btn-bg);
 					}
+
 					border: {
 						color: var(--scm-color-btn-text);
 						radius: var(--scm-button-border-radius);
 						style: solid;
 						width: 1px;
 					}
+
 					color: var(--scm-color-btn-text);
 					display: block;
+
 					font: {
 						size: var(--scm-font-size);
 						weight: var(--scm-font-weight-bold);
 					}
+
 					padding: var(--scm-spacer-8) var(--scm-spacer-32);
 					min-width: 180px;
+
 					text: {
 						align: center;
 					}
+
+					width: 100%;
+
+					@include small {
+						width: auto;
+					}
+
 					&:hover {
 						cursor: pointer;
+
 						border: {
 							color: var(--scm-color-btn-pri-bg);
 						}
 					}
+
 					&:active,
 					&:focus,
 					&:focus-within {
@@ -167,32 +236,49 @@ dialog {
 							shadow: 0 0 8px 0 #ddd;
 						}
 					}
+
 					&-allow {
 						background: {
 							color: var(--scm-color-btn-pri-bg);
 						}
+
 						color: var(--scm-color-btn-pri-text);
 					}
+
 					&s {
 						&-wrapper {
 							@include reset_ul;
 							display: flex;
+
 							flex: {
-								direction: row-reverse;
+								direction: column;
 							}
-							gap: var(--scm-spacer-32);
+
+							gap: var(--scm-spacer-12);
+
+							@include small {
+								flex: {
+									direction: row-reverse;
+								}
+
+								gap: var(--scm-spacer-32);
+							}
+
 							justify: {
 								content: flex-start;
 							}
+
 							padding: var(--scm-spacer-22);
 						}
 					}
+
 					&-container {
 						&.hidden {
 							display: none;
 						}
 					}
 				}
+
 				dl {
 					font: {
 						size: var(--scm-font-size-dl);
@@ -203,6 +289,7 @@ dialog {
 					font: {
 						weight: var(--scm-font-weight-bolder);
 					}
+
 					@media screen and (max-width: 782px) {
 						margin: {
 							bottom: var(--scm-spacer-16);
@@ -214,6 +301,7 @@ dialog {
 					@media screen and (max-width: 782px) {
 						display: none;
 					}
+
 					margin: {
 						inline: {
 							start: 0;
@@ -229,6 +317,7 @@ dialog {
 						bottom: var(--scm-spacer-16);
 					}
 				}
+
 				&-switch {
 					display: grid;
 
@@ -267,6 +356,7 @@ dialog {
 		}
 	}
 }
+
 .scm {
 	&-icon {
 		width: 48px;
@@ -274,11 +364,13 @@ dialog {
 		position: fixed;
 		left: var(--scm-spacer-16);
 		bottom: var(--scm-spacer-16);
+
 		.scm-dialog-button {
 			@include reset;
 			min-width: unset;
 			width: 48px;
 			height: 48px;
+
 			svg {
 				width: 48px;
 				height: 48px;
