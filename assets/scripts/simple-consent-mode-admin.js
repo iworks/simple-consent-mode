@@ -1,5 +1,5 @@
 /*! Simple Consent Mode - 1.2.2
- * http://simple-consent-mode.iworks.pl/
+ * https://github.com/iworks/simple-consent-mode/
  * Copyright (c) 2025;
  * Licensed GPL-3.0 */
 jQuery(document).ready(function($) {
