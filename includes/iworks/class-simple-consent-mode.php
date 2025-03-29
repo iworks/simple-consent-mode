@@ -37,9 +37,6 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 	public function __construct() {
 		parent::__construct();
 		/**
-		 * add database table name
-		 */
-		/**
 		 * WordPress Hooks
 		 */
 		add_action( 'init', array( $this, 'action_init_register_iworks_rate' ), PHP_INT_MAX );
@@ -51,6 +48,10 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 		add_action( 'wp_ajax_simple_consent_mode_save_log', array( $this, 'action_ajax_save_log' ) );
 		add_action( 'wp_ajax_nopriv_simple_consent_mode_save_log', array( $this, 'action_ajax_save_log' ) );
 		add_action( 'shutdown', array( $this, 'action_shutdown_maybe_delete_log' ) );
+		/**
+		 * WordPress Shortcodes
+		 */
+		add_shortcode( 'scm_link_to_show', array( $this, 'shortcode_link_to_show' ) );
 		/**
 		 * db install
 		 *
@@ -131,10 +132,16 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 	public function action_wp_footer() {
 		$args  = $this->get_configuration();
 		$files = array(
-			'icon',
-			'dialog',
+			'icon'   => 'i_show',
+			'dialog' => false,
 		);
-		foreach ( $files as $file ) {
+		foreach ( $files as $file => $check_to_show_option_name ) {
+			if (
+				$check_to_show_option_name
+				&& ! $this->options->get_option( $check_to_show_option_name )
+			) {
+				continue;
+			}
 			$filename = $this->get_template_file_name( 'cookie', $file );
 			if ( is_wp_error( $filename ) ) {
 				continue;
@@ -249,6 +256,9 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 				'classes' => array(
 					$this->get_id( 'dialog' ),
 				),
+				'link'    => array(
+					'classname' => $this->get_link_dialog_open_class(),
+				),
 			),
 		);
 		/**
@@ -267,8 +277,13 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 				'menu_classes' => array(
 					'scm-dialog-content-tabs-tab',
 				),
+				'show'         => true,
 			);
 		}
+		/**
+		 * check about tab
+		 */
+		$this->configuration['tabs']['about']['show'] = intval( $this->options->get_option( 'm_about_show' ) );
 		/**
 		 * hide icon
 		 */
@@ -655,4 +670,51 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 		return $forced_types_of_consent;
 	}
 
+	/**
+	 * shortcode
+	 *
+	 * @since 1.3.0
+	 */
+	public function shortcode_link_to_show( $args, $content = '' ) {
+		$atts = shortcode_atts(
+			array(
+				'container_tag'     => '',
+				'container_classes' => '',
+				'classes'           => '',
+				'text'              => esc_html__( 'Show Consents', 'simple-consent-mode' ),
+				'aria-label'        => esc_html__( 'Open dialog to view and manage consents.', 'simple-consent-mode' ),
+			),
+			$args,
+			'simple-consent-mode-link-to-show'
+		);
+		if ( $atts['container_tag'] ) {
+			$content .= sprintf(
+				'<%s class="%s">',
+				esc_attr( $args['container_tag'] ),
+				esc_attr( $args['container_classes'] )
+			);
+		}
+		$content .= sprintf(
+			'<a href="#" class="%s %s" aria-label="%s">%s</a>',
+			esc_attr( $this->get_link_dialog_open_class() ),
+			esc_attr( $atts['classes'] ),
+			esc_attr( $atts['aria-label'] ),
+			esc_html( $atts['text'] )
+		);
+		if ( $atts['container_tag'] ) {
+			$content .= sprintf(
+				'</%s>',
+				esc_attr( $args['container_tag'] )
+			);
+		}
+		return $content;
+	}
+
+	private function get_link_dialog_open_class() {
+		$this->check_option_object();
+		return apply_filters(
+			'iworks/simple-consent-mode/link/dialog-open/class-name',
+			preg_replace( '/_/', '-', $this->options->get_option_name( 'dialog-open' ) )
+		);
+	}
 }

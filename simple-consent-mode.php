@@ -69,7 +69,7 @@ function iworks_simple_consent_mode_get_options() {
 	if ( method_exists( $iworks_simple_consent_mode_options, 'set_plugin' ) ) {
 		$iworks_simple_consent_mode_options->set_plugin( basename( __FILE__ ) );
 	}
-	$iworks_simple_consent_mode_options->init();
+	$iworks_simple_consent_mode_options->options_init();
 	return $iworks_simple_consent_mode_options;
 }
 

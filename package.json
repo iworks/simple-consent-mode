@@ -3,7 +3,7 @@
     "title": "Simple Consent Mode",
     "tagline": "Simple Consent Mode",
     "description": "Simple Consent Mode for Europe and GTM.",
-    "version": "1.2.3",
+    "version": "1.2.4",
     "homepage": "https://github.com/iworks/simple-consent-mode/",
     "tags": [
         "consent mode",
@@ -28,7 +28,7 @@
         "PHP": "8.0"
     },
     "tested": {
-        "WordPress": "6.7"
+        "WordPress": "6.8"
     },
     "devDependencies": {
         "grunt": "^1",
@@ -50,30 +50,6 @@
         "grunt-potomo": "^3",
         "grunt-replace": "^1",
         "grunt-wp-i18n": "^1"
-    },
-    "foo": {
-        "grunt-phpunit": "^0.3.6",
-        "webpack": "^4.16.3",
-        "webpack-cli": "^3.1.0",
-        "es6-promise": "^4.2.4",
-        "extract-text-webpack-plugin": "^4.0.0-beta.0",
-        "system-bell-webpack-plugin": "^1.0.0",
-        "mocha": "^2.3.3",
-        "jquery": "^3.3.1",
-        "lodash": "^4.17.10",
-        "node-sass": "^4.9.0",
-        "babel-core": "^6.26.3",
-        "css-loader": "^0.28.11",
-        "file-loader": "^1.1.11",
-        "sass-loader": "^6.0.7",
-        "ajv-keywords": "^3.2.0",
-        "autoprefixer": "^7.2.6",
-        "babel-loader": "^7.1.5",
-        "style-loader": "^0.20.3",
-        "whatwg-fetch": "^2.0.4",
-        "postcss-loader": "^2.1.6",
-        "babel-preset-env": "^1.7.0",
-        "resolve-url-loader": "^2.3.0"
     },
     "keywords": [],
     "repository": {

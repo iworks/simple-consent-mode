@@ -63,11 +63,48 @@ There are 3 ways to install this plugin:
 
 You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-consent-mode/#new-topic-0), but please add your ticket to [Github Issues](https://github.com/iworks/simple-consent-mode/issues/new).
 
+= How to open the consents dialog for any location (eg. a menu) =
+
+Simply add the class iw-scm-dialog-open to any link, and the dialog will open.
+
+= How to use the shortcode `scm_link_to_show' =
+
+The shortcode scm_link_to_show, is designed to create a link that opens a consent dialog.i
+
+Parameters
+The scm_link_to_show shortcode accepts the following parameters:
+
+* **container_tag**: The HTML tag to use for the container element. Default is div.
+* **container_classes**: Classes to apply to the container element.
+* **classes**: Classes to apply to the link element itself.
+* **text**: The text to display for the link.
+* **aria-label**: The ARIA label for accessibility purposes.
+
+**Usage Example**
+
+To use the shortcode, insert it into your WordPress page or post with the desired parameters.
+
+`
+[scm_link_to_show
+  container_tag="span"
+  container_classes="my-container-class"
+  classes="my-link-class"
+  text="Open Consent Dialog"
+  aria-label="Open consent dialog for more information"]
+`
+
+This will create a link wrapped in a span element with the specified classes and text, and it will open a consent dialog when clicked.
+
+
 == Screenshots ==
 
 == Changelog ==
 
-= 1.2.4 - 2025-03-29 =
+= 1.3.0 - 2025-03-29 =
+* The ability to show or hide the about consents tab has been added. [#6](https://github.com/iworks/simple-consent-mode/issues/6).
+* The ability to show or hide the icon has been added. [#7](https://github.com/iworks/simple-consent-mode/issues/7). Props for [Daniel](https://www.linkedin.com/in/daniel-bocek-186944197).
+* The issue regarding option initialization has been addressed.
+* The `[scm_link_to_show]` shortcode has been added. [#8](https://github.com/iworks/simple-consent-mode/issues/8). Props for [Daniel](https://www.linkedin.com/in/daniel-bocek-186944197).
 * Updated the [iWorks Options](https://github.com/iworks/wordpress-options-class) module to version 2.9.8.
 
 = 1.2.3 - 2025-03-20 =

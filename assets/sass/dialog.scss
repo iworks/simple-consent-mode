@@ -121,10 +121,24 @@ dialog {
 
 							@include small {
 								display: grid;
+							}
 
-								grid: {
-									template: {
-										columns: repeat(3, 1fr);
+							&-2 {
+								@include small {
+									grid: {
+										template: {
+											columns: repeat(2, 1fr);
+										}
+									}
+								}
+							}
+
+							&-3 {
+								@include small {
+									grid: {
+										template: {
+											columns: repeat(3, 1fr);
+										}
 									}
 								}
 							}

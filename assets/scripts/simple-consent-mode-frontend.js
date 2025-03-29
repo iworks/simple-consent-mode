@@ -1,4 +1,4 @@
-/*! Simple Consent Mode - 1.2.3
+/*! Simple Consent Mode - 1.2.4
  * https://github.com/iworks/simple-consent-mode/
  * Copyright (c) 2025;
  * Licensed GPL-3.0 */
@@ -8,7 +8,7 @@ window.simple_consent_mode.functions = window.simple_consent_mode.functions || [
  * load
  */
 window.addEventListener('load', function(event) {
-	var buttons, checkboxes, i;
+	var buttons, checkboxes, i, links;
 	var dialog = document.getElementById('scm-dialog');
 	if (!dialog || 1 > dialog.length) {
 		return;
@@ -89,6 +89,17 @@ window.addEventListener('load', function(event) {
 			document.getElementById('scm-icon').classList.remove('hidden');
 		});
 	}
+	/**
+	 * links: .iworks-simple-consent-mode-base-dialog-open
+	 */
+	links = document.getElementsByClassName( window.simple_consent_mode_data.dialog.link.classname );
+	for (i = 0; i < links.length; i++) {
+		links[i].addEventListener('click', function(event) {
+			event.preventDefault();
+			document.getElementById('scm-dialog').showModal();
+		});
+	}
+
 });
 
 window.simple_consent_mode = window.simple_consent_mode || [];

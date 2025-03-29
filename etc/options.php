@@ -89,6 +89,15 @@ function iworks_simple_consent_mode_options() {
 				'since' => '1.2.0',
 			),
 			array(
+				'name'              => 'm_about_show',
+				'type'              => 'checkbox',
+				'th'                => esc_html__( 'Show Tab', 'simple-consent-mode' ),
+				'default'           => 1,
+				'sanitize_callback' => 'absint',
+				'classes'           => array( 'switch-button' ),
+				'since'             => '1.3.0',
+			),
+			array(
 				'name'              => 'm_about_title',
 				'type'              => 'text',
 				'th'                => esc_html__( 'Title', 'simple-consent-mode' ),
@@ -336,6 +345,15 @@ function iworks_simple_consent_mode_options() {
 				'type'  => 'subheading',
 				'label' => __( 'Icon', 'simple-consent-mode' ),
 				'since' => '1.0.0',
+			),
+			array(
+				'name'              => 'i_show',
+				'type'              => 'checkbox',
+				'th'                => esc_html__( 'Show', 'simple-consent-mode' ),
+				'default'           => 1,
+				'sanitize_callback' => 'absint',
+				'classes'           => array( 'switch-button' ),
+				'since'             => '1.3.0',
 			),
 			array(
 				'name'              => 'i_primary',

@@ -145,7 +145,7 @@ class iworks_simple_consent_mode_base {
 		return $this->capability;
 	}
 
-	private function slug_name( $name ) {
+	protected function slug_name( $name ) {
 		return preg_replace( '/[_ ]+/', '-', strtolower( __CLASS__ . '_' . $name ) );
 	}
 
