@@ -67,6 +67,9 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-c
 
 == Changelog ==
 
+= 1.2.4 - 2025-03-29 =
+* Updated the [iWorks Options](https://github.com/iworks/wordpress-options-class) module to version 2.9.8.
+
 = 1.2.3 - 2025-03-20 =
 * Enhanced CSS for smaller screens. Props for [Daniel](https://www.linkedin.com/in/daniel-bocek-186944197).
 * Wrong [GitHub releases](https://github.com/iworks/simple-consent-mode/releases) zip file URL has been fixed [#5](https://github.com/iworks/simple-consent-mode/issues/5).
