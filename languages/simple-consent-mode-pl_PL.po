@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - Simple Consent Mode - Development (trunk)\n"
 "Report-Msgid-Bugs-To: http://iworks.pl\n"
-"POT-Creation-Date: 2025-03-29 07:35:32+00:00\n"
-"PO-Revision-Date: 2025-03-13 09:29:37+0000\n"
+"POT-Creation-Date: 2025-03-29 07:58:17+00:00\n"
+"PO-Revision-Date: 2025-03-29 07:57:40+0000\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -92,9 +92,8 @@ msgid "About Cookies"
 msgstr "O ciasteczkach"
 
 #: etc/options.php:94
-#, fuzzy
 msgid "Show Tab"
-msgstr "Pokaż"
+msgstr "Pokaż zakładkę"
 
 #: etc/options.php:118
 msgid ""
@@ -637,13 +636,12 @@ msgid "Simple Consent Mode"
 msgstr "Proste zgody"
 
 #: includes/iworks/class-simple-consent-mode.php:684
-#, fuzzy
 msgid "Show Consents"
-msgstr "Wybierz zgody"
+msgstr "Pokaż zgody"
 
 #: includes/iworks/class-simple-consent-mode.php:685
 msgid "Open dialog to view and manage consents."
-msgstr ""
+msgstr "Otwórz okno dialogowe, aby wyświetlić zgody i zarządzać nimi."
 
 #: includes/iworks/options/options.php:263
 msgid "An error occurred while getting the configuration."
@@ -860,5 +858,11 @@ msgctxt "plugins support home"
 msgid "https://wordpress.org/support/plugin/%s"
 msgstr "https://wordpress.org/support/plugin/%s"
 
-#~ msgid "http://iworks.pl/simple-consent-mode/"
-#~ msgstr "http://iworks.pl/simple-consent-mode/"
+#~ msgid ""
+#~ "Simple Consent Mode helps integrate GTM Consent Mode v2 on your website."
+#~ msgstr ""
+#~ "Prosty tryb zgody pomaga zintegrować GTM Consent Mode v2 w witrynie "
+#~ "internetowej."
+
+#~ msgid "https://github.com/iworks/simple-consent-mode/"
+#~ msgstr "https://github.com/iworks/simple-consent-mode/"

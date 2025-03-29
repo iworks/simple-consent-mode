@@ -65,7 +65,7 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/simple-c
 
 = How to open the consents dialog for any location (eg. a menu) =
 
-Simply add the class iw-scm-dialog-open to any link, and the dialog will open.
+Simply add the class `iw-scm-dialog-open` to any link, and the dialog will open.
 
 = How to use the shortcode `scm_link_to_show' =
 
