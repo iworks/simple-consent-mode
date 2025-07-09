@@ -100,12 +100,15 @@ This will create a link wrapped in a span element with the specified classes and
 
 == Changelog ==
 
+= 1.3.1 - 2025-07-09 =
+* **Dependencies**: Updated the [iWorks Options](https://github.com/iworks/wordpress-options-class) module to version 3.0.7 and the [iWorks Rate](https://github.com/iworks/iworks-rate) module to version 2.3.1.
+
 = 1.3.0 - 2025-03-29 =
 * The ability to show or hide the about consents tab has been added. [#6](https://github.com/iworks/simple-consent-mode/issues/6).
 * The ability to show or hide the icon has been added. [#7](https://github.com/iworks/simple-consent-mode/issues/7). Props for [Daniel](https://www.linkedin.com/in/daniel-bocek-186944197).
 * The issue regarding option initialization has been addressed.
 * The `[scm_link_to_show]` shortcode has been added. [#8](https://github.com/iworks/simple-consent-mode/issues/8). Props for [Daniel](https://www.linkedin.com/in/daniel-bocek-186944197).
-* Updated the [iWorks Options](https://github.com/iworks/wordpress-options-class) module to version 2.9.8.
+* Updated the [iWorks Options](https://github.com/iworks/wordpress-options-class) module to version 2.9.9.
 
 = 1.2.3 - 2025-03-20 =
 * Enhanced CSS for smaller screens. Props for [Daniel](https://www.linkedin.com/in/daniel-bocek-186944197).
