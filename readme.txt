@@ -100,6 +100,9 @@ This will create a link wrapped in a span element with the specified classes and
 
 == Changelog ==
 
+= 1.3.2 - 2025-10-28 =
+* **Dependencies**: Updated the [iWorks Options](https://github.com/iworks/wordpress-options-class) module to version 3.0.8.
+
 = 1.3.1 - 2025-07-09 =
 * **Dependencies**: Updated the [iWorks Options](https://github.com/iworks/wordpress-options-class) module to version 3.0.7 and the [iWorks Rate](https://github.com/iworks/iworks-rate) module to version 2.3.1.
 
