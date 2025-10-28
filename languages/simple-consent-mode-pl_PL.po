@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - Simple Consent Mode - Development (trunk)\n"
 "Report-Msgid-Bugs-To: http://iworks.pl\n"
-"POT-Creation-Date: 2025-07-09 07:02:07+00:00\n"
+"POT-Creation-Date: 2025-10-28 16:48:07+00:00\n"
 "PO-Revision-Date: 2025-07-09 07:00:55+0000\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 1) ? 0 : ((n % 10 >= 2 && n % 10 <= 4 "
 "&& (n % 100 < 12 || n % 100 > 14)) ? 1 : 2);\n"
-"X-Generator: GlotPress/4.0.1\n"
+"X-Generator: GlotPress/4.0.3\n"
 
 #: assets/templates/frontend/cookie/details.php:88
 msgid "(always on)"
@@ -635,87 +635,87 @@ msgstr "Brak pliku szablonu: %1$s/%2$s/%3$s."
 msgid "Simple Consent Mode"
 msgstr "Proste zgody"
 
-#: includes/iworks/class-simple-consent-mode.php:684
+#: includes/iworks/class-simple-consent-mode.php:693
 msgid "Show Consents"
 msgstr "Pokaż zgody"
 
-#: includes/iworks/class-simple-consent-mode.php:685
+#: includes/iworks/class-simple-consent-mode.php:694
 msgid "Open dialog to view and manage consents."
 msgstr "Otwórz okno dialogowe, aby wyświetlić zgody i zarządzać nimi."
 
-#: includes/iworks/options/options.php:176
+#: includes/iworks/options/options.php:175
 msgid "No Page Title"
 msgstr "Brak tytułu strony"
 
-#: includes/iworks/options/options.php:341
+#: includes/iworks/options/options.php:340
 msgid "An error occurred while getting the configuration."
 msgstr "Wystąpił błąd w czasie pobierania konfiguracji."
 
-#: includes/iworks/options/options.php:920
-#: includes/iworks/options/options.php:2383
+#: includes/iworks/options/options.php:919
+#: includes/iworks/options/options.php:2407
 msgid "Select Image"
 msgstr "Wybierz obrazek"
 
-#: includes/iworks/options/options.php:925
+#: includes/iworks/options/options.php:924
 msgid "Delete image"
 msgstr "Usuń obrazek"
 
-#: includes/iworks/options/options.php:1033
+#: includes/iworks/options/options.php:1032
 msgid "Save Changes"
 msgstr "Zapisz zmiany"
 
-#: includes/iworks/options/options.php:2256
+#: includes/iworks/options/options.php:2280
 msgid "Country"
 msgstr "Kraj"
 
-#: includes/iworks/options/options.php:2257
+#: includes/iworks/options/options.php:2281
 msgid "City"
 msgstr "Miasto"
 
-#: includes/iworks/options/options.php:2258
+#: includes/iworks/options/options.php:2282
 msgid "Street"
 msgstr "Ulica"
 
-#: includes/iworks/options/options.php:2259
+#: includes/iworks/options/options.php:2283
 msgid "ZIP code"
 msgstr "Kod pocztowy"
 
-#: includes/iworks/options/options.php:2443
+#: includes/iworks/options/options.php:2467
 msgid "OFF"
 msgstr "Wyłącz"
 
-#: includes/iworks/options/options.php:2444
+#: includes/iworks/options/options.php:2468
 msgid "ON"
 msgstr "Włącz"
 
-#: includes/iworks/options/options.php:2509
+#: includes/iworks/options/options.php:2533
 msgid "Failed Security Check"
 msgstr "Nieudana kontrola bezpieczeństwa"
 
-#: includes/iworks/rate/rate.php:133
+#: includes/iworks/rate/rate.php:159
 #: includes/iworks/simple-consent-mode/class-simple-consent-mode-wp-admin.php:52
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: includes/iworks/rate/rate.php:147
+#: includes/iworks/rate/rate.php:173
 #: includes/iworks/rate/templates/thanks.php:39
 msgid "Provide us a coffee"
 msgstr "Postaw nam kawę"
 
 #. translators: %s: plugin id
-#: includes/iworks/rate/rate.php:590
+#: includes/iworks/rate/rate.php:626
 msgid "There is no plugin with id: %s."
 msgstr "Brak wtyczki o identyfikatorze %s."
 
-#: includes/iworks/rate/rate.php:764
+#: includes/iworks/rate/rate.php:800
 msgid "OpenGraph"
 msgstr "OpenGraph"
 
-#: includes/iworks/rate/rate.php:780
+#: includes/iworks/rate/rate.php:816
 msgid "OG — Better Share on Social Media"
 msgstr "OG — Lepsze udostępnianie w mediach społecznościowych"
 
-#: includes/iworks/rate/rate.php:781
+#: includes/iworks/rate/rate.php:817
 msgid "https://wordpress.org/plugins/og/"
 msgstr "https://pl.wordpress.org/plugins/og/"
 
@@ -910,13 +910,13 @@ msgid "https://wordpress.org/support/plugin/simple-consent-mode/"
 msgstr "https://pl.wordpress.org/support/plugin/simple-consent-mode/"
 
 #. translators: %s: plugin slug
-#: includes/iworks/rate/rate.php:613
+#: includes/iworks/rate/rate.php:649
 msgctxt "plugins home"
 msgid "https://wordpress.org/plugins/%s"
 msgstr "https://pl.wordpress.org/plugins/%s"
 
 #. translators: %s: plugin slug
-#: includes/iworks/rate/rate.php:620
+#: includes/iworks/rate/rate.php:656
 msgctxt "plugins support home"
 msgid "https://wordpress.org/support/plugin/%s"
 msgstr "https://wordpress.org/support/plugin/%s"

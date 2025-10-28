@@ -1,4 +1,4 @@
-/*! Simple Consent Mode - 1.3.1
+/*! Simple Consent Mode - 1.3.2
  * https://github.com/iworks/simple-consent-mode/
  * Copyright (c) 2025;
  * Licensed GPL-3.0 */

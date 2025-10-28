@@ -3,7 +3,7 @@
     "title": "Simple Consent Mode",
     "tagline": "Simple Consent Mode helps integrate GTM Consent Mode v2 on your website.",
     "description": "The **Simple Consent Mode** plugin helps seamlessly integrate Google Tag Manager's (GTM) Consent Mode v2 on your website, ensuring compliance with privacy regulations like GDPR. This lightweight plugin automatically configures Consent Mode and manages user consent for analytics and marketing cookies.",
-    "version": "1.3.1",
+    "version": "1.3.2",
     "homepage": "https://github.com/iworks/simple-consent-mode/",
     "tags": [
         "consent mode",
