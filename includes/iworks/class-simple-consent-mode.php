@@ -23,7 +23,7 @@ if ( class_exists( 'iworks_simple_consent_mode' ) ) {
 	return;
 }
 
-require_once( dirname( __FILE__ ) . '/class-simple-consent-mode-base.php' );
+require_once __DIR__ . '/class-simple-consent-mode-base.php';
 
 class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 
@@ -130,6 +130,7 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 	 * @since 1.0.0
 	 */
 	public function action_wp_footer() {
+		$this->check_option_object();
 		$args  = $this->get_configuration();
 		$files = array(
 			'icon'   => 'i_show',
@@ -156,6 +157,7 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 	 * @since 1.0.0
 	 */
 	public function action_wp_enqueue_scripts_register_assets() {
+		$this->check_option_object();
 		$name = $this->options->get_option_name( 'frontend' );
 		/**
 		 * styles
@@ -189,6 +191,7 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 	 * @since 1.0.0
 	 */
 	private function get_cookie_name() {
+		$this->check_option_object();
 		return sprintf(
 			'scm%s',
 			crc32(
@@ -213,6 +216,7 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 				$this->configuration
 			);
 		}
+		$this->check_option_object();
 		$cookie_name         = $this->get_cookie_name();
 		$cookie_value        = sanitize_text_field(
 			isset( $_COOKIE[ $cookie_name ] ) ? wp_unslash( $_COOKIE[ $cookie_name ] ) : null
@@ -347,6 +351,7 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 	 * @since 1.3.0
 	 */
 	public function action_wp_enqueue_scripts_enqueue_assets() {
+		$this->check_option_object();
 		$name = $this->options->get_option_name( 'frontend' );
 		wp_enqueue_style( $name );
 		wp_enqueue_script( $name );
@@ -354,6 +359,7 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 	}
 
 	public function action_wp_enqueue_scripts_add_css_variables() {
+		$this->check_option_object();
 		$css    = ':root {';
 		$colors = array(
 			'c_bg',
@@ -409,7 +415,7 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 	 */
 	public function action_init_register_iworks_rate() {
 		if ( ! class_exists( 'iworks_rate' ) ) {
-			include_once dirname( __FILE__ ) . '/rate/rate.php';
+			include_once __DIR__ . '/rate/rate.php';
 		}
 		do_action(
 			'iworks-register-plugin',
@@ -432,7 +438,7 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 			$plugin = (array) $plugin;
 		}
 		if ( 'simple-consent-mode' === $plugin['slug'] ) {
-			return plugin_dir_url( dirname( dirname( __FILE__ ) ) ) . '/assets/images/logo.svg';
+			return plugin_dir_url( dirname( __DIR__, 1 ) ) . '/assets/images/logo.svg';
 		}
 		return $logo;
 	}
@@ -522,6 +528,7 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 	 * @since 1.1.0
 	 */
 	public function action_ajax_save_log() {
+		$this->check_option_object();
 		check_ajax_referer( 'simple_consent_mode' );
 		if ( 1 > intval( $this->options->get_option( 'log_status' ) ) ) {
 			exit;
@@ -578,6 +585,7 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 	 * @since 1.1.0
 	 */
 	public function action_shutdown_maybe_delete_log() {
+		$this->check_option_object();
 		$months = intval( $this->options->get_option( 'log_duration' ) );
 		if ( 1 > $months ) {
 			return;
@@ -660,6 +668,7 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 	 * @since 1.2.0
 	 */
 	private function get_foreced_types_of_consent() {
+		$this->check_option_object();
 		$forced_types_of_consent = array();
 		if (
 			$this->options->get_option( 'fust_show' )
@@ -710,6 +719,11 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 		return $content;
 	}
 
+	/**
+	 * get link dialog open class
+	 *
+	 * @since 1.3.0
+	 */
 	private function get_link_dialog_open_class() {
 		$this->check_option_object();
 		return apply_filters(
