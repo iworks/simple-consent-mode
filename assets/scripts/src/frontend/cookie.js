@@ -59,7 +59,6 @@ window.simple_consent_mode.functions.set_cookie = function ( cookie_value ) {
 	if ( 'on' === window.simple_consent_mode_data.cookie.secure ) {
 		cookie += ' secure;';
 	}
-	window.console.log(cookie);
 	document.cookie = cookie;
 };
 
