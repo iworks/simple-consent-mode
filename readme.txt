@@ -100,6 +100,11 @@ This will create a link wrapped in a span element with the specified classes and
 
 == Changelog ==
 
+= 1.3.3 - 2026-03-20 =
+* **Bug**: Fixed Bootstrap CSS conflict issue. [#15](https://github.com/iworks/simple-consent-mode/issues/15). Props for [Katarzyna Janoska](https://github.com/anoriell).
+* **Bug**: Fixed JavaScript error when Cookie icon is hidden. [#16](https://github.com/iworks/simple-consent-mode/issues/16). Props for [Katarzyna Janoska](https://github.com/anoriell).
+* **Dependencies**: Updated the [iWorks Options](https://github.com/iworks/wordpress-options-class) module to version 3.0.9.
+
 = 1.3.2 - 2025-10-28 =
 * **Dependencies**: Updated the [iWorks Options](https://github.com/iworks/wordpress-options-class) module to version 3.0.8.
 * **Bug**: Fixed the issue with the options object not being initialized. [#13](https://github.com/iworks/simple-consent-mode/issues/13). Props for [Katarzyna Janoska](https://github.com/anoriell).

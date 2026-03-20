@@ -1,14 +1,14 @@
-# Copyright (C) 2025 Marcin Pietrzak
+# Copyright (C) 2026 Marcin Pietrzak
 # This file is distributed under the GPLv3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.3.2\n"
+"Project-Id-Version: 1.3.3\n"
 "Report-Msgid-Bugs-To: http://iworks.pl\n"
-"POT-Creation-Date: 2025-10-28 16:48:07+00:00\n"
+"POT-Creation-Date: 2026-03-20 08:20:18+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2025-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Marcin Pietrzak <marcin@iworks.pl>\n"
 "Language-Team: iWorks <support@iworks.pl>\n"
 "Language: en\n"
@@ -565,7 +565,7 @@ msgid "An error occurred while getting the configuration."
 msgstr ""
 
 #: includes/iworks/options/options.php:919
-#: includes/iworks/options/options.php:2407
+#: includes/iworks/options/options.php:2247
 msgid "Select Image"
 msgstr ""
 
@@ -577,31 +577,31 @@ msgstr ""
 msgid "Save Changes"
 msgstr ""
 
-#: includes/iworks/options/options.php:2280
+#: includes/iworks/options/options.php:2120
 msgid "Country"
 msgstr ""
 
-#: includes/iworks/options/options.php:2281
+#: includes/iworks/options/options.php:2121
 msgid "City"
 msgstr ""
 
-#: includes/iworks/options/options.php:2282
+#: includes/iworks/options/options.php:2122
 msgid "Street"
 msgstr ""
 
-#: includes/iworks/options/options.php:2283
+#: includes/iworks/options/options.php:2123
 msgid "ZIP code"
 msgstr ""
 
-#: includes/iworks/options/options.php:2467
+#: includes/iworks/options/options.php:2307
 msgid "OFF"
 msgstr ""
 
-#: includes/iworks/options/options.php:2468
+#: includes/iworks/options/options.php:2308
 msgid "ON"
 msgstr ""
 
-#: includes/iworks/options/options.php:2533
+#: includes/iworks/options/options.php:2373
 msgid "Failed Security Check"
 msgstr ""
 

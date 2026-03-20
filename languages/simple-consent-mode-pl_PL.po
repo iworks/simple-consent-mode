@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - Simple Consent Mode - Development (trunk)\n"
 "Report-Msgid-Bugs-To: http://iworks.pl\n"
-"POT-Creation-Date: 2025-10-28 16:48:07+00:00\n"
+"POT-Creation-Date: 2026-03-20 08:19:58+00:00\n"
 "PO-Revision-Date: 2025-07-09 07:00:55+0000\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -652,7 +652,7 @@ msgid "An error occurred while getting the configuration."
 msgstr "Wystąpił błąd w czasie pobierania konfiguracji."
 
 #: includes/iworks/options/options.php:919
-#: includes/iworks/options/options.php:2407
+#: includes/iworks/options/options.php:2247
 msgid "Select Image"
 msgstr "Wybierz obrazek"
 
@@ -664,31 +664,31 @@ msgstr "Usuń obrazek"
 msgid "Save Changes"
 msgstr "Zapisz zmiany"
 
-#: includes/iworks/options/options.php:2280
+#: includes/iworks/options/options.php:2120
 msgid "Country"
 msgstr "Kraj"
 
-#: includes/iworks/options/options.php:2281
+#: includes/iworks/options/options.php:2121
 msgid "City"
 msgstr "Miasto"
 
-#: includes/iworks/options/options.php:2282
+#: includes/iworks/options/options.php:2122
 msgid "Street"
 msgstr "Ulica"
 
-#: includes/iworks/options/options.php:2283
+#: includes/iworks/options/options.php:2123
 msgid "ZIP code"
 msgstr "Kod pocztowy"
 
-#: includes/iworks/options/options.php:2467
+#: includes/iworks/options/options.php:2307
 msgid "OFF"
 msgstr "Wyłącz"
 
-#: includes/iworks/options/options.php:2468
+#: includes/iworks/options/options.php:2308
 msgid "ON"
 msgstr "Włącz"
 
-#: includes/iworks/options/options.php:2533
+#: includes/iworks/options/options.php:2373
 msgid "Failed Security Check"
 msgstr "Nieudana kontrola bezpieczeństwa"
 
