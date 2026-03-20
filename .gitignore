@@ -2,4 +2,5 @@ node_modules
 .sass-cache
 package-lock.json
 assets/styles/
+assets/scripts/*.js
 release/
