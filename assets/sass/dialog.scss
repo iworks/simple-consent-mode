@@ -24,11 +24,18 @@ dialog {
 
 		max-height: 80vh;
 		width: var(--scm-dialog-width, 900px);
-		;
 		padding: 0;
 
 		&::backdrop {
 			background-color: var(--scm-color-backdrop, rgba(0, 0, 0, .7));
+		}
+
+		/**
+		 * Bootstrap CSS conflict #15
+		 * https://github.com/iworks/simple-consent-mode/issues/15
+		 */
+		&:not([open]) {
+			display: none;
 		}
 
 		.scm {
