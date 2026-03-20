@@ -46,7 +46,9 @@ window.addEventListener('load', function(event) {
 					 * open dialog & hide icon
 					 */
 					document.getElementById('scm-dialog').showModal();
-					document.getElementById('scm-icon').classList.add('hidden');
+					if (document.getElementById('scm-icon')) {
+						document.getElementById('scm-icon').classList.add('hidden');
+					}
 					return;
 				case 'allow':
 					for (i = 0; i < enabled_types_of_consents.length; i++) {
@@ -76,20 +78,22 @@ window.addEventListener('load', function(event) {
 			/**
 			 * update status
 			 */
-			gtag('consent', 'update', consents );
+			gtag('consent', 'update', consents);
 			window.simple_consent_mode.functions.set_cookie(JSON.stringify(consents));
 			window.simple_consent_mode.functions.save_log(consents);
 			/**
 			 * close dialog & show icon
 			 */
 			document.getElementById('scm-dialog').close();
-			document.getElementById('scm-icon').classList.remove('hidden');
+			if (document.getElementById('scm-icon')) {
+				document.getElementById('scm-icon').classList.remove('hidden');
+			}
 		});
 	}
 	/**
 	 * links: .iworks-simple-consent-mode-base-dialog-open
 	 */
-	links = document.getElementsByClassName( window.simple_consent_mode_data.dialog.link.classname );
+	links = document.getElementsByClassName(window.simple_consent_mode_data.dialog.link.classname);
 	for (i = 0; i < links.length; i++) {
 		links[i].addEventListener('click', function(event) {
 			event.preventDefault();
