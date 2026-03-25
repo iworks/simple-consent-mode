@@ -100,6 +100,9 @@ This will create a link wrapped in a span element with the specified classes and
 
 == Changelog ==
 
+= 1.4.0 - 2026-03-25 =
+* **Feature**: Added Microsoft Clarity integration support. The plugin now supports Microsoft Clarity tracking with proper consent management.
+
 = 1.3.3 - 2026-03-20 =
 * **Bug**: Fixed Bootstrap CSS conflict issue. [#15](https://github.com/iworks/simple-consent-mode/issues/15). Props for [Katarzyna Janoska](https://github.com/anoriell).
 * **Bug**: Fixed JavaScript error when Cookie icon is hidden. [#16](https://github.com/iworks/simple-consent-mode/issues/16). Props for [Katarzyna Janoska](https://github.com/anoriell).

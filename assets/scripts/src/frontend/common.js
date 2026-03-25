@@ -79,7 +79,19 @@ window.addEventListener('load', function(event) {
 			 * update status
 			 */
 			gtag('consent', 'update', consents);
+			/**
+			 * update microsoft clarity
+			 * 
+			 * @since 1.4.0
+			 */
+			window.simple_consent_mode.functions.clarity_update(consents);
+			/**
+			 * set cookie
+			 */
 			window.simple_consent_mode.functions.set_cookie(JSON.stringify(consents));
+			/**
+			 * save log
+			 */
 			window.simple_consent_mode.functions.save_log(consents);
 			/**
 			 * close dialog & show icon
