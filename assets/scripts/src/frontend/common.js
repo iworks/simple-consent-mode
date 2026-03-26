@@ -5,7 +5,7 @@ window.simple_consent_mode.functions = window.simple_consent_mode.functions || [
  * load
  */
 window.addEventListener('load', function(event) {
-	var buttons, checkboxes, i, links, cookie_value
+	var buttons, checkboxes, i, links, cookie_value;
 	var dialog = document.getElementById('scm-dialog');
 	if (!dialog || 1 > dialog.length) {
 		return;
@@ -16,12 +16,12 @@ window.addEventListener('load', function(event) {
 	 * 
 	 * @since 1.3.4
 	 */
-	var cookie_value = window.simple_consent_mode.functions.get_cookie_value();
+	cookie_value = window.simple_consent_mode.functions.get_cookie_value();
 	if (0 === window.simple_consent_mode_data.consents.user.length) {
 		if (cookie_value) {
 			window.simple_consent_mode_data.consents.user = JSON.parse(cookie_value);
 		}
-	} else if (!document.body.classList.contains('logged-in')) {
+	} else if (!document.body.classList.contains('logged-in') && !cookie_value) {
 		// If not logged in, we can assume that the user has not made any choices yet
 		window.simple_consent_mode_data.consents.user = {};
 	}
@@ -43,7 +43,6 @@ window.addEventListener('load', function(event) {
 	 */
 	if (Object.keys(window.simple_consent_mode_data.consents.user).length) {
 		gtag('consent', 'update', window.simple_consent_mode_data.consents.user);
-
 	} else {
 		dialog.showModal();
 	}
