@@ -5,16 +5,45 @@ window.simple_consent_mode.functions = window.simple_consent_mode.functions || [
  * load
  */
 window.addEventListener('load', function(event) {
-	var buttons, checkboxes, i, links;
+	var buttons, checkboxes, i, links, cookie_value
 	var dialog = document.getElementById('scm-dialog');
 	if (!dialog || 1 > dialog.length) {
 		return;
+	}
+	/**
+	 * update from cookie: window.simple_consent_mode_data.consents.user or
+	 * reset if user is not logged in and cookie is empty
+	 * 
+	 * @since 1.3.4
+	 */
+	var cookie_value = window.simple_consent_mode.functions.get_cookie_value();
+	if (0 === window.simple_consent_mode_data.consents.user.length) {
+		if (cookie_value) {
+			window.simple_consent_mode_data.consents.user = JSON.parse(cookie_value);
+		}
+	} else if (!document.body.classList.contains('logged-in')) {
+		// If not logged in, we can assume that the user has not made any choices yet
+		window.simple_consent_mode_data.consents.user = {};
+	}
+	/**
+	 * set checkboxes based window.simple_consent_mode.functions.get_cookie_value
+	 * 
+	 * @since 1.3.4
+	 */
+	if (window.simple_consent_mode_data.consents.user) {
+		Object.keys(window.simple_consent_mode_data.consents.user).forEach(function(key) {
+			var checkbox = dialog.querySelector('input[type="checkbox"][value="' + key + '"]');
+			if (checkbox && window.simple_consent_mode_data.consents.user[key] === 'granted') {
+				checkbox.checked = true;
+			}
+		});
 	}
 	/**
 	 * set consents
 	 */
 	if (Object.keys(window.simple_consent_mode_data.consents.user).length) {
 		gtag('consent', 'update', window.simple_consent_mode_data.consents.user);
+
 	} else {
 		dialog.showModal();
 	}

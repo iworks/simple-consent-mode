@@ -42,6 +42,6 @@ window.simple_consent_mode.functions.save_log = function(cookie_value) {
 	navigator_keys.forEach(function(element) {
 		data_to_send.append(element, navigator[element]);
 	});
-	xhttp.open('post', window.simple_consent_mode_data.ajaxurl, true);
+	xhttp.open('POST', window.simple_consent_mode_data.ajaxurl, true);
 	xhttp.send(data_to_send);
 };
