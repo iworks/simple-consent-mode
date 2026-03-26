@@ -21,9 +21,13 @@ window.addEventListener('load', function(event) {
 		if (cookie_value) {
 			window.simple_consent_mode_data.consents.user = JSON.parse(cookie_value);
 		}
-	} else if (!document.body.classList.contains('logged-in') && !cookie_value) {
-		// If not logged in, we can assume that the user has not made any choices yet
-		window.simple_consent_mode_data.consents.user = {};
+	} else if (!document.body.classList.contains('logged-in')) {
+		if (cookie_value) {
+			window.simple_consent_mode_data.consents.user = JSON.parse(cookie_value);
+		} else {
+			// If not logged in, we can assume that the user has not made any choices yet
+			window.simple_consent_mode_data.consents.user = {};
+		}
 	}
 	/**
 	 * set checkboxes based window.simple_consent_mode.functions.get_cookie_value
