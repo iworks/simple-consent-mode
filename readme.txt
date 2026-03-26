@@ -100,6 +100,10 @@ This will create a link wrapped in a span element with the specified classes and
 
 == Changelog ==
 
+= 1.3.5 - 2026-03-26 =
+* **Bug**: Fixed issue with modal raising every time.
+* **Cleanup**: Removed unnecessary export file.
+
 = 1.3.4 - 2026-03-26 =
 * **Enhancement**: Added checkbox state restoration from cookie values. The dialog now properly reflects user's previous consent choices when reopened. [#10](https://github.com/iworks/simple-consent-mode/issues/10), [#18](https://github.com/iworks/simple-consent-mode/issues/18).
 * **Enhancement**: Improved consent data handling for logged-in vs non-logged-in users.
