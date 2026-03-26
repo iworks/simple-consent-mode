@@ -100,6 +100,11 @@ This will create a link wrapped in a span element with the specified classes and
 
 == Changelog ==
 
+= 1.3.4 - 2026-03-26 =
+* **Enhancement**: Added checkbox state restoration from cookie values. The dialog now properly reflects user's previous consent choices when reopened. [#10](https://github.com/iworks/simple-consent-mode/issues/10), [#18](https://github.com/iworks/simple-consent-mode/issues/18).
+* **Enhancement**: Improved consent data handling for logged-in vs non-logged-in users.
+* **Bug**: Fixed HTTP method in consent logging to use POST instead of empty string.
+
 = 1.3.3 - 2026-03-20 =
 * **Bug**: Fixed Bootstrap CSS conflict issue. [#15](https://github.com/iworks/simple-consent-mode/issues/15). Props for [Katarzyna Janoska](https://github.com/anoriell).
 * **Bug**: Fixed JavaScript error when Cookie icon is hidden. [#16](https://github.com/iworks/simple-consent-mode/issues/16). Props for [Katarzyna Janoska](https://github.com/anoriell).
