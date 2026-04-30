@@ -30,14 +30,11 @@ window.addEventListener('load', function(event) {
 				}
 				if (is_checked) {
 					document.getElementById('scm-dialog-button-selected').parentNode.classList.remove('hidden');
-					document.getElementById('scm-dialog-button-deny').parentNode.classList.add('hidden');
 				} else {
 					document.getElementById('scm-dialog-button-selected').parentNode.classList.add('hidden');
-					document.getElementById('scm-dialog-button-deny').parentNode.classList.remove('hidden');
 				}
 				break;
 			default:
-				document.getElementById('scm-dialog-button-deny').parentNode.classList.add('hidden');
 				document.getElementById('scm-dialog-button-selected').parentNode.classList.add('hidden');
 				document.getElementById('scm-dialog-button-choose').parentNode.classList.remove('hidden');
 				break;

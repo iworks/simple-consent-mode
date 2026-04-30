@@ -160,7 +160,7 @@ function iworks_simple_consent_mode_options() {
 				'name'              => 'btn_choose',
 				'type'              => 'text',
 				'th'                => esc_html__( 'Choose Consents', 'simple-consent-mode' ),
-				'default'           => __( 'Personalize', 'simple-consent-mode' ),
+				'default'           => __( 'Customize', 'simple-consent-mode' ),
 				'sanitize_callback' => 'esc_html',
 				'since'             => '1.0.0',
 			),

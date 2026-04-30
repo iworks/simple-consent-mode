@@ -100,6 +100,13 @@ This will create a link wrapped in a span element with the specified classes and
 
 == Changelog ==
 
+= 1.3.6 - 2026-04-30 =
+* **Enhancement**: Added checkbox state management for "Allow All" action - all checkboxes are now checked when user selects "Allow All".
+* **Enhancement**: Added checkbox state management for "Deny All" action - all checkboxes are now unchecked when user selects "Deny All".
+* **Enhancement**: "Deny" button is always visible.
+* **Enhancement**: Changed default button from "Customize" to "Personalize'. (only affected to new or never saved configurations)
+* **Dependencies**: Updated the [iWorks Options](https://github.com/iworks/wordpress-options-class) module to version 3.1.0.
+
 = 1.3.5 - 2026-03-26 =
 * **Bug**: Fixed issue with modal raising every time.
 * **Cleanup**: Removed unnecessary export file.

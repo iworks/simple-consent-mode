@@ -324,7 +324,6 @@ class iworks_simple_consent_mode extends iworks_simple_consent_mode_base {
 					$this->configuration['buttons'][ $button ]['tab-index'][] = 1;
 					break;
 				case 'selected':
-				case 'deny':
 					$this->configuration['buttons'][ $button ]['container_classes'][] = 'hidden';
 					break;
 			}

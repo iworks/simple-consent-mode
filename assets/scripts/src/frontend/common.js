@@ -69,6 +69,7 @@ window.addEventListener('load', function(event) {
 			var enabled_types_of_consents = window.simple_consent_mode_data.consents.types;
 			var forced_types_of_consents = window.simple_consent_mode_data.consents.forced;
 			var i;
+			var checkboxes = document.getElementsByClassName('scm-dialog-switch-checkbox');
 			event.preventDefault();
 			switch (this.dataset.action) {
 				case 'choose':
@@ -86,6 +87,13 @@ window.addEventListener('load', function(event) {
 					for (i = 0; i < enabled_types_of_consents.length; i++) {
 						consents[enabled_types_of_consents[i]] = 'granted';
 					}
+					/**
+					 * check checkboxes
+					 * @since 1.3.6
+					 */
+					for (i = 0; i < checkboxes.length; i++) {
+						checkboxes[i].checked = true;
+					}
 					break;
 				case 'deny':
 					for (i = 0; i < enabled_types_of_consents.length; i++) {
@@ -95,9 +103,15 @@ window.addEventListener('load', function(event) {
 							consents[enabled_types_of_consents[i]] = 'granted';
 						}
 					}
+					/**
+					 * uncheck checkboxes
+					 * @since 1.3.6
+					 */
+					for (i = 0; i < checkboxes.length; i++) {
+						checkboxes[i].checked = false;
+					}
 					break;
 				default:
-					var checkboxes = document.getElementsByClassName('scm-dialog-switch-checkbox');
 					for (i = 0; i < enabled_types_of_consents.length; i++) {
 						consents[enabled_types_of_consents[i]] = 'denied';
 					}
