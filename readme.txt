@@ -106,7 +106,7 @@ This will create a link wrapped in a span element with the specified classes and
 * **Enhancement**: Added checkbox state management for "Deny All" action - all checkboxes are now unchecked when user selects "Deny All".
 * **Enhancement**: Changed default button from "Customize" to "Personalize'. (only affected to new or never saved configurations)
 * **Enhancement**: "Deny" button is always visible.
-* **Feature**: Added Microsoft Clarity integration support. The plugin now supports Microsoft Clarity tracking with proper consent management.
+* **Feature**: Added Microsoft Clarity integration support. The plugin now supports Microsoft Clarity tracking with proper consent management. [#14](https://github.com/iworks/simple-consent-mode/issues/14). Props for [Katarzyna Janoska](https://github.com/anoriell).
 
 = 1.3.5 - 2026-03-26 =
 * **Bug**: Fixed issue with modal raising every time.
