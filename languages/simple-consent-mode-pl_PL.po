@@ -4,15 +4,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - Simple Consent Mode - Development (trunk)\n"
 "Report-Msgid-Bugs-To: http://iworks.pl\n"
-"POT-Creation-Date: 2026-03-20 08:19:58+00:00\n"
-"PO-Revision-Date: 2025-07-09 07:00:55+0000\n"
+"POT-Creation-Date: 2026-04-30 16:27:49+00:00\n"
+"PO-Revision-Date: 2026-04-30 18:29+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 1) ? 0 : ((n % 10 >= 2 && n % 10 <= 4 "
 "&& (n % 100 < 12 || n % 100 > 14)) ? 1 : 2);\n"
-"X-Generator: GlotPress/4.0.3\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: assets/templates/frontend/cookie/details.php:88
 msgid "(always on)"
@@ -34,10 +36,9 @@ msgstr "Główne"
 msgid "Consent"
 msgstr "Zgoda"
 
-#: etc/options.php:35 etc/options.php:78 etc/options.php:103
-#: etc/options.php:411 etc/options.php:437 etc/options.php:467
-#: etc/options.php:497 etc/options.php:529 etc/options.php:566
-#: etc/options.php:599
+#: etc/options.php:35 etc/options.php:78 etc/options.php:103 etc/options.php:411
+#: etc/options.php:437 etc/options.php:467 etc/options.php:497
+#: etc/options.php:529 etc/options.php:566 etc/options.php:599
 msgid "Title"
 msgstr "Tytuł"
 
@@ -100,8 +101,8 @@ msgid ""
 "Cookies are small data files stored on your device by websites to remember "
 "your preferences, login details, or actions. There are different types, "
 "including session cookies (temporary) and persistent cookies (long-term). "
-"They help personalize your browsing experience but can also track your "
-"online behavior."
+"They help personalize your browsing experience but can also track your online "
+"behavior."
 msgstr ""
 "Ciasteczka to małe pliki danych przechowywane na urządzeniu przez witryny "
 "internetowe w celu zapamiętania preferencji, danych logowania lub działań. "
@@ -111,12 +112,12 @@ msgstr ""
 
 #: etc/options.php:119
 msgid ""
-"Consent refers to the permission websites must obtain from users before "
-"using cookies that collect personal data. Laws like the GDPR require "
-"websites to ask for explicit consent through cookie banners, allowing users "
-"to accept or reject cookies and control their privacy. You can also withdraw "
-"consent at any time, typically through the website’s privacy settings, which "
-"lets you manage or delete stored cookies whenever you choose."
+"Consent refers to the permission websites must obtain from users before using "
+"cookies that collect personal data. Laws like the GDPR require websites to "
+"ask for explicit consent through cookie banners, allowing users to accept or "
+"reject cookies and control their privacy. You can also withdraw consent at "
+"any time, typically through the website’s privacy settings, which lets you "
+"manage or delete stored cookies whenever you choose."
 msgstr ""
 "Zgoda odnosi się do zgody, którą witryny muszą uzyskać od użytkowników przed "
 "użyciem ciasteczek gromadzących dane osobowe. Przepisy takie jak GDPR "
@@ -168,8 +169,8 @@ msgid "Choose Consents"
 msgstr "Wybierz zgody"
 
 #: etc/options.php:163
-msgid "Personalize"
-msgstr "Personalizuj"
+msgid "Customize"
+msgstr "Dostosuj"
 
 #: etc/options.php:170
 msgid "Deny All Consents"
@@ -281,9 +282,9 @@ msgstr "Funkcjonalność"
 
 #: etc/options.php:423
 msgid ""
-"Necessary cookies help make a website usable by enabling basic functions "
-"such as page navigation and access to secure areas of the website. The "
-"website cannot function properly without these cookies."
+"Necessary cookies help make a website usable by enabling basic functions such "
+"as page navigation and access to secure areas of the website. The website "
+"cannot function properly without these cookies."
 msgstr ""
 "Ciasteczka niezbędne do funkcjonowania witryny internetowej, umożliwiając "
 "podstawowe funkcje, takie jak nawigacja po stronach i dostęp do bezpiecznych "
@@ -328,8 +329,8 @@ msgid ""
 "Manages whether advertising-related data (like targeting and tracking "
 "cookies) can be stored and processed for ad services."
 msgstr ""
-"Zarządza tym, czy dane związane z reklamami (np. ciasteczka do targetowania "
-"i śledzenia) mogą być przechowywane i przetwarzane na potrzeby usług "
+"Zarządza tym, czy dane związane z reklamami (np. ciasteczka do targetowania i "
+"śledzenia) mogą być przechowywane i przetwarzane na potrzeby usług "
 "reklamowych."
 
 #: etc/options.php:490 etc/options.php:499
@@ -463,12 +464,11 @@ msgid ""
 "period. This helps manage storage and ensures logs are only kept for a "
 "predefined, manageable timeframe."
 msgstr ""
-"Ustawienie \"Czas trwania dziennika\" określa czas (w miesiącach), przez "
-"jaki wpisy dziennika będą przechowywane. Po upływie wybranego czasu system "
+"Ustawienie \"Czas trwania dziennika\" określa czas (w miesiącach), przez jaki "
+"wpisy dziennika będą przechowywane. Po upływie wybranego czasu system "
 "automatycznie usunie wszystkie wpisy dziennika starsze niż wybrany okres. "
 "Pomaga to w zarządzaniu pamięcią masową i zapewnia, że dzienniki są "
-"przechowywane tylko przez wstępnie zdefiniowany, możliwy do zarządzania "
-"okres."
+"przechowywane tylko przez wstępnie zdefiniowany, możliwy do zarządzania okres."
 
 #: etc/options.php:666
 msgid "Export"
@@ -530,9 +530,9 @@ msgid ""
 "example, without tracking conversions or storing data for ad targeting)."
 msgstr ""
 "Jeśli użytkownik nie wyraził jeszcze zgody lub odmówił, możesz zdefiniować "
-"domyślne zachowanie. Domyślnie tagi Google będą działać w trybie "
-"ograniczonym (na przykład bez śledzenia konwersji lub przechowywania danych "
-"do kierowania reklam)."
+"domyślne zachowanie. Domyślnie tagi Google będą działać w trybie ograniczonym "
+"(na przykład bez śledzenia konwersji lub przechowywania danych do kierowania "
+"reklam)."
 
 #: etc/options.php:697
 msgid "Consent Update Mechanism"
@@ -546,9 +546,9 @@ msgid ""
 "behavior based on the new consent status."
 msgstr ""
 "Funkcja umożliwia witrynom aktualizowanie statusu zgody użytkownika, jeśli "
-"zmienią swoje preferencje po wyrażeniu początkowej zgody. Zapewnia, że ​​"
-"usługi Google (takie jak Analytics i Ads) zareagują odpowiednio i dostosują "
-"swoje zachowanie na podstawie nowego statusu zgody."
+"zmienią swoje preferencje po wyrażeniu początkowej zgody. Zapewnia, że ​​usługi "
+"Google (takie jak Analytics i Ads) zareagują odpowiednio i dostosują swoje "
+"zachowanie na podstawie nowego statusu zgody."
 
 #: etc/options.php:703
 msgid "Consent Mode Events"
@@ -591,9 +591,9 @@ msgid ""
 "this option ensures that all data collection and tracking mechanisms are "
 "blocked, fully respecting the user's privacy preferences."
 msgstr ""
-"W przypadku, gdy użytkownik nie wyraził zgody na stosowanie plików cookie "
-"lub śledzenie danych, opcja ta zapewnia, że ​​wszelkie mechanizmy gromadzenia "
-"i śledzenia danych zostaną zablokowane, w pełni respektując preferencje "
+"W przypadku, gdy użytkownik nie wyraził zgody na stosowanie plików cookie lub "
+"śledzenie danych, opcja ta zapewnia, że ​​wszelkie mechanizmy gromadzenia i "
+"śledzenia danych zostaną zablokowane, w pełni respektując preferencje "
 "użytkownika dotyczące prywatności."
 
 #: etc/options.php:722 etc/options.php:763
@@ -635,60 +635,68 @@ msgstr "Brak pliku szablonu: %1$s/%2$s/%3$s."
 msgid "Simple Consent Mode"
 msgstr "Proste zgody"
 
-#: includes/iworks/class-simple-consent-mode.php:693
+#: includes/iworks/class-simple-consent-mode.php:692
 msgid "Show Consents"
 msgstr "Pokaż zgody"
 
-#: includes/iworks/class-simple-consent-mode.php:694
+#: includes/iworks/class-simple-consent-mode.php:693
 msgid "Open dialog to view and manage consents."
 msgstr "Otwórz okno dialogowe, aby wyświetlić zgody i zarządzać nimi."
 
-#: includes/iworks/options/options.php:175
+#: includes/iworks/options/includes/class-iworks-options-logger.php:99
+msgid ""
+"Option \"{option_name}\" has been updated. From \"{old_value}\" to "
+"\"{new_value}\"."
+msgstr ""
+"Opcja „{option_name}” została zaktualizowana. Z „{old_value}” na "
+"„{new_value}”."
+
+#: includes/iworks/options/options.php:247
 msgid "No Page Title"
 msgstr "Brak tytułu strony"
 
-#: includes/iworks/options/options.php:340
+#: includes/iworks/options/options.php:423
 msgid "An error occurred while getting the configuration."
 msgstr "Wystąpił błąd w czasie pobierania konfiguracji."
 
-#: includes/iworks/options/options.php:919
-#: includes/iworks/options/options.php:2247
+#: includes/iworks/options/options.php:1002
+#: includes/iworks/options/options.php:2392
 msgid "Select Image"
 msgstr "Wybierz obrazek"
 
-#: includes/iworks/options/options.php:924
+#: includes/iworks/options/options.php:1007
 msgid "Delete image"
 msgstr "Usuń obrazek"
 
-#: includes/iworks/options/options.php:1032
+#: includes/iworks/options/options.php:1115
 msgid "Save Changes"
 msgstr "Zapisz zmiany"
 
-#: includes/iworks/options/options.php:2120
+#: includes/iworks/options/options.php:2265
 msgid "Country"
 msgstr "Kraj"
 
-#: includes/iworks/options/options.php:2121
+#: includes/iworks/options/options.php:2266
 msgid "City"
 msgstr "Miasto"
 
-#: includes/iworks/options/options.php:2122
+#: includes/iworks/options/options.php:2267
 msgid "Street"
 msgstr "Ulica"
 
-#: includes/iworks/options/options.php:2123
+#: includes/iworks/options/options.php:2268
 msgid "ZIP code"
 msgstr "Kod pocztowy"
 
-#: includes/iworks/options/options.php:2307
+#: includes/iworks/options/options.php:2452
 msgid "OFF"
 msgstr "Wyłącz"
 
-#: includes/iworks/options/options.php:2308
+#: includes/iworks/options/options.php:2453
 msgid "ON"
 msgstr "Włącz"
 
-#: includes/iworks/options/options.php:2373
+#: includes/iworks/options/options.php:2518
 msgid "Failed Security Check"
 msgstr "Nieudana kontrola bezpieczeństwa"
 
@@ -775,8 +783,8 @@ msgstr "Autor wtyczki"
 #: includes/iworks/rate/templates/happy-anniversary/first-year.php:23
 msgid ""
 "Wow, it’s already been a whole year since you started using our plugin—thank "
-"you so much for being part of our journey! We hope it’s made your work "
-"easier and more enjoyable."
+"you so much for being part of our journey! We hope it’s made your work easier "
+"and more enjoyable."
 msgstr ""
 "Wow, minął już cały rok odkąd używasz naszej wtyczki — bardzo dziękujemy za "
 "bycie częścią naszej wspólnej przygody! Mam nadzieję, że wtyczka ułatwiła "
@@ -805,14 +813,13 @@ msgstr "Dziękujemy za używanie naszej wtyczki %s!"
 #: includes/iworks/rate/templates/thanks.php:31
 msgid ""
 "Please let us know what you think about our plugin. It is important that we "
-"can develop this tool. Thank you for all the ratings, reviews and donates. "
-"If you have a technical problem, please before you add a review %1$scheck "
-"our FAQ%2$s or contact us if you did not find help there. We will try to "
-"help you!"
+"can develop this tool. Thank you for all the ratings, reviews and donates. If "
+"you have a technical problem, please before you add a review %1$scheck our "
+"FAQ%2$s or contact us if you did not find help there. We will try to help you!"
 msgstr ""
 "Powiedz nam co myślisz o naszej wtyczce. To jest bardzo ważne dla nas i "
-"pozwoli nam ją rozwijać. Dziękujemy serdecznie za wszystkie oceny, recenzje "
-"i dodatkowe wsparcie. Jeżeli masz problem techniczny, prosimy zanim dodasz "
+"pozwoli nam ją rozwijać. Dziękujemy serdecznie za wszystkie oceny, recenzje i "
+"dodatkowe wsparcie. Jeżeli masz problem techniczny, prosimy zanim dodasz "
 "recenzję %1$ssprawdź nasze FAQ%2$s lub skontaktuj się z nami, jeżeli nie "
 "znajdziesz tam pomocy. Postaramy się tobie pomóc!"
 
@@ -835,17 +842,16 @@ msgid ""
 "However, working on plugins and technical support requires many hours of "
 "work. If you want to appreciate it, you can provide me a coffee."
 msgstr ""
-"Praca nad wtyczkami oraz świadczenie pomocy technicznej wymaga ode mnie "
-"wielu godzin ciężkiej pracy. Jeżeli chcesz to docenić, możesz postawić mi "
-"kawę."
+"Praca nad wtyczkami oraz świadczenie pomocy technicznej wymaga ode mnie wielu "
+"godzin ciężkiej pracy. Jeżeli chcesz to docenić, możesz postawić mi kawę."
 
 #: includes/iworks/rate/templates/widgets/donate.php:3
 msgid ""
 "If every plugin user did it, I could devote myself fully to working on this "
 "plugin. Thanks everyone!"
 msgstr ""
-"Gdyby każdy użytkownik wtyczki to zrobił, to mógłbym poświęcić cały swój "
-"czas pracy nad wtyczką. Dziękuję każdemu!"
+"Gdyby każdy użytkownik wtyczki to zrobił, to mógłbym poświęcić cały swój czas "
+"pracy nad wtyczką. Dziękuję każdemu!"
 
 #: includes/iworks/rate/templates/widgets/donate.php:4
 msgid "Provide me a coffee"
@@ -854,8 +860,8 @@ msgstr "Postaw mi kawę"
 #: includes/iworks/rate/templates/widgets/support.php:4
 msgid ""
 "Do you have a technical problem? Please contact us. We will be happy to help "
-"you. Or maybe you have an idea for a new feature? Please let us know about "
-"it by filling the support form. We will try to add it!"
+"you. Or maybe you have an idea for a new feature? Please let us know about it "
+"by filling the support form. We will try to add it!"
 msgstr ""
 "Masz problem techniczny? Prosimy o kontakt z nami. Z przyjemnością tobie "
 "pomożemy. A może masz pomysł na nową funkcjonalność? Poinformuj nas o tym, "
@@ -875,9 +881,9 @@ msgstr ""
 
 #: includes/iworks/rate/templates/widgets/support.php:26
 msgid ""
-"Do you like our plugin? Could you rate him? Please let us know what you "
-"think about our plugin. It is important that we can develop this tool. Thank "
-"you for all the ratings, reviews and donates."
+"Do you like our plugin? Could you rate him? Please let us know what you think "
+"about our plugin. It is important that we can develop this tool. Thank you "
+"for all the ratings, reviews and donates."
 msgstr ""
 "Jak podoba się nasza wtyczka? Masz możliwość ją ocenić? Daj nam znać, co o "
 "niej myślisz. To dla nas bardzo ważne, aby móc ją rozwijać. Dziękujemy za "
@@ -889,11 +895,11 @@ msgstr "Przekaż datek"
 
 #. Plugin URI of the plugin/theme
 msgid "PLUGIN_URI"
-msgstr ""
+msgstr "PLUGIN_URI"
 
 #. Description of the plugin/theme
 msgid "PLUGIN_TAGLINE"
-msgstr ""
+msgstr "PLUGIN_TAGLINE"
 
 #. Author URI of the plugin/theme
 msgid "http://iworks.pl/"
@@ -920,6 +926,9 @@ msgstr "https://pl.wordpress.org/plugins/%s"
 msgctxt "plugins support home"
 msgid "https://wordpress.org/support/plugin/%s"
 msgstr "https://wordpress.org/support/plugin/%s"
+
+#~ msgid "Personalize"
+#~ msgstr "Personalizuj"
 
 #~ msgid ""
 #~ "Simple Consent Mode helps integrate GTM Consent Mode v2 on your website."

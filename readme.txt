@@ -100,12 +100,13 @@ This will create a link wrapped in a span element with the specified classes and
 
 == Changelog ==
 
-= 1.3.6 - 2026-04-30 =
+= 1.4.0 - 2026-04-30 =
+* **Dependencies**: Updated the [iWorks Options](https://github.com/iworks/wordpress-options-class) module to version 3.1.0.
 * **Enhancement**: Added checkbox state management for "Allow All" action - all checkboxes are now checked when user selects "Allow All".
 * **Enhancement**: Added checkbox state management for "Deny All" action - all checkboxes are now unchecked when user selects "Deny All".
-* **Enhancement**: "Deny" button is always visible.
 * **Enhancement**: Changed default button from "Customize" to "Personalize'. (only affected to new or never saved configurations)
-* **Dependencies**: Updated the [iWorks Options](https://github.com/iworks/wordpress-options-class) module to version 3.1.0.
+* **Enhancement**: "Deny" button is always visible.
+* **Feature**: Added Microsoft Clarity integration support. The plugin now supports Microsoft Clarity tracking with proper consent management.
 
 = 1.3.5 - 2026-03-26 =
 * **Bug**: Fixed issue with modal raising every time.
@@ -115,6 +116,7 @@ This will create a link wrapped in a span element with the specified classes and
 * **Enhancement**: Added checkbox state restoration from cookie values. The dialog now properly reflects user's previous consent choices when reopened. [#10](https://github.com/iworks/simple-consent-mode/issues/10), [#18](https://github.com/iworks/simple-consent-mode/issues/18).
 * **Enhancement**: Improved consent data handling for logged-in vs non-logged-in users.
 * **Bug**: Fixed HTTP method in consent logging to use POST instead of empty string.
+= 1.4.0 - 2026-03-25 =
 
 = 1.3.3 - 2026-03-20 =
 * **Bug**: Fixed Bootstrap CSS conflict issue. [#15](https://github.com/iworks/simple-consent-mode/issues/15). Props for [Katarzyna Janoska](https://github.com/anoriell).

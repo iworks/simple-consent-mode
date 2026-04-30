@@ -2,9 +2,9 @@
 # This file is distributed under the GPLv3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.3.3\n"
+"Project-Id-Version: 1.3.6\n"
 "Report-Msgid-Bugs-To: http://iworks.pl\n"
-"POT-Creation-Date: 2026-03-20 08:20:18+00:00\n"
+"POT-Creation-Date: 2026-04-30 16:28:13+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -155,7 +155,7 @@ msgid "Choose Consents"
 msgstr ""
 
 #: etc/options.php:163
-msgid "Personalize"
+msgid "Customize"
 msgstr ""
 
 #: etc/options.php:170
@@ -548,60 +548,66 @@ msgstr ""
 msgid "Simple Consent Mode"
 msgstr ""
 
-#: includes/iworks/class-simple-consent-mode.php:693
+#: includes/iworks/class-simple-consent-mode.php:692
 msgid "Show Consents"
 msgstr ""
 
-#: includes/iworks/class-simple-consent-mode.php:694
+#: includes/iworks/class-simple-consent-mode.php:693
 msgid "Open dialog to view and manage consents."
 msgstr ""
 
-#: includes/iworks/options/options.php:175
+#: includes/iworks/options/includes/class-iworks-options-logger.php:99
+msgid ""
+"Option \"{option_name}\" has been updated. From \"{old_value}\" to "
+"\"{new_value}\"."
+msgstr ""
+
+#: includes/iworks/options/options.php:247
 msgid "No Page Title"
 msgstr ""
 
-#: includes/iworks/options/options.php:340
+#: includes/iworks/options/options.php:423
 msgid "An error occurred while getting the configuration."
 msgstr ""
 
-#: includes/iworks/options/options.php:919
-#: includes/iworks/options/options.php:2247
+#: includes/iworks/options/options.php:1002
+#: includes/iworks/options/options.php:2392
 msgid "Select Image"
 msgstr ""
 
-#: includes/iworks/options/options.php:924
+#: includes/iworks/options/options.php:1007
 msgid "Delete image"
 msgstr ""
 
-#: includes/iworks/options/options.php:1032
+#: includes/iworks/options/options.php:1115
 msgid "Save Changes"
 msgstr ""
 
-#: includes/iworks/options/options.php:2120
+#: includes/iworks/options/options.php:2265
 msgid "Country"
 msgstr ""
 
-#: includes/iworks/options/options.php:2121
+#: includes/iworks/options/options.php:2266
 msgid "City"
 msgstr ""
 
-#: includes/iworks/options/options.php:2122
+#: includes/iworks/options/options.php:2267
 msgid "Street"
 msgstr ""
 
-#: includes/iworks/options/options.php:2123
+#: includes/iworks/options/options.php:2268
 msgid "ZIP code"
 msgstr ""
 
-#: includes/iworks/options/options.php:2307
+#: includes/iworks/options/options.php:2452
 msgid "OFF"
 msgstr ""
 
-#: includes/iworks/options/options.php:2308
+#: includes/iworks/options/options.php:2453
 msgid "ON"
 msgstr ""
 
-#: includes/iworks/options/options.php:2373
+#: includes/iworks/options/options.php:2518
 msgid "Failed Security Check"
 msgstr ""
 
