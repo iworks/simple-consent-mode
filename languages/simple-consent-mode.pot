@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.4.0\n"
 "Report-Msgid-Bugs-To: http://iworks.pl\n"
-"POT-Creation-Date: 2026-04-30 19:29:48+00:00\n"
+"POT-Creation-Date: 2026-07-22 06:53:26+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -566,48 +566,48 @@ msgstr ""
 msgid "No Page Title"
 msgstr ""
 
-#: includes/iworks/options/options.php:423
+#: includes/iworks/options/options.php:419
 msgid "An error occurred while getting the configuration."
 msgstr ""
 
-#: includes/iworks/options/options.php:1002
-#: includes/iworks/options/options.php:2392
+#: includes/iworks/options/options.php:998
+#: includes/iworks/options/options.php:2388
 msgid "Select Image"
 msgstr ""
 
-#: includes/iworks/options/options.php:1007
+#: includes/iworks/options/options.php:1003
 msgid "Delete image"
 msgstr ""
 
-#: includes/iworks/options/options.php:1115
+#: includes/iworks/options/options.php:1111
 msgid "Save Changes"
 msgstr ""
 
-#: includes/iworks/options/options.php:2265
+#: includes/iworks/options/options.php:2261
 msgid "Country"
 msgstr ""
 
-#: includes/iworks/options/options.php:2266
+#: includes/iworks/options/options.php:2262
 msgid "City"
 msgstr ""
 
-#: includes/iworks/options/options.php:2267
+#: includes/iworks/options/options.php:2263
 msgid "Street"
 msgstr ""
 
-#: includes/iworks/options/options.php:2268
+#: includes/iworks/options/options.php:2264
 msgid "ZIP code"
 msgstr ""
 
-#: includes/iworks/options/options.php:2452
+#: includes/iworks/options/options.php:2448
 msgid "OFF"
 msgstr ""
 
-#: includes/iworks/options/options.php:2453
+#: includes/iworks/options/options.php:2449
 msgid "ON"
 msgstr ""
 
-#: includes/iworks/options/options.php:2518
+#: includes/iworks/options/options.php:2514
 msgid "Failed Security Check"
 msgstr ""
 
@@ -638,12 +638,12 @@ msgstr ""
 msgid "https://wordpress.org/plugins/og/"
 msgstr ""
 
-#: includes/iworks/rate/templates/happy-anniversary/anniversary.php:21
+#: includes/iworks/rate/templates/happy-anniversary/anniversary.php:19
 #: includes/iworks/rate/templates/happy-anniversary/first-year.php:21
 msgid "🎉 Happy Anniversary! 🎉"
 msgstr ""
 
-#: includes/iworks/rate/templates/happy-anniversary/anniversary.php:23
+#: includes/iworks/rate/templates/happy-anniversary/anniversary.php:21
 msgid ""
 "Wow, it’s already been a whole year since you’ve been using our "
 "plugin—thank you so much for being part of our journey! We truly appreciate "
@@ -651,7 +651,7 @@ msgid ""
 "enjoyable."
 msgstr ""
 
-#: includes/iworks/rate/templates/happy-anniversary/anniversary.php:24
+#: includes/iworks/rate/templates/happy-anniversary/anniversary.php:22
 #: includes/iworks/rate/templates/happy-anniversary/first-year.php:24
 msgid ""
 "If you’ve found our plugin helpful and would like to support its continued "
@@ -660,17 +660,17 @@ msgid ""
 "for awesome users like you!"
 msgstr ""
 
-#: includes/iworks/rate/templates/happy-anniversary/anniversary.php:25
+#: includes/iworks/rate/templates/happy-anniversary/anniversary.php:23
 #: includes/iworks/rate/templates/happy-anniversary/first-year.php:25
 msgid "☕ Buy Me a Coffee"
 msgstr ""
 
-#: includes/iworks/rate/templates/happy-anniversary/anniversary.php:26
+#: includes/iworks/rate/templates/happy-anniversary/anniversary.php:24
 #: includes/iworks/rate/templates/happy-anniversary/first-year.php:26
 msgid "Thank you for your support and for making this community amazing!"
 msgstr ""
 
-#: includes/iworks/rate/templates/happy-anniversary/anniversary.php:30
+#: includes/iworks/rate/templates/happy-anniversary/anniversary.php:28
 #: includes/iworks/rate/templates/happy-anniversary/first-year.php:30
 msgid "With gratitude"
 msgstr ""
@@ -679,7 +679,7 @@ msgstr ""
 msgid "Marcin Pietrzak"
 msgstr ""
 
-#: includes/iworks/rate/templates/happy-anniversary/anniversary.php:36
+#: includes/iworks/rate/templates/happy-anniversary/anniversary.php:34
 #: includes/iworks/rate/templates/happy-anniversary/first-year.php:36
 msgid "Plugin Author"
 msgstr ""
