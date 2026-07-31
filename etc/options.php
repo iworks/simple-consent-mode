@@ -387,7 +387,7 @@ function iworks_simple_consent_mode_options() {
 			array(
 				'type'        => 'subheading',
 				'label'       => esc_html__( 'Functional', 'simple-consent-mode' ),
-				'description' => esc_html__( 'Manages the storage of cookies for essential functions like login.', 'simple-consent-mode' ) . iworks_simple_consent_modes_options_g_code( 'functional_storage' ),
+				'description' => esc_html__( 'Manages the storage of cookies for essential functions like login.', 'simple-consent-mode' ) . iworks_simple_consent_modes_options_g_code( 'functionality_storage' ),
 			),
 			array(
 				'name'              => 'fust_show',
@@ -412,7 +412,7 @@ function iworks_simple_consent_mode_options() {
 				'sanitize_callback' => 'esc_html',
 				'classes'           => array( 'large-text' ),
 				'default'           => __( 'Functionality', 'simple-consent-mode' ),
-				'codename'          => 'functional_storage',
+				'codename'          => 'functionality_storage',
 			),
 			array(
 				'name'              => 'fust_desc',

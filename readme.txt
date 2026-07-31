@@ -100,6 +100,9 @@ This will create a link wrapped in a span element with the specified classes and
 
 == Changelog ==
 
+= 1.4.2 - 2026-07-31 =
+* **Bug**: Fixed typo for `functionality_storage`. [#23](https://github.com/iworks/simple-consent-mode/issues/23). Props for [krzysztofboxer](https://github.com/krzysztofboxer).
+
 = 1.4.1 - 2026-07-22 =
 * **Dependencies**: Updated the [iWorks Options](https://github.com/iworks/wordpress-options-class) module to version 3.1.1 and the [iWorks Rate](https://github.com/iworks/iworks-rate) module to version 2.3.2.
 * **Enhancement**: Changed `dialog.php` to use div and proper aria for tabs [#22](https://github.com/iworks/simple-consent-mode/issues/22). Props for [Katarzyna Janoska](https://github.com/anoriell).
